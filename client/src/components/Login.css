@@ -1,0 +1,154 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 10px;
+}
+
+.form-login-container {
+  display: flex;
+  flex-direction: row;
+  width: 850px;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+  animation: slideIn 0.6s ease-out;
+}
+
+.image-side {
+  flex: 1;
+  position: relative;
+}
+
+.login-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.form-login-side {
+  flex: 1;
+  padding: 40px;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+label {
+  font-size: 15px;
+  color: grey;
+  font-weight: 600;
+}
+
+input {
+  width: 95%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+button.button-login {
+  text-align: center !important;
+  text-transform: uppercase;
+  margin-left: 34%;
+  width: 30%;
+  padding: 12px;
+  font-weight: bold;
+  color: #fff;
+  background-color: teal !important;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.image-side:hover .login-image {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .form-login-container {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+  }
+
+  .image-side {
+    height: 250px;
+  }
+
+  .form-login-side {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  button.button-login {
+    margin-left: 35%;
+    width: 30%;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-login-container {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+  }
+
+  .image-side {
+    height: 200px;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  button.button-login {
+    width: 50%;
+    margin-left: 25%;
+    padding: 10px;
+    font-size: 14px;
+  }
+}

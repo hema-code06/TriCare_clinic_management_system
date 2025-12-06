@@ -1,0 +1,46 @@
+.admin-appointments {
+  padding: 20px;
+}
+
+.admin-appointments-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 70px;
+  padding: 50px;
+}
+
+.admin-appointment-card {
+  padding: 20px;
+  width: 25%;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.admin-appointment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.admin-appointment-card h3 {
+  font-size: 20px;
+  color: #033f7b;
+}
+.admin-appointment-card p {
+  color: #333;
+  font-size: 16px;
+  margin: 22px 0;
+}
+.admin-appointment-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.admin-appointment-details p {
+  font-size: 0.9rem;
+}
+
+.admin-appointment-details strong {
+  color: #033f7b;
+}

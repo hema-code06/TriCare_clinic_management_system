@@ -1,0 +1,92 @@
+.maintenance-management {
+  min-height: 100vh;
+  animation: fadeIn 1.2s ease-in-out;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.maintenance-management h1 {
+  text-transform: uppercase;
+  text-align: center;
+  color: #0077b6;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  position: relative;
+  animation: slideInFromTop 1s ease-out;
+}
+
+.add-button {
+  color: #fff;
+  text-transform: uppercase;
+  margin-left: 80% !important;
+  font-size: 13px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  padding: 12px 20px;
+}
+
+.add-button:hover {
+  transform: scale(1);
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  background-color: #00b4d8;
+}
+
+.add-button:active {
+  transform: scale(0.98);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.modal-content {
+  border-radius: 10px;
+  width: 100% !important;
+  max-width: 800px !important;
+  height: 50% !important;
+  min-height: 300px !important;
+}
+
+.close-button {
+  margin-left: 97%;
+  color: #333 !important;
+  cursor: pointer;
+  background: none !important;
+}

@@ -1,0 +1,88 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5%;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+thead {
+  background: linear-gradient(135deg, #4985fe, #94c0fc) !important;
+  color: white;
+}
+
+thead th {
+  padding: 12px 25px;
+  font-weight: bold;
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+tbody td {
+  padding: 30px 10px !important;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+  thead th {
+    padding: 10px 15px;
+  }
+
+  tbody td {
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  table {
+    font-size: 12px;
+  }
+
+  thead th {
+    padding: 8px 10px;
+  }
+
+  tbody td {
+    padding: 15px 8px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  table {
+    font-size: 10px;
+  }
+
+  thead th {
+    padding: 6px 8px;
+  }
+
+  tbody td {
+    padding: 10px 5px;
+  }
+
+  button {
+    font-size: 13px;
+  }
+}

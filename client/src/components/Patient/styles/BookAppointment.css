@@ -1,0 +1,96 @@
+.appointment-container {
+  width: 100%;
+  max-width: 1150px;
+  padding: 50px;
+}
+
+.grid-appointment {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 40px;
+}
+
+.grid-appointment label {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease-in-out;
+}
+
+.grid-appointment input,
+.grid-appointment select,
+.grid-appointment textarea {
+  text-transform: none;
+  font-size: 13px;
+  padding: 10px;
+  width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  resize: none;
+}
+
+label {
+  font-weight: 600;
+  color: grey;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+label:hover {
+  color: rgb(90, 89, 89);
+}
+
+.appointment-button {
+  padding: 10px 15px;
+  color: #fff;
+  font-weight: bold;
+  background: linear-gradient(135deg, #008080, #3dfef4) !important;
+  text-transform: uppercase;
+  margin-left: 95%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.appointment-button:hover {
+  font-size: 14px;
+  background: linear-gradient(135deg, #3dfef4, #008080) !important;
+}
+
+@media (max-width: 1024px) {
+  .grid-appointment {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .appointment-button {
+    margin-top: 5%;
+    margin-left: 85%;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-appointment {
+    grid-template-columns: 1fr !important;
+  }
+  .appointment-container {
+    padding: 30px;
+  }
+  .appointment-button {
+    margin-top: 5%;
+    margin-left: 75%;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointment-container {
+    padding: 20px;
+  }
+  .appointment-button {
+    margin-top: 5%;
+    margin-left: 50%;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}

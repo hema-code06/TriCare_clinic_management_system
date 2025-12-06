@@ -1,0 +1,381 @@
+.navbar {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-left: 30%;
+}
+
+.navbar-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 20px;
+}
+
+.navbar-links a:hover {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.pateint-logout-button {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 20px;
+}
+
+.hero-section {
+  position: relative;
+  background-image: url("../../../assets/patient.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  animation: fadeIn 2s ease-in-out;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #333;
+  overflow: hidden;
+  filter: brightness(1.1);
+}
+
+.hero-content {
+  position: relative;
+  padding: 90px;
+}
+
+.hero-content h1 {
+  font-size: 1.3rem;
+  text-align: start;
+  line-height: 2;
+  margin-bottom: 10%;
+  animation: slideInLeft 1s ease-out;
+  width: 505px !important;
+}
+
+.quote-text {
+  text-align: start;
+  color: #fe4343;
+  font-size: 1.3rem !important;
+  text-transform: uppercase;
+}
+
+.hero-buttons .button {
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  color: #fff;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out, transform 0.2s ease-in-out;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-buttons .button:hover {
+  background: linear-gradient(45deg, #2980b9, #1c6ea4);
+  transform: translateY(-5px) scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.doctor-card-section {
+  padding: 30px;
+  min-height: 100vh;
+}
+
+.doctor-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 70px;
+  padding: 30px;
+}
+
+.doctor-card {
+  width: 22%;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.doctor-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.doctor-card p {
+  color: #333;
+  font-size: 16px;
+  margin: 15px 0;
+}
+
+.doctor-card h3 {
+  font-size: 20px;
+  margin: 15px 0;
+  color: #033f7b;
+}
+
+.services-section {
+  min-height: 100vh;
+  padding: 30px !important;
+}
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.service {
+  background: linear-gradient(130deg, #8ee8ff, #fcfbfb);
+  padding: 20px;
+  border-radius: 15px;
+  width: 25%;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s, box-shadow 0.4s;
+  cursor: pointer;
+}
+
+.service:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service h3 {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  transition: color 0.3s;
+}
+
+.service p {
+  color: #7f8c8d;
+}
+
+.features-section {
+  padding: 30px;
+  min-height: 100vh;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.feature-image {
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.feature {
+  background: linear-gradient(to bottom, #ecf0f1, #bdc3c7) !important;
+  padding: 20px;
+  border-radius: 12px;
+  width: 25%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.feature:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature h3 {
+  color: #1c6ea4;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.feature:hover h3 {
+  color: #3498db;
+}
+
+.contact-us-section {
+  font-size: 20px !important;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url(https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854031.jpg?semt=ais_hybrid);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.contact-container {
+  display: flex;
+  margin-left: 50%;
+  padding: 20px;
+  margin-top: 5%;
+}
+
+.right-content p {
+  color: #333;
+  font-size: 18px !important;
+}
+
+.right-content i {
+  font-size: 20px;
+  color: #1c6ea4;
+  margin-right: 10px;
+}
+
+.right-content a {
+  color: #2c3e50;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.right-content a:hover {
+  color: #0056b3;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  background-color: #333;
+  padding: 20px;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.footer-text {
+  margin: 0%;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .doctor-card,
+  .service,
+  .feature {
+    width: 45%;
+  }
+  .logo {
+    margin-left: 10%;
+  }
+  .contact-us-section {
+    font-size: 20px !important;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+    background-image: url(https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854031.jpg?semt=ais_hybrid);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .doctor-card,
+  .service,
+  .feature {
+    width: 100%;
+  }
+  .navbar-links a,
+  .pateint-logout-button {
+    font-size: 0.9rem;
+  }
+  .contact-us-section {
+    font-size: 20px !important;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+    background-image: url(https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854031.jpg?semt=ais_hybrid);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1rem;
+    width: auto !important;
+  }
+  .quote-text {
+    font-size: 1rem !important;
+  }
+  .hero-buttons .button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  .contact-container {
+    flex-direction: column;
+    margin-left: 0;
+  }
+  .contact-us-section {
+    font-size: 20px !important;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+    background-image: url(https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854031.jpg?semt=ais_hybrid);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}

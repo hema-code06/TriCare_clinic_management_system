@@ -1,0 +1,92 @@
+.doctor-dashboard {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.doctor-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.doctor-bgimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.doctor-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.doctor-logo {
+  width: 100px;
+  height: 100px;
+  margin-left: 3%;
+}
+
+.doctor-navbar-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  margin: 0 20px;
+}
+.doctor-navbar-links a:hover{
+    color: #fff;
+    font-size: 1.1rem;
+}
+.logout-btn {
+  color: #333;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  margin: 0 20px;
+}
+.logout-btn:hover{
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .doctor-navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 10px;
+  }
+
+  .doctor-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0;
+  }
+
+  .doctor-navbar-links a {
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .doctor-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .doctor-navbar {
+    padding: 10px;
+  }
+
+  .doctor-navbar-links a {
+    margin: 5px 0;
+  }
+}
+
+
+

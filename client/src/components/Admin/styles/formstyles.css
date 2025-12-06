@@ -1,0 +1,139 @@
+.fill-main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.fill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 10px;
+}
+
+.maintenance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 20px;
+}
+
+.maintenance-grid label,
+.fill-grid label {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease-in-out;
+}
+
+.maintenance-grid input,
+.maintenance-grid select {
+  font-size: 13px;
+  padding: 10px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fill-grid input,
+.fill-grid select {
+  font-size: 13px;
+  padding: 10px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fill-grid input[type="file"] {
+  border: none;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.fill-grid input[type="file"]:hover {
+  opacity: 0.8;
+}
+
+label {
+  font-weight: 600;
+  color: grey;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+label:hover {
+  color: rgb(90, 89, 89);
+}
+
+.en-button {
+  padding: 10px 15px;
+  color: #fff;
+  font-weight: bold;
+  background: linear-gradient(135deg, #008080, #3dfef4) !important;
+  text-transform: uppercase;
+  align-self: flex-end;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.en-button:hover {
+  font-size: 14px;
+  background: linear-gradient(135deg, #3dfef4, #008080) !important;
+}
+
+.fill-grid input[type="file"]::file-selector-button {
+  background: linear-gradient(135deg, #008080, #3dfef4) !important;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+@media (max-width: 1024px) {
+  .fill-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+  }
+
+  .maintenance-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 10px;
+  }
+
+  .fill-grid input,
+  .fill-grid select {
+    width: 80%;
+  }
+
+  .en-button {
+    margin-top: 4%;
+    width: 100%;
+    padding: 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fill-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .maintenance-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .fill-grid input,
+  .fill-grid select {
+    width: 80%;
+  }
+}

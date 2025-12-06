@@ -1,0 +1,251 @@
+.doctor-appointments {
+  min-height: 100vh;
+  padding: 30px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  color: #1d3557;
+  font-size: 1.8em;
+}
+
+.appointments-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.appointment-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: none;
+  width: 300px;
+  margin: 20px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  animation: fadeInUp 0.5s ease-in-out;
+  background: linear-gradient(135deg, #eceff1, #ffffff);
+}
+
+.appointment-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.appointment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appointment-header h3 {
+  font-size: 20px;
+  text-transform: capitalize;
+  color: #1d3557;
+}
+
+.appointment-details p {
+  font-size: 15px;
+  margin: 10px 0;
+  color: #4a4a4a;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff !important;
+  border-radius: 10px;
+  width: 50% !important;
+  height: 90% !important;
+  max-width: 1100px !important;
+  padding: 20px;
+  position: relative;
+  transition: width 0.3s ease-in-out;
+}
+
+h4 {
+  text-align: center !important;
+  font-size: 20px !important;
+  color: #1d3557;
+}
+
+.modal-expanded {
+  width: 120% !important;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  font-size: 30px !important;
+  background: none !important;
+}
+
+.modal-layout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-left,
+.modal-right {
+  width: 50%;
+}
+
+.modal-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-left .input-group {
+  margin-bottom: 15px;
+}
+
+.modal-left .input-group strong {
+  font-weight: bold;
+}
+
+.modal-right {
+  display: none;
+}
+
+.modal-expanded .modal-right {
+  display: block;
+}
+
+.input-group input,
+.input-group select {
+  padding: 10px;
+  margin-top: 5px;
+  width: 70%;
+  margin-left: 6%;
+  border-radius: 5px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  margin: 0 !important;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-button {
+  background-color: green;
+  color: white;
+}
+
+.reschedule-button {
+  background-color: #1d3557;
+  color: white;
+}
+
+.cancel-button {
+  background-color: red;
+  color: white;
+}
+
+.submit-reschedule {
+  padding: 10px 20px;
+  background-color: #1d3557;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 56%;
+}
+
+@media (max-width: 1024px) {
+  .modal-content {
+    width: 70% !important;
+    height: 40% !important;
+  }
+
+  .appointment-card {
+    width: 250px;
+  }
+
+  .input-group input,
+  .input-group select {
+    width: 80%;
+  }
+
+  .submit-reschedule {
+    margin-left: 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90% !important;
+  }
+
+  .appointment-card {
+    width: 220px;
+  }
+
+  .input-group input,
+  .input-group select {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .submit-reschedule {
+    margin-left: 40%;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointments-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .appointment-card {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .modal-content {
+    width: 95% !important;
+  }
+
+  .input-group input,
+  .input-group select {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .submit-reschedule {
+    margin-left: 0;
+    width: 100%;
+  }
+}

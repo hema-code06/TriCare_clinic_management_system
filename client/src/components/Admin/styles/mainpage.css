@@ -1,0 +1,244 @@
+.management-page {
+  min-height: 100vh;
+  animation: fadeIn 1.2s ease-in-out;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.management-page h1 {
+  text-transform: uppercase;
+  text-align: center;
+  color: #4985fe;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  position: relative;
+  animation: slideInFromTop 1s ease-out;
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.record-button {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #fe4343, #80a3fc) !important;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 12px 20px;
+}
+
+.record-button:hover {
+  font-size: 13px;
+  background: linear-gradient(135deg, #80a3fc, #fe4343) !important;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  z-index: 1000;
+}
+
+.modal-container {
+  padding: 50px !important;
+  background-color: white;
+  max-width: 1000px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: pop-up 0.3s ease-out;
+  border-radius: 10px;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 80vh !important;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: none !important;
+}
+
+@keyframes pop-up {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.detail-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+}
+
+.detail-modal-content {
+  border-radius: 12px;
+  width: 100% !important;
+  max-width: 800px;
+  max-height: 90vh;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  animation: bounceIn 0.5s ease-in-out;
+  overflow-y: auto;
+  padding: 20px;
+  position: relative;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.detail-close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #333 !important;
+  font-size: 24px;
+  cursor: pointer;
+  background: none !important;
+  border: none;
+  outline: none;
+}
+
+.detail-modal-content {
+  padding: 10px;
+}
+
+@media (max-width: 1024px) {
+  .management-page h1 {
+    font-size: 22px;
+  }
+
+  .record-button {
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+
+  .modal-container {
+    padding: 30px;
+  }
+
+  .modal-overlay {
+    padding: 20px;
+  }
+
+  .detail-modal-content {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .management-page h1 {
+    font-size: 20px;
+  }
+
+  .record-button {
+    padding: 10px 15px;
+    font-size: 11px;
+  }
+
+  .modal-container {
+    padding: 20px;
+  }
+
+  .modal-overlay {
+    padding: 15px;
+  }
+
+  .detail-modal-content {
+    max-width: 600px;
+  }
+
+  .close-button {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .management-page h1 {
+    font-size: 18px;
+  }
+
+  .record-button {
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+
+  .modal-container {
+    padding: 15px;
+  }
+
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  .detail-modal-content {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .close-button {
+    font-size: 16px;
+  }
+}
