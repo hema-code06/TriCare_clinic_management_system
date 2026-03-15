@@ -17,7 +17,7 @@ const FixAppointment = () => {
     const fetchAppointments = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/doctor/appointmentconfirmation"
+          "https://tricare-clinic-management-system.onrender.com/api/doctor/appointmentconfirmation"
         );
         setAppointments(response.data);
       } catch (error) {
@@ -31,7 +31,7 @@ const FixAppointment = () => {
     try {
       const payload = { action, ...updatedInfo };
       const response = await axios.put(
-        `http://localhost:5000/api/doctor/appointmentconfirmation/${id}`,
+        `https://tricare-clinic-management-system.onrender.com/api/doctor/appointmentconfirmation/${id}`,
         payload
       );
       alert(response.data.message || "Action performed successfully!");
@@ -85,7 +85,7 @@ const FixAppointment = () => {
     try {
       await handleAction(selectedAppointmentId, "Rescheduled", updatedData);
       const response = await axios.get(
-        "http://localhost:5000/api/doctor/appointmentconfirmation"
+        "https://tricare-clinic-management-system.onrender.com/api/doctor/appointmentconfirmation"
       );
       setAppointments(response.data);
       handleCloseModal();

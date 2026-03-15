@@ -19,7 +19,7 @@ const DoctorManagement = () => {
   const fetchDoctors = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/admin/doctors");
+      const res = await fetch("https://tricare-clinic-management-system.onrender.com/api/admin/doctors");
       const data = await res.json();
       setDoctors(data);
     } catch (error) {
@@ -31,7 +31,7 @@ const DoctorManagement = () => {
 
   const handleAddDoctor = async (doctor) => {
     try {
-      const res = await fetch("http://localhost:5000/api/admin/doctors", {
+      const res = await fetch("https://tricare-clinic-management-system.onrender.com/api/admin/doctors", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(doctor),
@@ -48,7 +48,7 @@ const DoctorManagement = () => {
   const handleUpdateDoctor = async (doctor) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/admin/doctors/${doctor._id}`,
+        `https://tricare-clinic-management-system.onrender.com/api/admin/doctors/${doctor._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -66,7 +66,7 @@ const DoctorManagement = () => {
 
   const handleDeleteDoctor = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/doctors/${id}`, {
+      const res = await fetch(`https://tricare-clinic-management-system.onrender.com/api/admin/doctors/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {

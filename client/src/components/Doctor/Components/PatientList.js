@@ -14,7 +14,7 @@ const PatientList = () => {
     const fetchPatients = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/doctor/patients"
+          "https://tricare-clinic-management-system.onrender.com/api/doctor/patients"
         );
         setPatients(response.data);
         setLoading(false);
@@ -31,7 +31,7 @@ const PatientList = () => {
   const fetchPatientDetails = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/doctor/patient/${id}`
+        `https://tricare-clinic-management-system.onrender.com/api/doctor/patient/${id}`
       );
       setPatientDetails(response.data);
       setIsModalOpen(true);

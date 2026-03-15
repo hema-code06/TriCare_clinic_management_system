@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/patient/login",
+        "https://tricare-clinic-management-system.onrender.com/api/patient/login",
         formData
       );
       if (response.data.success) {

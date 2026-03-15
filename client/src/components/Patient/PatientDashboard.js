@@ -22,7 +22,7 @@ const PatientDashboard = () => {
     const fetchProfile = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/patient/profile/${patientId}`
+          `https://tricare-clinic-management-system.onrender.com/api/patient/profile/${patientId}`
         );
         setProfile(response.data);
       } catch (err) {

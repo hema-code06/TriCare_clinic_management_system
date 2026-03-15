@@ -33,7 +33,7 @@ const PatientProfile = () => {
     const fetchProfile = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/patient/profile/${id}`
+          `https://tricare-clinic-management-system.onrender.com/api/patient/profile/${id}`
         );
         const data = response.data;
 
@@ -90,7 +90,7 @@ const PatientProfile = () => {
       };
 
       const response = await axios.put(
-        `http://localhost:5000/api/patient/profile/${profile.patientId}`,
+        `https://tricare-clinic-management-system.onrender.com/api/patient/profile/${profile.patientId}`,
         updatedData
       );
 
@@ -98,7 +98,7 @@ const PatientProfile = () => {
 
       if (response.status === 200) {
         const updatedProfileResponse = await axios.get(
-          `http://localhost:5000/api/patient/profile/${profile.patientId}`
+          `https://tricare-clinic-management-system.onrender.com/api/patient/profile/${profile.patientId}`
         );
         setProfile(updatedProfileResponse.data);
         setIsModalOpen(false);

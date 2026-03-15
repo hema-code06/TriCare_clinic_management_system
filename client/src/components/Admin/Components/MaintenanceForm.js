@@ -28,7 +28,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
     try {
       if (isEditMode) {
         await axios.put(
-          `http://localhost:5000/api/admin/maintenance/${editData._id}`,
+          `https://tricare-clinic-management-system.onrender.com/api/admin/maintenance/${editData._id}`,
           {
             assetName,
             scheduledDate: new Date(scheduledDate),
@@ -40,7 +40,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
         );
         alert("Maintenance updated successfully");
       } else {
-        await axios.post("http://localhost:5000/api/admin/maintenance", {
+        await axios.post("https://tricare-clinic-management-system.onrender.com/api/admin/maintenance", {
           assetName,
           scheduledDate: new Date(scheduledDate),
           technician,
