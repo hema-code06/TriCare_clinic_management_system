@@ -16,6 +16,9 @@ import PatientDocumentRoutes from "./routes/Doctor/PatientdocumentRoutes.js";
 
 const app = express();
 
+app.get("/", (req, res) => {
+  res.send("Tricare Clinic Server is running successfully..");
+});
 
 app.use(cors({ origin: "*" }));
 
