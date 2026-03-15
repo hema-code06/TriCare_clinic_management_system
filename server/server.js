@@ -19,7 +19,9 @@ const app = express();
 app.get("/", (req, res) => {
   res.send("Tricare Clinic Server is running successfully..");
 });
-
+app.get("/health", (req, res) => {
+  res.status(200).send("Server Working Good!!");
+});
 app.use(cors({ origin: "*" }));
 
 app.use(express.json({ limit: "10mb" }));
