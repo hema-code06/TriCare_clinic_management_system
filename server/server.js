@@ -1,4 +1,5 @@
 import express from "express";
+import compression from "compression";
 import cors from "cors";
 import mongoose from "mongoose";
 import authRoutes from "./routes/authRoutes.js";
@@ -15,7 +16,6 @@ import registerRoutes from "./routes/Patient/registerRoutes.js";
 import PatientDocumentRoutes from "./routes/Doctor/PatientdocumentRoutes.js";
 
 const app = express();
-const compression = require("compression");
 
 app.get("/", (req, res) => {
   res.send("Tricare Clinic Server is running successfully..");
