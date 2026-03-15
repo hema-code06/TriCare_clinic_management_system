@@ -15,6 +15,7 @@ import registerRoutes from "./routes/Patient/registerRoutes.js";
 import PatientDocumentRoutes from "./routes/Doctor/PatientdocumentRoutes.js";
 
 const app = express();
+const compression = require("compression");
 
 app.get("/", (req, res) => {
   res.send("Tricare Clinic Server is running successfully..");
@@ -22,6 +23,8 @@ app.get("/", (req, res) => {
 app.get("/health", (req, res) => {
   res.status(200).send("Server Working Good!!");
 });
+app.use(compression());
+
 app.use(cors({ origin: "*" }));
 
 app.use(express.json({ limit: "10mb" }));
