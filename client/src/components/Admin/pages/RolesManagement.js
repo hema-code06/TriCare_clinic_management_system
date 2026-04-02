@@ -19,7 +19,7 @@ const RolesManagement = () => {
   const fetchRoles = async () => {
     setLoading(true);
     try {
-      const res = await fetch("https://tricare-clinic-management-system.onrender.com/api/admin/roles");
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/roles`);
       const data = await res.json();
       setRoles(data);
     } catch (error) {
@@ -31,7 +31,7 @@ const RolesManagement = () => {
 
   const handleAddRole = async (role) => {
     try {
-      const res = await fetch("https://tricare-clinic-management-system.onrender.com/api/admin/roles", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/roles`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(role),
@@ -48,7 +48,7 @@ const RolesManagement = () => {
   const handleUpdateRole = async (role) => {
     try {
       const res = await fetch(
-        `https://tricare-clinic-management-system.onrender.com/api/admin/roles/${role._id}`,
+        `${process.env.REACT_APP_API_URL}/api/admin/roles/${role._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -66,7 +66,7 @@ const RolesManagement = () => {
 
   const handleDeleteRole = async (id) => {
     try {
-      const res = await fetch(`https://tricare-clinic-management-system.onrender.com/api/admin/roles/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/roles/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {

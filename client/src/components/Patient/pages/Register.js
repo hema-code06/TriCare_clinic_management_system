@@ -25,13 +25,13 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "https://tricare-clinic-management-system.onrender.com/api/patient/patientregister",
-        formData
+        `${process.env.REACT_APP_API_URL}/api/patient/patientregister`,
+        formData,
       );
       alert(
-        `Registration successful! Your Patient ID: ${response.data.patientId}`
+        `Registration successful! Your Patient ID: ${response.data.patientId}`,
       );
-      localStorage.setItem("patientId", response.data.patientId); 
+      localStorage.setItem("patientId", response.data.patientId);
       navigate("/patient-dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred");

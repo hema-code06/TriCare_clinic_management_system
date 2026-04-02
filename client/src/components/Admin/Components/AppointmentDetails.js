@@ -9,7 +9,7 @@ const AppointmentDetails = () => {
     const fetchConfirmedAppointments = async () => {
       try {
         const response = await axios.get(
-          "https://tricare-clinic-management-system.onrender.com/api/admin/appointments/confirmed"
+          `${process.env.REACT_APP_API_URL}/api/admin/appointments/confirmed`
         );
         setAppointments(response.data);
       } catch (error) {

@@ -40,7 +40,7 @@ const BookAppointment = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://tricare-clinic-management-system.onrender.com/api/patient/bookappointments",
+        `${process.env.REACT_APP_API_URL}/api/patient/bookappointments`,
         formData
       );
       alert(response.data.message || "Appointment booked successfully!");

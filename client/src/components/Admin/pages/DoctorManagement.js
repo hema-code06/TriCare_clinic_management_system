@@ -19,7 +19,9 @@ const DoctorManagement = () => {
   const fetchDoctors = async () => {
     setLoading(true);
     try {
-      const res = await fetch("https://tricare-clinic-management-system.onrender.com/api/admin/doctors");
+      const res = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/admin/doctors`,
+      );
       const data = await res.json();
       setDoctors(data);
     } catch (error) {
@@ -31,11 +33,14 @@ const DoctorManagement = () => {
 
   const handleAddDoctor = async (doctor) => {
     try {
-      const res = await fetch("https://tricare-clinic-management-system.onrender.com/api/admin/doctors", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(doctor),
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/admin/doctors`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(doctor),
+        },
+      );
       if (res.ok) {
         fetchDoctors();
         closeAddModal();
@@ -48,12 +53,12 @@ const DoctorManagement = () => {
   const handleUpdateDoctor = async (doctor) => {
     try {
       const res = await fetch(
-        `https://tricare-clinic-management-system.onrender.com/api/admin/doctors/${doctor._id}`,
+        `${process.env.REACT_APP_API_URL}/api/admin/doctors/${doctor._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(doctor),
-        }
+        },
       );
       if (res.ok) {
         fetchDoctors();
@@ -66,9 +71,12 @@ const DoctorManagement = () => {
 
   const handleDeleteDoctor = async (id) => {
     try {
-      const res = await fetch(`https://tricare-clinic-management-system.onrender.com/api/admin/doctors/${id}`, {
-        method: "DELETE",
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/admin/doctors/${id}`,
+        {
+          method: "DELETE",
+        },
+      );
       if (res.ok) {
         fetchDoctors();
         closeDetailModal();

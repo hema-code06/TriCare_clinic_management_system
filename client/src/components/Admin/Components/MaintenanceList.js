@@ -8,7 +8,7 @@ const MaintenanceList = ({ refresh, onEditClick }) => {
   const fetchMaintenanceData = async () => {
     try {
       const response = await axios.get(
-        "https://tricare-clinic-management-system.onrender.com/api/admin/maintenance"
+        `${process.env.REACT_APP_API_URL}/api/admin/maintenanc`
       );
       setMaintenanceList(response.data);
     } catch (error) {
@@ -23,7 +23,7 @@ const MaintenanceList = ({ refresh, onEditClick }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://tricare-clinic-management-system.onrender.com/api/admin/maintenance/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/admin/maintenance/${id}`);
       alert("Maintenance record deleted successfully");
       fetchMaintenanceData();
     } catch (error) {

@@ -21,7 +21,7 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(
-        "https://tricare-clinic-management-system.onrender.com/api/auth/login",
+        `${process.env.REACT_APP_API_URL}/api/auth/login`,
         credentials,
         {
           headers: {

@@ -14,7 +14,7 @@ const BookAppointmentPage = () => {
       }
 
       const response = await axios.get(
-        `https://tricare-clinic-management-system.onrender.com/api/patient/bookappointments?patientId=${patientId}`
+        `${process.env.REACT_APP_API_URL}/api/patient/bookappointments?patientId=${patientId}`
       );
       console.log("Appointments fetched:", response.data);
       setAppointments(response.data);

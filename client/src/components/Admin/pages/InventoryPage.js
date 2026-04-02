@@ -19,7 +19,7 @@ const InventoryPage = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        "https://tricare-clinic-management-system.onrender.com/api/admin/inventory"
+        `${process.env.REACT_APP_API_URL}/api/admin/inventory`
       );
       setInventory(response.data);
     } catch (error) {
@@ -32,7 +32,7 @@ const InventoryPage = () => {
   const addItem = async (newItem) => {
     try {
       const response = await axios.post(
-        "https://tricare-clinic-management-system.onrender.com/api/admin/inventory",
+        `${process.env.REACT_APP_API_URL}/api/admin/inventory`,
         newItem
       );
       fetchInventory();
@@ -45,7 +45,7 @@ const InventoryPage = () => {
   const updateItem = async (updatedItem) => {
     try {
       await axios.put(
-        `https://tricare-clinic-management-system.onrender.com/api/admin/inventory/${updatedItem._id}`,
+        `${process.env.REACT_APP_API_URL}/api/admin/inventory/${updatedItem._id}`,
         updatedItem
       );
       fetchInventory();
@@ -57,7 +57,7 @@ const InventoryPage = () => {
 
   const deleteItem = async (id) => {
     try {
-      await axios.delete(`https://tricare-clinic-management-system.onrender.com/api/admin/inventory/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/admin/inventory/${id}`);
       fetchInventory();
     } catch (error) {
       console.error("Error deleting item:", error);
