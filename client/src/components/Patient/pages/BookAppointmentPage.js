@@ -1,4 +1,4 @@
-import  { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import BookAppointment from "../Components/BookAppointment";
 
@@ -17,22 +17,6 @@ const BookAppointmentPage = () => {
   useEffect(() => {
     fetchAppointments();
   }, [fetchAppointments]);
-
-  useEffect(() => {
-    if (patientId) {
-      fetchAppointments();
-    }
-  }, [patientId]);
-
-  const handleStatusChange = (id, newStatus) => {
-    setAppointments((prevAppointments) =>
-      prevAppointments.map((appointment) =>
-        appointment._id === id
-          ? { ...appointment, status: newStatus }
-          : appointment,
-      ),
-    );
-  };
 
   return (
     <div>

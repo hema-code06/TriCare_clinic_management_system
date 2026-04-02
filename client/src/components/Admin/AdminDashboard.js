@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Line, Bar } from "react-chartjs-2";
 import {
@@ -24,7 +24,7 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const AdminDashboard = () => {
@@ -63,29 +63,25 @@ const AdminDashboard = () => {
     navigate("/");
   };
 
-  const handleOutsideClick = (event) => {
-    if (
-      sidebarRef.current &&
-      !sidebarRef.current.contains(event.target) &&
-      isSidebarVisible
-    ) {
-      setIsSidebarVisible(false);
-    }
-  };
+  const handleOutsideClick = useCallback(
+    (event) => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target) &&
+        isSidebarVisible
+      ) {
+        setIsSidebarVisible(false);
+      }
+    },
+    [isSidebarVisible],
+  );
 
   useEffect(() => {
     document.addEventListener("click", handleOutsideClick);
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
-  }, [isSidebarVisible]);
-
-  useEffect(() => {
-  document.addEventListener("click", handleOutsideClick);
-  return () => {
-    document.removeEventListener("click", handleOutsideClick);
-  };
-}, [handleOutsideClick]);
+  }, [handleOutsideClick]);
 
   const chartDataLine = {
     labels: dashboardData.map((item) => item.date),

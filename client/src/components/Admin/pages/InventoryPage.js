@@ -19,7 +19,7 @@ const InventoryPage = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/admin/inventory`
+        `${process.env.REACT_APP_API_URL}/api/admin/inventory`,
       );
       setInventory(response.data);
     } catch (error) {
@@ -31,9 +31,12 @@ const InventoryPage = () => {
 
   const addItem = async (newItem) => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/admin/inventory`,
-        newItem
+      setInventory(
+        (
+          await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/admin/inventory`,
+          )
+        ).data,
       );
       fetchInventory();
       closeModal();
@@ -46,7 +49,7 @@ const InventoryPage = () => {
     try {
       await axios.put(
         `${process.env.REACT_APP_API_URL}/api/admin/inventory/${updatedItem._id}`,
-        updatedItem
+        updatedItem,
       );
       fetchInventory();
       closeModal();
@@ -57,7 +60,9 @@ const InventoryPage = () => {
 
   const deleteItem = async (id) => {
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/api/admin/inventory/${id}`);
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/admin/inventory/${id}`,
+      );
       fetchInventory();
     } catch (error) {
       console.error("Error deleting item:", error);
