@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import InventoryForm from "../Components/InventoryForm";
 import InventoryTable from "../Components/InventoryTable";

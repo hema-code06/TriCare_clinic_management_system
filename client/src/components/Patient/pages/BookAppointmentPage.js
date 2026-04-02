@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import BookAppointment from "../Components/BookAppointment";
 
@@ -6,22 +6,17 @@ const BookAppointmentPage = () => {
   const [appointments, setAppointments] = useState([]);
   const patientId = localStorage.getItem("patientId");
 
-  const fetchAppointments = async () => {
-    try {
-      if (!patientId) {
-        console.error("No patient ID found");
-        return;
-      }
+  const fetchAppointments = useCallback(async () => {
+    if (!patientId) return;
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/patient/bookappointments?patientId=${patientId}`,
+    );
+    setAppointments(response.data);
+  }, [patientId]);
 
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/patient/bookappointments?patientId=${patientId}`
-      );
-      console.log("Appointments fetched:", response.data);
-      setAppointments(response.data);
-    } catch (error) {
-      console.error("Error fetching appointments:", error);
-    }
-  };
+  useEffect(() => {
+    fetchAppointments();
+  }, [fetchAppointments]);
 
   useEffect(() => {
     if (patientId) {
@@ -34,8 +29,8 @@ const BookAppointmentPage = () => {
       prevAppointments.map((appointment) =>
         appointment._id === id
           ? { ...appointment, status: newStatus }
-          : appointment
-      )
+          : appointment,
+      ),
     );
   };
 

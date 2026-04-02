@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/InventoryTable.css";
 
 const InventoryTable = ({ items, onUpdateItem, onDeleteItem }) => {

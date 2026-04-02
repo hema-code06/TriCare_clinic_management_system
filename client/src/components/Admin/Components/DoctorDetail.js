@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/Info.css";
 
 const DoctorDetail = ({ doctor, onEdit, onDelete }) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/PatientList.css";
 
@@ -6,7 +6,7 @@ const PatientList = () => {
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [selectedPatientId, setSelectedPatientId] = useState(null);
+  const [setSelectedPatientId] = useState(null);
   const [patientDetails, setPatientDetails] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -14,7 +14,7 @@ const PatientList = () => {
     const fetchPatients = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/doctor/patients`
+          `${process.env.REACT_APP_API_URL}/api/doctor/patients`,
         );
         setPatients(response.data);
         setLoading(false);
@@ -31,7 +31,7 @@ const PatientList = () => {
   const fetchPatientDetails = async (id) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/doctor/patient/${id}`
+        `${process.env.REACT_APP_API_URL}/api/doctor/patient/${id}`,
       );
       setPatientDetails(response.data);
       setIsModalOpen(true);

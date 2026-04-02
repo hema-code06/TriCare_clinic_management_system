@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/Info.css";
 
 const RolesDetail = ({ role, onEdit, onDelete }) => {

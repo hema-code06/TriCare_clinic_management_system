@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 import DoctorTable from "../Components/DoctorTable";
 import DoctorForm from "../Components/DoctorForm";

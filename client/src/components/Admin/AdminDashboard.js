@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Line, Bar } from "react-chartjs-2";
 import {
@@ -31,7 +31,7 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const sidebarRef = useRef(null);
   const [dashboardData, setDashboardData] = useState([]);
-  const [stats, setStats] = useState({
+  const [stats] = useState({
     doctors: 10,
     inventory: 20,
     appointments: 45,
@@ -79,6 +79,13 @@ const AdminDashboard = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, [isSidebarVisible]);
+
+  useEffect(() => {
+  document.addEventListener("click", handleOutsideClick);
+  return () => {
+    document.removeEventListener("click", handleOutsideClick);
+  };
+}, [handleOutsideClick]);
 
   const chartDataLine = {
     labels: dashboardData.map((item) => item.date),

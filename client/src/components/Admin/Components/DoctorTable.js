@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/Card.css";
 
 const DoctorTable = ({ doctors, onCardClick }) => {

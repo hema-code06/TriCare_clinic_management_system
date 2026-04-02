@@ -1,4 +1,3 @@
-import React from "react";
 import FixAppointment from "../Components/FixAppointment";
 
 const AppointmentPage = () => {
