@@ -6,7 +6,7 @@ const PatientList = () => {
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [setSelectedPatientId] = useState(null);
+  const [, setSelectedPatientId] = useState(null);
   const [patientDetails, setPatientDetails] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
