@@ -40,24 +40,30 @@
   margin-right: 3%;
 }
 
-.login-buttons,
-.register-button {
-  padding: 8px 18px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 10px;
-  margin-left: 20px;
-}
-
 .login-buttons {
-  background-color: teal !important;
-  color: white;
+  background-color: #0f3d57 !important;
+  color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.login-buttons:hover {
+  background-color: #0c2f43 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(15, 61, 87, 0.35);
 }
 
 .register-button {
-  background-color: #007bff !important;
-  color: white;
+  background-color: transparent !important;
+  color: #0f3d57;
+  border: 1.5px solid #0f3d57 !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.register-button:hover {
+  background-color: #0f3d57 !important;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(15, 61, 87, 0.25);
 }
 
 .dropdown {
