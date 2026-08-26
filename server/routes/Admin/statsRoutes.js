@@ -4,21 +4,23 @@ import Inventory from "../../models/Admin/Inventory.js";
 import Roles from "../../models/Admin/Roles.js";
 import Maintenance from "../../models/Admin/maintenance.js";
 import FixAppointment from "../../models/Doctor/FixAppointment.js";
+import Patient from "../../models/Patient/Register.js";
 
 const router = express.Router();
 
 router.get("/", async (req, res) => {
     try {
-        const [doctors, inventory, maintenance, user, appointments] =
+        const [doctors, inventory, maintenance, user, appointments, patients] =
             await Promise.all([
                 Doctor.countDocuments(),
                 Inventory.countDocuments(),
                 Maintenance.countDocuments(),
                 Roles.countDocuments(),
                 FixAppointment.countDocuments(),
+                Patient.countDocuments(),
             ]);
 
-        res.status(200).json({ doctors, inventory, maintenance, user, appointments });
+        res.status(200).json({ doctors, inventory, maintenance, user, appointments, patients });
     } catch (error) {
         res.status(500).json({ message: "Error fetching stats", error: error.message });
     }
@@ -28,10 +30,10 @@ router.get("/weekly-appointments", async (req, res) => {
     try {
         const startOfWeek = new Date();
         startOfWeek.setHours(0, 0, 0, 0);
-        startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay() + 1); 
+        startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay() + 1);
 
         const endOfWeek = new Date(startOfWeek);
-        endOfWeek.setDate(startOfWeek.getDate() + 5); 
+        endOfWeek.setDate(startOfWeek.getDate() + 5);
 
         const results = await FixAppointment.aggregate([
             {
@@ -41,7 +43,7 @@ router.get("/weekly-appointments", async (req, res) => {
             },
             {
                 $group: {
-                    _id: { $dayOfWeek: "$createdAt" }, 
+                    _id: { $dayOfWeek: "$createdAt" },
                     count: { $sum: 1 },
                 },
             },

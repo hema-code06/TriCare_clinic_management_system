@@ -31,31 +31,45 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const sidebarRef = useRef(null);
   const [dashboardData, setDashboardData] = useState([]);
-  const [stats] = useState({
-    doctors: 10,
-    inventory: 20,
-    appointments: 45,
-    maintenance: 20,
-    user: 30,
+  const [stats, setStats] = useState({
+    doctors: 0,
+    inventory: 0,
+    appointments: 0,
+    maintenance: 0,
+    user: 0,
+    patients: 0,
   });
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (!token) {
-      navigate("/login");
-    }
-  }, [token, navigate]);
+    const fetchStats = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/admin/stats`
+        );
+        const data = await res.json();
+        setStats(data);
+      } catch (error) {
+        console.error("Failed to fetch stats:", error);
+      }
+    };
 
-  useEffect(() => {
-    setDashboardData([
-      { date: "Monday", value: 20 },
-      { date: "Tuesday", value: 35 },
-      { date: "Wednesday", value: 40 },
-      { date: "Thursday", value: 50 },
-      { date: "Friday", value: 30 },
-    ]);
+    const fetchWeeklyAppointments = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/admin/stats/weekly-appointments`
+        );
+        const data = await res.json();
+        setDashboardData(data);
+      } catch (error) {
+        console.error("Failed to fetch weekly appointments:", error);
+      }
+    };
+
+    fetchStats();
+    fetchWeeklyAppointments();
   }, []);
 
   const handleLogout = () => {
@@ -98,19 +112,20 @@ const AdminDashboard = () => {
   };
 
   const chartDataBar = {
-    labels: ["Doctors", "Patients", "Appointments", "Inventory"],
+    labels: ["Doctors", "Patients", "Appointments", "Inventory", "Maintenance", "User"],
     datasets: [
       {
         label: "Statistics",
         data: [
           stats.doctors,
-          stats.inventory,
+          stats.patients,
           stats.appointments,
+          stats.inventory,
           stats.maintenance,
           stats.user,
         ],
-        backgroundColor: ["#007bff", "#28a745", "#ffc107", "#dc3545"],
-        borderColor: ["#0056b3", "#1e7e34", "#d39e00", "#c82333"],
+        backgroundColor: ["#007bff", "#28a745", "#ffc107", "#dc3545", "#fd7e14", "#6f42c1"],
+        borderColor: ["#0056b3", "#1e7e34", "#d39e00", "#c82333", "#c05e00", "#59359a"],
         borderWidth: 1,
       },
     ],
@@ -118,9 +133,8 @@ const AdminDashboard = () => {
 
   return (
     <div
-      className={`admin-dashboard-container ${
-        isSidebarVisible ? "" : "sidebar-hidden"
-      }`}
+      className={`admin-dashboard-container ${isSidebarVisible ? "" : "sidebar-hidden"
+        }`}
     >
       <button
         className="toggle-buttons"
@@ -186,6 +200,9 @@ const AdminDashboard = () => {
             onClick={() => navigate("/maintenance-management")}
           >
             Maintenance: {stats.maintenance}
+          </div>
+          <div className="stat-card">
+            Patients: {stats.patients}
           </div>
         </div>
 
