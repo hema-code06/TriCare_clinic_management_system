@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/Register.css";
@@ -32,6 +32,7 @@ const Register = () => {
         `Registration successful! Your Patient ID: ${response.data.patientId}`,
       );
       localStorage.setItem("patientId", response.data.patientId);
+      localStorage.setItem("patientToken", response.data.token);
       navigate("/patient-dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred");

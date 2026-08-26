@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.gif";
@@ -21,8 +21,10 @@ const PatientDashboard = () => {
 
     const fetchProfile = async () => {
       try {
+        const token = localStorage.getItem("patientToken");
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/patient/profile/${patientId}`
+          `${process.env.REACT_APP_API_URL}/api/patient/profile/${patientId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         setProfile(response.data);
       } catch (err) {
@@ -241,7 +243,7 @@ const PatientDashboard = () => {
 
       <footer className="footer">
         <div className="footer-content">
-          <p className="footer-text">© 2023 <span style={{color:'teal'}}> TriCare </span>. All rights reserved.</p>
+          <p className="footer-text">© 2023 <span style={{ color: 'teal' }}> TriCare </span>. All rights reserved.</p>
         </div>
       </footer>
     </div>

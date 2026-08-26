@@ -35,8 +35,15 @@ router.post("/patientregister", async (req, res) => {
 
     await newPatient.save();
 
+    const token = jwt.sign(
+      { patientId: newPatient.patientId, role: "patient" },
+      config.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
     res.status(201).json({
       message: "Registration successful",
+      token,
       patientId: newPatient.patientId,
       fullname: newPatient.fullname,
       email: newPatient.email,
