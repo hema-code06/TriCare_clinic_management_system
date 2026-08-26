@@ -59,12 +59,27 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="center-content">
-        <h1 className="main-heading">Your Health, Our Priority</h1>
+      <div className="left-content">
+        <span className="eyebrow-tag">Trusted Healthcare</span>
+        <h1 className="main-heading">
+          Your Health, <br /> Our <span>Priority</span>
+        </h1>
         <p className="sub-text">
-          Trusted care, skilled hands, and a team dedicated to your
+          Compassionate care, skilled hands, and a team dedicated to your
           well-being — every visit, every time.
         </p>
+
+        <div className="cta-row">
+          <button
+            className="cta-primary"
+            onClick={() => navigate("/register")}
+          >
+            Book an Appointment
+          </button>
+          <button className="cta-secondary" onClick={toggleDropdown}>
+            Get Started <span className="arrow">→</span>
+          </button>
+        </div>
       </div>
     </div>
   );
