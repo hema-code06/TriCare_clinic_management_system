@@ -22,7 +22,6 @@
 
 .navbar-links a:hover {
   color: teal;
-  font-size: 1.1rem;
 }
 
 .patient-logout-button {
@@ -31,6 +30,10 @@
   font-size: 1rem;
   font-weight: 600;
   margin: 0 20px;
+}
+
+.patient-logout-button:hover {
+  color: teal;
 }
 
 .hero-section {
