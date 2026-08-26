@@ -69,7 +69,7 @@ const Home = () => {
         <p className="hero-subheading">
           Manage patient records, staff access, and daily operations from a
           single, secure dashboard — built for the people who keep care
-          moving, every hour of every shift.
+          moving.
         </p>
       </div>
 
@@ -87,26 +87,17 @@ const Home = () => {
         <div className="feature-card">
           <span className="feature-index">Doctors</span>
           <h3>Care, coordinated</h3>
-          <p>
-            Access patient charts, update treatment plans, and coordinate
-            care with your team in real time.
-          </p>
+          <p>Access charts, treatment plans, and care coordination in real time.</p>
         </div>
         <div className="feature-card">
           <span className="feature-index">Admins</span>
           <h3>Operations, in one view</h3>
-          <p>
-            Oversee staff schedules, facility resources, and daily operations
-            from a single control center.
-          </p>
+          <p>Oversee staff, schedules, and resources from a single control center.</p>
         </div>
         <div className="feature-card">
           <span className="feature-index">Security</span>
           <h3>Access, protected</h3>
-          <p>
-            Role-based permissions keep every record visible only to the
-            people who need it, when they need it.
-          </p>
+          <p>Role-based permissions keep records visible only to those who need them.</p>
         </div>
       </div>
 
