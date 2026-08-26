@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import logo from "../assets/logo.gif";
@@ -6,7 +6,7 @@ import homebg from "../assets/homebg.jpg";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleSelect = (role) => {
     if (role === "admin") {
@@ -14,16 +14,24 @@ const Home = () => {
     } else if (role === "doctor") {
       navigate("/login", { state: { role: "doctor" } });
     }
-    setDropdownVisible(false);
+    setModalOpen(false);
   };
 
-  const toggleDropdown = () => {
-    setDropdownVisible(!dropdownVisible);
-  };
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   const goToPatientRegister = () => {
     navigate("/register", { state: { role: "patient" } });
   };
+
+  useEffect(() => {
+    if (!modalOpen) return;
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") closeModal();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [modalOpen]);
 
   return (
     <div className="home-container">
@@ -51,24 +59,9 @@ const Home = () => {
           <button className="cta-primary" onClick={goToPatientRegister}>
             Book an Appointment
           </button>
-
-          <div className="login-wrap">
-            <button className="cta-secondary" onClick={toggleDropdown}>
-              Get Started <span className="arrow">→</span>
-            </button>
-
-            {dropdownVisible && (
-              <div className="dropdown">
-                <span className="dropdown-label">Continue as</span>
-                <button type="button" onClick={() => handleSelect("admin")}>
-                  As Admin
-                </button>
-                <button type="button" onClick={() => handleSelect("doctor")}>
-                  As Doctor
-                </button>
-              </div>
-            )}
-          </div>
+          <button className="cta-secondary" onClick={openModal}>
+            Get Started <span className="arrow">→</span>
+          </button>
         </div>
 
         <div className="trust-strip">
@@ -92,6 +85,53 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {modalOpen && (
+        <div className="modal-backdrop" onClick={closeModal}>
+          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="modal-close"
+              onClick={closeModal}
+              aria-label="Close"
+            >
+              ✕
+            </button>
+
+            <h2 className="modal-title">Continue as</h2>
+            <p className="modal-subtitle">
+              Select your role to sign in to the right dashboard.
+            </p>
+
+            <div className="modal-options">
+              <button
+                className="modal-role-btn"
+                onClick={() => handleSelect("admin")}
+              >
+                <span className="role-icon">🛡️</span>
+                <span className="role-info">
+                  <span className="role-name">Admin</span>
+                  <span className="role-desc">
+                    Manage staff, schedules & operations
+                  </span>
+                </span>
+              </button>
+
+              <button
+                className="modal-role-btn"
+                onClick={() => handleSelect("doctor")}
+              >
+                <span className="role-icon">🩺</span>
+                <span className="role-info">
+                  <span className="role-name">Doctor</span>
+                  <span className="role-desc">
+                    Access patient records & care plans
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

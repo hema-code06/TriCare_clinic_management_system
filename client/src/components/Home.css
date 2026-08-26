@@ -40,7 +40,6 @@ html, body {
   margin-left: 30%;
 }
 
-
 .left-content {
   flex: 1;
   display: flex;
@@ -85,7 +84,6 @@ html, body {
   animation: fadeUp 0.7s ease 0.4s forwards;
 }
 
-
 .cta-row {
   display: flex;
   align-items: center;
@@ -93,10 +91,6 @@ html, body {
   margin-top: 26px;
   opacity: 0;
   animation: fadeUp 0.7s ease 0.55s forwards;
-}
-
-.login-wrap {
-  position: relative;
 }
 
 .cta-primary,
@@ -143,49 +137,6 @@ html, body {
   transition: transform 0.2s ease;
 }
 
-.dropdown {
-  position: absolute;
-  top: 55px;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  min-width: 150px;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #fff !important;
-  box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.15), 4px 4px 14px rgba(0, 0, 0, 0.25);
-  animation: dropdownIn 0.2s ease both;
-  z-index: 5;
-}
-
-.dropdown-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #8a97a1;
-  padding: 0 4px 6px;
-}
-
-.dropdown button {
-  padding: 10px 12px;
-  font-size: 14px;
-  margin: 3px 0;
-  cursor: pointer;
-  border: none;
-  border-radius: 6px;
-  text-align: left;
-  color: #333 !important;
-  background-color: #f4f7f7 !important;
-  transition: transform 0.15s ease, background-color 0.2s ease;
-}
-
-.dropdown button:hover {
-  background-color: teal !important;
-  color: white !important;
-  transform: translateX(3px);
-}
-
-
 .trust-strip {
   display: flex;
   flex-wrap: wrap;
@@ -231,22 +182,113 @@ html, body {
   animation: pulseRing 1.8s ease-out infinite;
 }
 
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(18, 49, 59, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: backdropIn 0.2s ease both;
+}
+
+.modal-box {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 34px 32px 30px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  animation: modalPop 0.25s ease both;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f2f5f5;
+  color: #34474d;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.modal-close:hover {
+  background-color: #12313b;
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #12313b;
+  margin: 0 0 6px;
+}
+
+.modal-subtitle {
+  font-size: 14px;
+  color: #6b7a80;
+  margin: 0 0 22px;
+}
+
+.modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-role-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1.5px solid #e1e8e8;
+  border-radius: 12px;
+  background-color: #fff;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.modal-role-btn:hover {
+  border-color: teal;
+  background-color: #f2fafa;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.role-icon {
+  font-size: 22px;
+}
+
+.role-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.role-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #12313b;
+}
+
+.role-desc {
+  font-size: 12.5px;
+  color: #6b7a80;
+  margin-top: 2px;
+}
 
 @keyframes fadeUp {
   from {
     opacity: 0;
     transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes dropdownIn {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
   }
   to {
     opacity: 1;
@@ -265,6 +307,26 @@ html, body {
   }
 }
 
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -273,7 +335,6 @@ html, body {
     display: none;
   }
 }
-
 
 @media (max-width: 768px) {
   .navbar {
@@ -299,19 +360,18 @@ html, body {
   }
 
   .cta-row {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .dropdown {
-    left: 50%;
-    transform: translateX(-50%);
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .trust-strip {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+  }
+
+  .modal-box {
+    padding: 28px 22px 24px;
   }
 }
 
@@ -335,11 +395,15 @@ html, body {
 
   .cta-primary,
   .cta-secondary {
-    padding: 10px 18px;
+    padding: 10px 16px;
     font-size: 13px;
   }
 
   .trust-text {
     font-size: 12px;
+  }
+
+  .modal-title {
+    font-size: 19px;
   }
 }
