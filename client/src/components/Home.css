@@ -119,12 +119,12 @@
   font-size: clamp(28px, 4.2vw, 50px);
   font-weight: 700;
   line-height: 1.15;
-  color: #1c2e2c;
+  color: #12313b;
   margin: 14px 0 16px;
 }
 
 .tcHero-heading span {
-  color: #e8827a;
+  color: teal;
 }
 
 .tcHero-subtext {
