@@ -51,15 +51,6 @@ html, body {
   max-width: 600px;
 }
 
-.eyebrow-tag {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: teal;
-  opacity: 0;
-  animation: fadeUp 0.7s ease 0.1s forwards;
-}
 
 .main-heading {
   font-size: clamp(28px, 4.2vw, 50px);

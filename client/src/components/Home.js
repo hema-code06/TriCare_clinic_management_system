@@ -46,7 +46,6 @@ const Home = () => {
       </div>
 
       <div className="left-content">
-        <span className="eyebrow-tag">Trusted Healthcare</span>
         <h1 className="main-heading">
           Your Health, <br /> Our <span>Priority</span>
         </h1>
