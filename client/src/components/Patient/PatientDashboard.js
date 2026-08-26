@@ -55,7 +55,7 @@ const PatientDashboard = () => {
           <Link to={`/patient/profile/${profile.patientId}/edit`}>
             Edit Profile
           </Link>
-          <button onClick={handleLogout} className="pateint-logout-button">
+          <button onClick={handleLogout} className="patient-logout-button">
             Logout
           </button>
         </div>
