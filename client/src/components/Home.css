@@ -40,30 +40,40 @@
   margin-right: 3%;
 }
 
+.login-buttons,
+.register-button {
+  padding: 8px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
 .login-buttons {
-  background-color: #0f3d57 !important;
+  background-color: #5c1f2e !important;
   color: #ffffff;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .login-buttons:hover {
-  background-color: #0c2f43 !important;
+  background-color: #45161f !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(15, 61, 87, 0.35);
+  box-shadow: 0 8px 18px rgba(92, 31, 46, 0.35);
 }
 
 .register-button {
   background-color: transparent !important;
-  color: #0f3d57;
-  border: 1.5px solid #0f3d57 !important;
+  color: #9c7a3c;
+  border: 1.5px solid #9c7a3c !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
 .register-button:hover {
-  background-color: #0f3d57 !important;
+  background-color: #9c7a3c !important;
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(15, 61, 87, 0.25);
+  box-shadow: 0 8px 18px rgba(156, 122, 60, 0.3);
 }
 
 .dropdown {
@@ -231,6 +241,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -241,6 +252,7 @@
     opacity: 0;
     transform: scale(0.92) translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
