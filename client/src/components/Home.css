@@ -1,13 +1,13 @@
-.tcHome-container {
+.home-container {
   position: relative;
   height: 100vh;
-  width: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-.tcHome-bgImage {
+.background-image {
   position: absolute;
   top: 0;
   left: 0;
@@ -16,380 +16,135 @@
   z-index: -1;
 }
 
-.tcHome-bgImg {
+.home-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.tcHome-navbar {
+.navbar {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 }
 
-.tcHome-logo {
+.logo {
   width: 120px !important;
   height: 120px !important;
   margin-left: 30%;
 }
 
-.tcHome-leftContent {
-  flex: 1;
+.navbar-buttons {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  text-align: left;
-  padding: 0 8%;
-  max-width: 600px;
+  align-items: center;
+  margin-right: 3%;
 }
 
-
-
-.tcHome-heading {
-  font-size: clamp(28px, 4.2vw, 50px);
-  font-weight: 700;
-  line-height: 1.15;
-  color: #12313b;
-  margin: 14px 0 16px;
-  opacity: 0;
-  animation: tcHome-fadeUp 0.7s ease 0.25s forwards;
-}
-
-.tcHome-heading span {
-  color: teal;
-}
-
-.tcHome-subtext {
+.login-buttons,
+.register-button {
+  padding: 8px 18px;
   font-size: 16px;
-  line-height: 1.55;
-  color: #34474d;
-  max-width: 460px;
-  opacity: 0;
-  animation: tcHome-fadeUp 0.7s ease 0.4s forwards;
-}
-
-.tcHome-ctaRow {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 26px;
-  opacity: 0;
-  animation: tcHome-fadeUp 0.7s ease 0.55s forwards;
-}
-
-.tcHome-ctaPrimary,
-.tcHome-ctaSecondary {
-  padding: 12px 26px;
-  font-size: 15px;
-  font-weight: 600;
   cursor: pointer;
+  border: none;
   border-radius: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  margin-left: 20px;
 }
 
-.tcHome-ctaPrimary {
-  background-color: teal;
+.login-buttons {
+  background-color: teal !important;
   color: white;
-  border: none;
 }
 
-.tcHome-ctaSecondary {
-  background-color: transparent;
-  color: #12313b;
-  border: 1.5px solid #12313b;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.register-button {
+  background-color: #007bff !important;
+  color: white;
 }
 
-.tcHome-ctaPrimary:hover,
-.tcHome-ctaSecondary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.tcHome-ctaPrimary:hover {
-  filter: brightness(1.1);
-}
-
-.tcHome-ctaSecondary:hover .tcHome-arrow {
-  transform: translateX(4px);
-}
-
-.tcHome-arrow {
-  display: inline-block;
-  transition: transform 0.2s ease;
-}
-
-.tcHome-trustStrip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 22px;
-  margin-top: 30px;
-  opacity: 0;
-  animation: tcHome-fadeUp 0.7s ease 0.7s forwards;
-}
-
-.tcHome-trustItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.tcHome-trustText {
-  font-size: 13.5px;
-  color: #34474d;
-}
-
-.tcHome-trustText strong {
-  color: #12313b;
-}
-
-.tcHome-pulseDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: teal;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.tcHome-pulseDot::after {
-  content: "";
+.dropdown {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: teal;
-  animation: tcHome-pulseRing 1.8s ease-out infinite;
-}
-
-.tcHome-modalBackdrop {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(18, 49, 59, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  animation: tcHome-backdropIn 0.2s ease both;
-}
-
-.tcHome-modalBox {
-  position: relative;
-  background-color: #ffffff;
-  border-radius: 18px;
-  padding: 34px 32px 30px;
-  width: 90%;
-  max-width: 420px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
-  animation: tcHome-modalPop 0.25s ease both;
-}
-
-.tcHome-modalClose {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: none;
-  background-color: #f2f5f5;
-  color: #34474d;
-  font-size: 13px;
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-}
-
-.tcHome-modalClose:hover {
-  background-color: #12313b;
-  color: #fff;
-  transform: rotate(90deg);
-}
-
-.tcHome-modalTitle {
-  font-size: 22px;
-  font-weight: 700;
-  color: #12313b;
-  margin: 0 0 6px;
-}
-
-.tcHome-modalSubtitle {
-  font-size: 14px;
-  color: #6b7a80;
-  margin: 0 0 22px;
-}
-
-.tcHome-modalOptions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.tcHome-roleBtn {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
-  border: 1.5px solid #e1e8e8;
-  border-radius: 12px;
-  background-color: #fff;
-  cursor: pointer;
-  text-align: left;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-}
-
-.tcHome-roleBtn:hover {
-  border-color: teal;
-  background-color: #f2fafa;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-}
-
-.tcHome-roleIcon {
-  font-size: 22px;
-}
-
-.tcHome-roleInfo {
+  top: 80px;
+  right: 133px;
   display: flex;
   flex-direction: column;
 }
 
-.tcHome-roleName {
+.dropdown button {
+  padding: 10px 15px;
   font-size: 15px;
-  font-weight: 700;
-  color: #12313b;
-}
-
-.tcHome-roleDesc {
-  font-size: 12.5px;
-  color: #6b7a80;
-  margin-top: 2px;
-}
-
-@keyframes tcHome-fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes tcHome-pulseRing {
-  0% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(2.6);
-    opacity: 0;
-  }
-}
-
-@keyframes tcHome-backdropIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes tcHome-modalPop {
-  from {
-    opacity: 0;
-    transform: scale(0.92) translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tcHome-container * {
-    animation-duration: 0.01ms !important;
-  }
-  .tcHome-pulseDot::after {
-    display: none;
-  }
+  margin: 8px 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: #333 !important;
+  background-color: #fff !important;
+  box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.2), 4px 4px 10px rgba(0, 0, 0, 0.7);
 }
 
 @media (max-width: 768px) {
-  .tcHome-navbar {
-    justify-content: center;
+  .navbar {
+    flex-direction: column;
+    align-items: center;
     padding: 15px 10px;
   }
 
-  .tcHome-logo {
+  .logo {
     width: 80px;
     height: 80px;
     margin: 0;
   }
 
-  .tcHome-leftContent {
-    align-items: center;
-    text-align: center;
-    padding: 0 6%;
-    max-width: 100%;
-  }
-
-  .tcHome-subtext {
-    max-width: 100%;
-  }
-
-  .tcHome-ctaRow {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .tcHome-trustStrip {
+  .navbar-buttons {
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    margin: 10px 0;
   }
 
-  .tcHome-modalBox {
-    padding: 28px 22px 24px;
+  .login-buttons,
+  .register-button {
+    margin-left: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    padding: 6px 14px;
+  }
+
+  .dropdown {
+    top: 70px;
+    right: 10px;
+  }
+
+  .dropdown button {
+    font-size: 14px;
+    padding: 8px 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .tcHome-logo {
+  .logo {
     width: 60px;
     height: 60px;
   }
 
-  .tcHome-navbar {
+  .navbar {
     padding: 10px;
   }
 
-  .tcHome-heading {
-    font-size: 22px;
+  .navbar-buttons {
+    margin: 5px 0;
   }
 
-  .tcHome-subtext {
-    font-size: 13px;
-  }
-
-  .tcHome-ctaPrimary,
-  .tcHome-ctaSecondary {
-    padding: 10px 16px;
-    font-size: 13px;
-  }
-
-  .tcHome-trustText {
+  .login-buttons,
+  .register-button {
+    padding: 5px 10px;
     font-size: 12px;
   }
 
-  .tcHome-modalTitle {
-    font-size: 19px;
+  .dropdown {
+    top: 60px;
+    right: 5px;
+  }
+
+  .dropdown button {
+    font-size: 12px;
+    padding: 6px 10px;
   }
 }
