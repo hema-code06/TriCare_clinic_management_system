@@ -1,10 +1,4 @@
-html, body {
-  margin: 0;
-  height: 100%;
-  overflow: hidden;
-}
-
-.home-container {
+.tcHome-container {
   position: relative;
   height: 100vh;
   width: 100%;
@@ -13,7 +7,7 @@ html, body {
   flex-direction: column;
 }
 
-.background-image {
+.tcHome-bgImage {
   position: absolute;
   top: 0;
   left: 0;
@@ -22,25 +16,25 @@ html, body {
   z-index: -1;
 }
 
-.home-img {
+.tcHome-bgImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.navbar {
+.tcHome-navbar {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.logo {
+.tcHome-logo {
   width: 120px !important;
   height: 120px !important;
   margin-left: 30%;
 }
 
-.left-content {
+.tcHome-leftContent {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -52,40 +46,41 @@ html, body {
 }
 
 
-.main-heading {
+
+.tcHome-heading {
   font-size: clamp(28px, 4.2vw, 50px);
   font-weight: 700;
   line-height: 1.15;
   color: #12313b;
   margin: 14px 0 16px;
   opacity: 0;
-  animation: fadeUp 0.7s ease 0.25s forwards;
+  animation: tcHome-fadeUp 0.7s ease 0.25s forwards;
 }
 
-.main-heading span {
+.tcHome-heading span {
   color: teal;
 }
 
-.sub-text {
+.tcHome-subtext {
   font-size: 16px;
   line-height: 1.55;
   color: #34474d;
   max-width: 460px;
   opacity: 0;
-  animation: fadeUp 0.7s ease 0.4s forwards;
+  animation: tcHome-fadeUp 0.7s ease 0.4s forwards;
 }
 
-.cta-row {
+.tcHome-ctaRow {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-top: 26px;
   opacity: 0;
-  animation: fadeUp 0.7s ease 0.55s forwards;
+  animation: tcHome-fadeUp 0.7s ease 0.55s forwards;
 }
 
-.cta-primary,
-.cta-secondary {
+.tcHome-ctaPrimary,
+.tcHome-ctaSecondary {
   padding: 12px 26px;
   font-size: 15px;
   font-weight: 600;
@@ -94,13 +89,13 @@ html, body {
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
-.cta-primary {
+.tcHome-ctaPrimary {
   background-color: teal;
   color: white;
   border: none;
 }
 
-.cta-secondary {
+.tcHome-ctaSecondary {
   background-color: transparent;
   color: #12313b;
   border: 1.5px solid #12313b;
@@ -109,50 +104,50 @@ html, body {
   gap: 6px;
 }
 
-.cta-primary:hover,
-.cta-secondary:hover {
+.tcHome-ctaPrimary:hover,
+.tcHome-ctaSecondary:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.cta-primary:hover {
+.tcHome-ctaPrimary:hover {
   filter: brightness(1.1);
 }
 
-.cta-secondary:hover .arrow {
+.tcHome-ctaSecondary:hover .tcHome-arrow {
   transform: translateX(4px);
 }
 
-.arrow {
+.tcHome-arrow {
   display: inline-block;
   transition: transform 0.2s ease;
 }
 
-.trust-strip {
+.tcHome-trustStrip {
   display: flex;
   flex-wrap: wrap;
   gap: 22px;
   margin-top: 30px;
   opacity: 0;
-  animation: fadeUp 0.7s ease 0.7s forwards;
+  animation: tcHome-fadeUp 0.7s ease 0.7s forwards;
 }
 
-.trust-item {
+.tcHome-trustItem {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.trust-text {
+.tcHome-trustText {
   font-size: 13.5px;
   color: #34474d;
 }
 
-.trust-text strong {
+.tcHome-trustText strong {
   color: #12313b;
 }
 
-.pulse-dot {
+.tcHome-pulseDot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -161,7 +156,7 @@ html, body {
   flex-shrink: 0;
 }
 
-.pulse-dot::after {
+.tcHome-pulseDot::after {
   content: "";
   position: absolute;
   top: 0;
@@ -170,10 +165,10 @@ html, body {
   height: 100%;
   border-radius: 50%;
   background-color: teal;
-  animation: pulseRing 1.8s ease-out infinite;
+  animation: tcHome-pulseRing 1.8s ease-out infinite;
 }
 
-.modal-backdrop {
+.tcHome-modalBackdrop {
   position: fixed;
   inset: 0;
   background-color: rgba(18, 49, 59, 0.45);
@@ -181,10 +176,10 @@ html, body {
   align-items: center;
   justify-content: center;
   z-index: 100;
-  animation: backdropIn 0.2s ease both;
+  animation: tcHome-backdropIn 0.2s ease both;
 }
 
-.modal-box {
+.tcHome-modalBox {
   position: relative;
   background-color: #ffffff;
   border-radius: 18px;
@@ -192,10 +187,10 @@ html, body {
   width: 90%;
   max-width: 420px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
-  animation: modalPop 0.25s ease both;
+  animation: tcHome-modalPop 0.25s ease both;
 }
 
-.modal-close {
+.tcHome-modalClose {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -210,32 +205,32 @@ html, body {
   transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-.modal-close:hover {
+.tcHome-modalClose:hover {
   background-color: #12313b;
   color: #fff;
   transform: rotate(90deg);
 }
 
-.modal-title {
+.tcHome-modalTitle {
   font-size: 22px;
   font-weight: 700;
   color: #12313b;
   margin: 0 0 6px;
 }
 
-.modal-subtitle {
+.tcHome-modalSubtitle {
   font-size: 14px;
   color: #6b7a80;
   margin: 0 0 22px;
 }
 
-.modal-options {
+.tcHome-modalOptions {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.modal-role-btn {
+.tcHome-roleBtn {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -248,35 +243,35 @@ html, body {
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-.modal-role-btn:hover {
+.tcHome-roleBtn:hover {
   border-color: teal;
   background-color: #f2fafa;
   transform: translateY(-2px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 }
 
-.role-icon {
+.tcHome-roleIcon {
   font-size: 22px;
 }
 
-.role-info {
+.tcHome-roleInfo {
   display: flex;
   flex-direction: column;
 }
 
-.role-name {
+.tcHome-roleName {
   font-size: 15px;
   font-weight: 700;
   color: #12313b;
 }
 
-.role-desc {
+.tcHome-roleDesc {
   font-size: 12.5px;
   color: #6b7a80;
   margin-top: 2px;
 }
 
-@keyframes fadeUp {
+@keyframes tcHome-fadeUp {
   from {
     opacity: 0;
     transform: translateY(16px);
@@ -287,7 +282,7 @@ html, body {
   }
 }
 
-@keyframes pulseRing {
+@keyframes tcHome-pulseRing {
   0% {
     transform: scale(1);
     opacity: 0.7;
@@ -298,7 +293,7 @@ html, body {
   }
 }
 
-@keyframes backdropIn {
+@keyframes tcHome-backdropIn {
   from {
     opacity: 0;
   }
@@ -307,7 +302,7 @@ html, body {
   }
 }
 
-@keyframes modalPop {
+@keyframes tcHome-modalPop {
   from {
     opacity: 0;
     transform: scale(0.92) translateY(10px);
@@ -319,82 +314,82 @@ html, body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
+  .tcHome-container * {
     animation-duration: 0.01ms !important;
   }
-  .pulse-dot::after {
+  .tcHome-pulseDot::after {
     display: none;
   }
 }
 
 @media (max-width: 768px) {
-  .navbar {
+  .tcHome-navbar {
     justify-content: center;
     padding: 15px 10px;
   }
 
-  .logo {
+  .tcHome-logo {
     width: 80px;
     height: 80px;
     margin: 0;
   }
 
-  .left-content {
+  .tcHome-leftContent {
     align-items: center;
     text-align: center;
     padding: 0 6%;
     max-width: 100%;
   }
 
-  .sub-text {
+  .tcHome-subtext {
     max-width: 100%;
   }
 
-  .cta-row {
+  .tcHome-ctaRow {
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .trust-strip {
+  .tcHome-trustStrip {
     flex-direction: column;
     align-items: center;
     gap: 10px;
   }
 
-  .modal-box {
+  .tcHome-modalBox {
     padding: 28px 22px 24px;
   }
 }
 
 @media (max-width: 480px) {
-  .logo {
+  .tcHome-logo {
     width: 60px;
     height: 60px;
   }
 
-  .navbar {
+  .tcHome-navbar {
     padding: 10px;
   }
 
-  .main-heading {
+  .tcHome-heading {
     font-size: 22px;
   }
 
-  .sub-text {
+  .tcHome-subtext {
     font-size: 13px;
   }
 
-  .cta-primary,
-  .cta-secondary {
+  .tcHome-ctaPrimary,
+  .tcHome-ctaSecondary {
     padding: 10px 16px;
     font-size: 13px;
   }
 
-  .trust-text {
+  .tcHome-trustText {
     font-size: 12px;
   }
 
-  .modal-title {
+  .tcHome-modalTitle {
     font-size: 19px;
   }
 }

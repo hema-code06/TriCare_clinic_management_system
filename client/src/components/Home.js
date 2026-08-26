@@ -34,51 +34,51 @@ const Home = () => {
   }, [modalOpen]);
 
   return (
-    <div className="home-container">
-      <div className="background-image">
-        <img src={homebg} alt="home-bg" className="home-img" />
+    <div className="tcHome-container">
+      <div className="tcHome-bgImage">
+        <img src={homebg} alt="home-bg" className="tcHome-bgImg" />
       </div>
 
-      <div className="navbar">
-        <div className="logo-container">
-          <img src={logo} alt="Logo" className="logo" />
+      <div className="tcHome-navbar">
+        <div className="tcHome-logoWrap">
+          <img src={logo} alt="Logo" className="tcHome-logo" />
         </div>
       </div>
 
-      <div className="left-content">
-        <h1 className="main-heading">
+      <div className="tcHome-leftContent">
+        <h1 className="tcHome-heading">
           Your Health, <br /> Our <span>Priority</span>
         </h1>
-        <p className="sub-text">
+        <p className="tcHome-subtext">
           Compassionate care, skilled hands, and a team dedicated to your
           well-being — every visit, every time.
         </p>
 
-        <div className="cta-row">
-          <button className="cta-primary" onClick={goToPatientRegister}>
+        <div className="tcHome-ctaRow">
+          <button className="tcHome-ctaPrimary" onClick={goToPatientRegister}>
             Book an Appointment
           </button>
-          <button className="cta-secondary" onClick={openModal}>
-            Get Started <span className="arrow">→</span>
+          <button className="tcHome-ctaSecondary" onClick={openModal}>
+            Get Started <span className="tcHome-arrow">→</span>
           </button>
         </div>
 
-        <div className="trust-strip">
-          <div className="trust-item">
-            <span className="pulse-dot"></span>
-            <span className="trust-text">
+        <div className="tcHome-trustStrip">
+          <div className="tcHome-trustItem">
+            <span className="tcHome-pulseDot"></span>
+            <span className="tcHome-trustText">
               <strong>24/7</strong> Emergency Care
             </span>
           </div>
-          <div className="trust-item">
-            <span className="pulse-dot"></span>
-            <span className="trust-text">
+          <div className="tcHome-trustItem">
+            <span className="tcHome-pulseDot"></span>
+            <span className="tcHome-trustText">
               <strong>50+</strong> Specialist Doctors
             </span>
           </div>
-          <div className="trust-item">
-            <span className="pulse-dot"></span>
-            <span className="trust-text">
+          <div className="tcHome-trustItem">
+            <span className="tcHome-pulseDot"></span>
+            <span className="tcHome-trustText">
               <strong>10k+</strong> Patients Served
             </span>
           </div>
@@ -86,43 +86,43 @@ const Home = () => {
       </div>
 
       {modalOpen && (
-        <div className="modal-backdrop" onClick={closeModal}>
-          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+        <div className="tcHome-modalBackdrop" onClick={closeModal}>
+          <div className="tcHome-modalBox" onClick={(e) => e.stopPropagation()}>
             <button
-              className="modal-close"
+              className="tcHome-modalClose"
               onClick={closeModal}
               aria-label="Close"
             >
               ✕
             </button>
 
-            <h2 className="modal-title">Continue as</h2>
-            <p className="modal-subtitle">
+            <h2 className="tcHome-modalTitle">Continue as</h2>
+            <p className="tcHome-modalSubtitle">
               Select your role to sign in to the right dashboard.
             </p>
 
-            <div className="modal-options">
+            <div className="tcHome-modalOptions">
               <button
-                className="modal-role-btn"
+                className="tcHome-roleBtn"
                 onClick={() => handleSelect("admin")}
               >
-                <span className="role-icon">🛡️</span>
-                <span className="role-info">
-                  <span className="role-name">Admin</span>
-                  <span className="role-desc">
+                <span className="tcHome-roleIcon">🛡️</span>
+                <span className="tcHome-roleInfo">
+                  <span className="tcHome-roleName">Admin</span>
+                  <span className="tcHome-roleDesc">
                     Manage staff, schedules & operations
                   </span>
                 </span>
               </button>
 
               <button
-                className="modal-role-btn"
+                className="tcHome-roleBtn"
                 onClick={() => handleSelect("doctor")}
               >
-                <span className="role-icon">🩺</span>
-                <span className="role-info">
-                  <span className="role-name">Doctor</span>
-                  <span className="role-desc">
+                <span className="tcHome-roleIcon">🩺</span>
+                <span className="tcHome-roleInfo">
+                  <span className="tcHome-roleName">Doctor</span>
+                  <span className="tcHome-roleDesc">
                     Access patient records & care plans
                   </span>
                 </span>
