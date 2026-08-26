@@ -21,6 +21,10 @@ const Home = () => {
     setDropdownVisible(!dropdownVisible);
   };
 
+  const goToPatientRegister = () => {
+    navigate("/register", { state: { role: "patient" } });
+  };
+
   return (
     <div className="home-container">
       <div className="background-image">
@@ -30,32 +34,6 @@ const Home = () => {
       <div className="navbar">
         <div className="logo-container">
           <img src={logo} alt="Logo" className="logo" />
-        </div>
-
-        <div className="navbar-buttons">
-          <div className="login-wrap">
-            <button onClick={toggleDropdown} className="login-buttons">
-              Login
-            </button>
-
-            {dropdownVisible && (
-              <div className="dropdown">
-                <button type="button" onClick={() => handleSelect("admin")}>
-                  As Admin
-                </button>
-                <button type="button" onClick={() => handleSelect("doctor")}>
-                  As Doctor
-                </button>
-              </div>
-            )}
-          </div>
-
-          <button
-            onClick={() => navigate("/register")}
-            className="register-button"
-          >
-            Register
-          </button>
         </div>
       </div>
 
@@ -70,15 +48,48 @@ const Home = () => {
         </p>
 
         <div className="cta-row">
-          <button
-            className="cta-primary"
-            onClick={() => navigate("/register")}
-          >
+          <button className="cta-primary" onClick={goToPatientRegister}>
             Book an Appointment
           </button>
-          <button className="cta-secondary" onClick={toggleDropdown}>
-            Get Started <span className="arrow">→</span>
-          </button>
+
+          <div className="login-wrap">
+            <button className="cta-secondary" onClick={toggleDropdown}>
+              Get Started <span className="arrow">→</span>
+            </button>
+
+            {dropdownVisible && (
+              <div className="dropdown">
+                <span className="dropdown-label">Continue as</span>
+                <button type="button" onClick={() => handleSelect("admin")}>
+                  As Admin
+                </button>
+                <button type="button" onClick={() => handleSelect("doctor")}>
+                  As Doctor
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="trust-strip">
+          <div className="trust-item">
+            <span className="pulse-dot"></span>
+            <span className="trust-text">
+              <strong>24/7</strong> Emergency Care
+            </span>
+          </div>
+          <div className="trust-item">
+            <span className="pulse-dot"></span>
+            <span className="trust-text">
+              <strong>50+</strong> Specialist Doctors
+            </span>
+          </div>
+          <div className="trust-item">
+            <span className="pulse-dot"></span>
+            <span className="trust-text">
+              <strong>10k+</strong> Patients Served
+            </span>
+          </div>
         </div>
       </div>
     </div>
