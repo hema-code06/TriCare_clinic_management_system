@@ -17,6 +17,7 @@ import BookAppointmentPage from "./components/Patient/pages/BookAppointmentPage"
 import PatientProfile from "./components/Patient/Components/PatientProfile";
 import PatientList from "./components/Doctor/Components/PatientList";
 import AppointmentDetails from "./components/Admin/Components/AppointmentDetails";
+import PatientProtectedRoute from "./components/PatientProtectedRoute";
 
 function App() {
   return (
@@ -44,9 +45,31 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/patient-dashboard" element={<PatientDashboard />} />
-        <Route path="/patient/profile/:id/edit" element={<PatientProfile />} />
 
+        <Route
+          path="/patient-dashboard"
+          element={
+            <PatientProtectedRoute>
+              <PatientDashboard />
+            </PatientProtectedRoute>
+          }
+        />
+        <Route
+          path="/patient/profile/:id/edit"
+          element={
+            <PatientProtectedRoute>
+              <PatientProfile />
+            </PatientProtectedRoute>
+          }
+        />
+        <Route
+          path="/book-appointment"
+          element={
+            <PatientProtectedRoute>
+              <BookAppointmentPage />
+            </PatientProtectedRoute>
+          }
+        />
         <Route
           path="/doctor-management"
           element={
@@ -88,15 +111,22 @@ function App() {
           }
         />
 
-        <Route path="/appointments" element={<AppointmentPage />} />
-
+        <Route
+          path="/appointments"
+          element={
+            <ProtectedRoute role="doctor">
+              <AppointmentPage />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/doctor-dashboard/patient-list"
-          element={<PatientList />}
+          element={
+            <ProtectedRoute role="doctor">
+              <PatientList />
+            </ProtectedRoute>
+          }
         />
-
-        <Route path="/book-appointment" element={<BookAppointmentPage />} />
-
         <Route path="*" element={<Login />} />
       </Routes>
     </Router>

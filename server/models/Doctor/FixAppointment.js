@@ -4,7 +4,6 @@ const FixAppointmentSchema = new mongoose.Schema({
   patientId: {
     type: String,
     required: true,
-    unique: true,
   },
   fullName: { type: String, required: true },
   gender: { type: String, required: true },
@@ -20,7 +19,9 @@ const FixAppointmentSchema = new mongoose.Schema({
   department: { type: String, required: true },
   preferredCommunicationMethod: { type: String, required: true },
   status: { type: String, default: "Pending" },
-});
+},
+  { timestamps: true }
+);
 
 const FixAppointment = mongoose.model("FixAppointment", FixAppointmentSchema);
 export default FixAppointment;

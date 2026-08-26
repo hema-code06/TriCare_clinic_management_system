@@ -241,7 +241,7 @@ const PatientDashboard = () => {
 
       <footer className="footer">
         <div className="footer-content">
-          <p className="footer-text">© 2022 <span style={{color:'teal'}}> TriCare </span>. All rights reserved.</p>
+          <p className="footer-text">© 2023 <span style={{color:'teal'}}> TriCare </span>. All rights reserved.</p>
         </div>
       </footer>
     </div>

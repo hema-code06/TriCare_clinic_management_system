@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
@@ -32,8 +32,10 @@ const PatientProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
+        const token = localStorage.getItem("patientToken");
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/patient/profile/${id}`
+          `${process.env.REACT_APP_API_URL}/api/patient/profile/${id}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         const data = response.data;
 
@@ -89,16 +91,19 @@ const PatientProfile = () => {
         },
       };
 
+      const token = localStorage.getItem("patientToken");
       const response = await axios.put(
         `${process.env.REACT_APP_API_URL}/api/patient/profile/${profile.patientId}`,
-        updatedData
+        updatedData,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       console.log("Response from server:", response.data);
 
       if (response.status === 200) {
         const updatedProfileResponse = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/patient/profile/${profile.patientId}`
+          `${process.env.REACT_APP_API_URL}/api/patient/profile/${profile.patientId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         setProfile(updatedProfileResponse.data);
         setIsModalOpen(false);
@@ -153,9 +158,8 @@ const PatientProfile = () => {
         <div className="patient-field full-width">
           <i className="fas fa-map-marker-alt"></i>
           <p>
-            {`${profile.location.city || ""}, ${
-              profile.location.state || ""
-            }, ${profile.location.country || ""}`}
+            {`${profile.location.city || ""}, ${profile.location.state || ""
+              }, ${profile.location.country || ""}`}
           </p>
         </div>
         <div className="patient-field">
@@ -178,7 +182,7 @@ const PatientProfile = () => {
           <i className="fas fa-shield-alt"></i>
           <p>
             {profile.insuranceInformation.provider &&
-            profile.insuranceInformation.policyNumber
+              profile.insuranceInformation.policyNumber
               ? `${profile.insuranceInformation.provider} (Policy #${profile.insuranceInformation.policyNumber})`
               : ""}
           </p>

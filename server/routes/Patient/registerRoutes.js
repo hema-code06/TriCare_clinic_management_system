@@ -1,6 +1,9 @@
 import express from "express";
 import Patient from "../../models/Patient/Register.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import config from "../../config/dotenv.js";
+import { authenticatePatient } from "../../middleware/patientAuthMiddleware.js";
 
 const router = express.Router();
 
@@ -57,9 +60,16 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid password" });
     }
 
+    const token = jwt.sign(
+      { patientId: patient.patientId, role: "patient" },
+      config.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
     res.status(200).json({
       success: true,
       message: "Login successful",
+      token,
       patientId: patient.patientId,
       fullname: patient.fullname,
     });
@@ -67,16 +77,18 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 });
-
-router.get("/profile/:id", async (req, res) => {
+router.get("/profile/:id", authenticatePatient, async (req, res) => {
   const { id } = req.params;
+
+  if (req.patient.patientId !== id) {
+    return res.status(403).json({ message: "Forbidden" });
+  }
 
   try {
     const patient = await Patient.findOne({ patientId: id });
     if (!patient) {
       return res.status(404).json({ message: "Patient not found" });
     }
-
     res.status(200).json({
       patientId: patient.patientId,
       fullname: patient.fullname,
@@ -98,49 +110,33 @@ router.get("/profile/:id", async (req, res) => {
   }
 });
 
-router.put("/profile/:id", async (req, res) => {
+router.put("/profile/:id", authenticatePatient, async (req, res) => {
   const { id } = req.params;
+
+  if (req.patient.patientId !== id) {
+    return res.status(403).json({ message: "Forbidden" });
+  }
+
   const {
-    fullname,
-    email,
-    phone,
-    address,
-    age,
-    gender,
-    contactNumber,
-    location,
-    bloodType,
-    occupation,
-    generalDoctorName,
-    doctorSpeciality,
-    insuranceInformation,
+    fullname, email, phone, address, age, gender, contactNumber,
+    location, bloodType, occupation, generalDoctorName,
+    doctorSpeciality, insuranceInformation,
   } = req.body;
 
   try {
     const updatedPatient = await Patient.findOneAndUpdate(
       { patientId: id },
       {
-        fullname,
-        email,
-        phone,
-        address,
-        age,
-        gender,
-        contactNumber,
+        fullname, email, phone, address, age, gender, contactNumber,
         location: location || {},
-        bloodType,
-        occupation,
-        generalDoctorName,
-        doctorSpeciality,
+        bloodType, occupation, generalDoctorName, doctorSpeciality,
         insuranceInformation: insuranceInformation || {},
       },
       { new: true }
     );
-
     if (!updatedPatient) {
       return res.status(404).json({ message: "Patient not found" });
     }
-
     res.status(200).json(updatedPatient);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });

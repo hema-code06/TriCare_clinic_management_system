@@ -8,7 +8,7 @@ const MaintenanceList = ({ refresh, onEditClick }) => {
   const fetchMaintenanceData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/admin/maintenanc`
+        `${process.env.REACT_APP_API_URL}/api/admin/maintenance`
       );
       setMaintenanceList(response.data);
     } catch (error) {

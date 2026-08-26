@@ -10,6 +10,7 @@ import appointmentRoutes from "./routes/Admin/appointmentRoutes.js";
 import inventoryRoutes from "./routes/Admin/inventoryRoutes.js";
 import maintenanceRoutes from "./routes/Admin/maintenanceRoutes.js";
 import roleRoutes from "./routes/Admin/roleRoutes.js";
+import statsRoutes from "./routes/Admin/statsRoutes.js";
 import bookappointmentRoutes from "./routes/Patient/bookappointmentRoutes.js";
 import fixappointmentRoutes from "./routes/Doctor/fixappointmentRoutes.js";
 import registerRoutes from "./routes/Patient/registerRoutes.js";
@@ -43,7 +44,7 @@ const startServer = async () => {
     app.use("/api/admin/inventory", inventoryRoutes);
     app.use("/api/admin/maintenance", maintenanceRoutes);
     app.use("/api/admin/roles", roleRoutes);
-
+    app.use("/api/admin/stats", statsRoutes);
     app.use("/api/patient", bookappointmentRoutes);
     app.use("/api/doctor", fixappointmentRoutes);
 

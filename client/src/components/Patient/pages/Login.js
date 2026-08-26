@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
@@ -22,6 +22,7 @@ const Login = () => {
       );
       if (response.data.success) {
         localStorage.setItem("patientId", response.data.patientId);
+        localStorage.setItem("patientToken", response.data.token);
         navigate("/patient-dashboard");
       } else {
         setError(response.data.message);
