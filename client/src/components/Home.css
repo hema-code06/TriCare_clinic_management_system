@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-family: var(--font-body);
 }
 
 .background-image {
@@ -26,6 +27,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  animation: fadeIn 0.5s ease both;
 }
 
 .logo {
@@ -44,36 +46,37 @@
 .register-button {
   padding: 8px 18px;
   font-size: 16px;
+  font-family: var(--font-body);
+  font-weight: 600;
   cursor: pointer;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   margin-left: 20px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
 }
 
 .login-buttons {
-  background-color: #5c1f2e !important;
-  color: #ffffff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  background-color: var(--color-primary-600) !important;
+  color: var(--color-text-on-primary);
 }
 
 .login-buttons:hover {
-  background-color: #45161f !important;
+  background-color: var(--color-primary-700) !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(92, 31, 46, 0.35);
+  box-shadow: var(--shadow-md);
 }
 
 .register-button {
   background-color: transparent !important;
-  color: #9c7a3c;
-  border: 1.5px solid #9c7a3c !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  color: var(--color-accent-700);
+  border: 1.5px solid var(--color-accent-500) !important;
 }
 
 .register-button:hover {
-  background-color: #9c7a3c !important;
-  color: #ffffff;
+  background-color: var(--color-accent-500) !important;
+  color: var(--color-text-on-primary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(156, 122, 60, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
 .dropdown {
@@ -82,18 +85,26 @@
   right: 133px;
   display: flex;
   flex-direction: column;
+  animation: slideUp 0.2s ease both;
 }
 
 .dropdown button {
   padding: 10px 15px;
   font-size: 15px;
+  font-family: var(--font-body);
   margin: 8px 0;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
-  color: #333 !important;
-  background-color: #fff !important;
-  box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.2), 4px 4px 10px rgba(0, 0, 0, 0.7);
+  border-radius: var(--radius-sm);
+  color: var(--color-text) !important;
+  background-color: var(--color-surface) !important;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.dropdown button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .tcHero-leftContent {
@@ -105,39 +116,41 @@
   text-align: left;
   padding: 0 8%;
   max-width: 600px;
+  animation: slideUp 0.6s ease both;
 }
 
 .tcHero-eyebrow {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #1f8a82;
+  color: var(--color-primary-600);
 }
 
 .tcHero-heading {
+  font-family: var(--font-heading);
   font-size: clamp(28px, 4.2vw, 50px);
   font-weight: 700;
   line-height: 1.15;
-  color: #12313b;
+  color: var(--color-text);
   margin: 14px 0 16px;
 }
 
 .tcHero-heading span {
-  color: teal;
+  color: var(--color-primary-500);
 }
 
 .tcHero-subtext {
   font-size: 16px;
   line-height: 1.55;
-  color: #4d5a58;
+  color: var(--color-text-muted);
   max-width: 460px;
 }
 
 .tcHero-modalBackdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(18, 49, 59, 0.45);
+  background-color: rgba(47, 46, 43, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,14 +161,14 @@
 
 .tcHero-modalBox {
   position: relative;
-  background-color: #ffffff;
-  border-radius: 18px;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
   padding: 34px 32px 30px;
   width: 90%;
   max-width: 420px;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--shadow-lg);
   animation: tcHero-modalPop 0.25s ease both;
 }
 
@@ -167,29 +180,30 @@
   height: 32px;
   border-radius: 50%;
   border: none;
-  background-color: #f2f5f5;
-  color: #34474d;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
   font-size: 13px;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  transition: transform var(--transition-base), background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .tcHero-modalClose:hover {
-  background-color: #12313b;
+  background-color: var(--color-primary-600);
   color: #fff;
   transform: rotate(90deg);
 }
 
 .tcHero-modalTitle {
+  font-family: var(--font-heading);
   font-size: 22px;
   font-weight: 700;
-  color: #12313b;
+  color: var(--color-text);
   margin: 0 0 6px;
 }
 
 .tcHero-modalSubtitle {
   font-size: 14px;
-  color: #6b7a80;
+  color: var(--color-text-muted);
   margin: 0 0 22px;
 }
 
@@ -204,19 +218,19 @@
   align-items: center;
   gap: 14px;
   padding: 14px 16px;
-  border: 1.5px solid #e1e8e8;
-  border-radius: 12px;
-  background-color: #fff;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
 }
 
 .tcHero-roleBtn:hover {
-  border-color: teal;
-  background-color: #f2fafa;
+  border-color: var(--color-primary-400);
+  background-color: var(--color-primary-50);
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-md);
 }
 
 .tcHero-roleIcon {
@@ -231,12 +245,12 @@
 .tcHero-roleName {
   font-size: 15px;
   font-weight: 700;
-  color: #12313b;
+  color: var(--color-text);
 }
 
 .tcHero-roleDesc {
   font-size: 12.5px;
-  color: #6b7a80;
+  color: var(--color-text-muted);
   margin-top: 2px;
 }
 

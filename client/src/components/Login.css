@@ -4,6 +4,7 @@
   align-items: center;
   height: 100vh;
   padding: 10px;
+  background-color: var(--color-bg);
 }
 
 .form-login-container {
@@ -11,10 +12,11 @@
   flex-direction: row;
   width: 850px;
   height: 500px;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--shadow-lg);
   animation: slideIn 0.6s ease-out;
+  background-color: var(--color-surface);
 }
 
 .image-side {
@@ -31,17 +33,21 @@
 .form-login-side {
   flex: 1;
   padding: 40px;
+  font-family: var(--font-body);
 }
 
 .heading {
   text-align: center;
   margin-bottom: 70px;
+  font-family: var(--font-heading);
+  color: var(--color-text);
 }
 
 label {
   font-size: 15px;
-  color: grey;
+  color: var(--color-text-muted);
   font-weight: 600;
+  font-family: var(--font-body);
 }
 
 input {
@@ -49,37 +55,57 @@ input {
   padding: 10px;
   margin-top: 5px;
   margin-bottom: 30px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
   font-size: 15px;
+  font-family: var(--font-body);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--color-primary-400);
+  box-shadow: var(--shadow-focus);
 }
 
 button.button-login {
   text-align: center !important;
   text-transform: uppercase;
+  letter-spacing: 0.04em;
   margin-left: 34%;
   width: 30%;
   padding: 12px;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: var(--font-body);
   color: #fff;
-  background-color: teal !important;
+  background-color: var(--color-primary-600) !important;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+button.button-login:hover {
+  background-color: var(--color-primary-700) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .error-message {
-  color: red;
+  color: var(--color-danger);
   margin-top: 10px;
   font-size: 14px;
 }
 
 @keyframes slideIn {
   from {
-    transform: translateX(100%);
+    opacity: 0;
+    transform: translateX(60px);
   }
   to {
+    opacity: 1;
     transform: translateX(0);
   }
 }

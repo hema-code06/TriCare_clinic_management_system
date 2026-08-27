@@ -1,8 +1,8 @@
 .admin-dashboard-container {
   display: grid;
-  grid-template-columns: 200px auto;
+  grid-template-columns: 220px auto;
   height: 100vh;
-  transition: all 0.3s ease-in-out;
+  transition: all var(--transition-base);
 }
 
 .sidebar-hidden {
@@ -11,27 +11,30 @@
 
 .sidebar {
   width: 100%;
-  background: linear-gradient(135deg, #2d2e3e, #747a86);
+  background: linear-gradient(160deg, var(--color-primary-700), var(--color-primary-500));
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
   overflow: hidden;
-  transition: all 0.3s ease-in-out;
+  transition: all var(--transition-base);
 }
 
 .sidebar-hidden .sidebar {
-  transform: translateX(-250px);
+  transform: translateX(-260px);
 }
 
 .main-content {
   padding: 30px;
-  transition: all 0.3s ease-in-out;
-  overflow-y: hidden;
+  transition: all var(--transition-base);
+  overflow-y: auto;
+  background-color: var(--color-bg);
 }
+
 .main-content h2 {
   font-size: 20px;
+  font-family: var(--font-heading);
 }
 
 .sidebar-logo img {
@@ -39,6 +42,7 @@
   cursor: pointer;
   animation: bounceIn 1s ease-out;
 }
+
 .sidebar-menu {
   list-style: none;
   padding: 0;
@@ -50,54 +54,66 @@
   margin-bottom: 10px;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.3s, background-color 0.3s, padding-left 0.3s;
-  font-size: 20px;
-  border-radius: 5px;
+  transition: transform var(--transition-base), background-color var(--transition-base), padding-left var(--transition-base);
+  font-size: 18px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  border-radius: var(--radius-md);
 }
 
 .sidebar-menu li:hover {
-  background: linear-gradient(135deg, #008080, #5dfff7) !important;
+  background: rgba(255, 255, 255, 0.16) !important;
   transform: translateX(5px);
-  padding-left: 20px;
+  padding-left: 24px;
 }
 
 .toggle-buttons {
   display: flex;
   align-items: center;
+  justify-content: center;
   position: absolute;
   top: 20px;
   right: 20px;
-  background: linear-gradient(135deg, #008080, #3dfef4) !important;
+  background: var(--color-primary-500) !important;
   color: white !important;
   border: none;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   font-size: 18px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
   z-index: 1000;
+}
+
+.toggle-buttons:hover {
+  background: var(--color-primary-600) !important;
+  transform: scale(1.08);
 }
 
 .stats-grid {
   display: grid;
-  gap: 30px;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
 .stat-card {
   cursor: pointer;
-  background: linear-gradient(45deg, #007bff, #00d4ff);
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-accent-500));
   color: white;
   width: 92%;
-  padding: 13px;
-  border-radius: 8px;
+  padding: 18px;
+  border-radius: var(--radius-md);
   text-align: center;
-  transition: transform 0.3s;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  animation: slideUp 0.4s ease both;
 }
 
 .stat-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-lg);
 }
 
 .charts-section {
@@ -111,8 +127,14 @@
   flex: 1;
   min-width: 300px;
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--transition-base);
+}
+
+.chart-container:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 @keyframes bounceIn {
@@ -126,5 +148,121 @@
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .admin-dashboard-container {
+    grid-template-columns: 190px auto;
+  }
+
+  .main-content {
+    padding: 22px;
+  }
+
+  .stats-grid {
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .chart-container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-dashboard-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 12px;
+    position: relative;
+  }
+
+  .sidebar-hidden {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-hidden .sidebar {
+    display: none;
+    transform: none;
+  }
+
+  .sidebar-logo img {
+    width: 110px !important;
+  }
+
+  .sidebar-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .sidebar-menu li {
+    padding: 10px 14px;
+    margin-bottom: 0;
+    font-size: 15px;
+  }
+
+  .main-content {
+    padding: 16px;
+  }
+
+  .main-content h2 {
+    font-size: 18px;
+  }
+
+  .toggle-buttons {
+    top: 12px;
+    right: 12px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 14px;
+  }
+
+  .stat-card {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .charts-section {
+    gap: 18px;
+  }
+
+  .chart-container {
+    min-width: 100%;
+    padding: 16px;
+    margin-top: 4%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-menu li {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .main-content {
+    padding: 12px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 12px;
+    font-size: 13px;
   }
 }
