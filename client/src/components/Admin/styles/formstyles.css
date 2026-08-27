@@ -20,7 +20,7 @@
 .fill-grid label {
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease-in-out;
+  transition: all var(--transition-base);
 }
 
 .maintenance-grid input,
@@ -28,10 +28,20 @@
   font-size: 13px;
   padding: 10px;
   width: 50%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.maintenance-grid input:focus,
+.maintenance-grid select:focus,
+.fill-grid input:focus,
+.fill-grid select:focus {
+  border-color: var(--color-primary-400);
+  box-shadow: var(--shadow-focus);
 }
 
 .fill-grid input,
@@ -39,10 +49,12 @@
   font-size: 13px;
   padding: 10px;
   width: 80%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .fill-grid input[type="file"] {
@@ -50,7 +62,7 @@
   padding: 0;
   outline: none;
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-base);
 }
 
 .fill-grid input[type="file"]:hover {
@@ -59,42 +71,50 @@
 
 label {
   font-weight: 600;
-  color: grey;
+  color: var(--color-text-muted);
   font-size: 14px;
-  transition: color 0.3s ease;
+  transition: color var(--transition-base);
 }
 
 label:hover {
-  color: rgb(90, 89, 89);
+  color: var(--color-text);
 }
 
 .en-button {
   padding: 10px 15px;
   color: #fff;
-  font-weight: bold;
-  background: linear-gradient(135deg, #008080, #3dfef4) !important;
+  font-weight: 700;
+  font-family: var(--font-body);
+  background: var(--color-primary-500) !important;
   text-transform: uppercase;
   align-self: flex-end;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: 14px;
-  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-base), transform var(--transition-fast), box-shadow var(--transition-base);
 }
 
 .en-button:hover {
   font-size: 14px;
-  background: linear-gradient(135deg, #3dfef4, #008080) !important;
+  background: var(--color-primary-600) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .fill-grid input[type="file"]::file-selector-button {
-  background: linear-gradient(135deg, #008080, #3dfef4) !important;
+  background: var(--color-primary-500) !important;
   color: white;
   border: none;
   padding: 8px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+  transition: background-color var(--transition-base), transform var(--transition-fast);
+}
+
+.fill-grid input[type="file"]::file-selector-button:hover {
+  background: var(--color-primary-600) !important;
 }
 
 @media (max-width: 1024px) {
@@ -135,5 +155,29 @@ label:hover {
   .fill-grid input,
   .fill-grid select {
     width: 80%;
+  }
+
+  .maintenance-grid input,
+  .maintenance-grid select {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .fill-grid input,
+  .fill-grid select,
+  .maintenance-grid input,
+  .maintenance-grid select {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  .en-button {
+    padding: 10px;
+    font-size: 12px;
   }
 }

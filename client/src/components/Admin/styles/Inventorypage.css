@@ -1,19 +1,21 @@
 .inventory-management {
   min-height: 100vh;
-  animation: fadeIn 1.2s ease-in-out;
+  animation: fadeIn 0.6s ease-in-out;
   padding: 1rem;
   overflow: hidden;
+  background-color: var(--color-bg);
 }
 
 .inventory-management h1 {
   text-transform: uppercase;
   text-align: center;
-  color: #0077b6;
+  color: var(--color-primary-600);
+  font-family: var(--font-heading);
   font-size: 25px;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 2px;
   position: relative;
-  animation: slideInFromTop 1s ease-out;
+  animation: slideInFromTop 0.6s ease-out;
 }
 
 .add-button {
@@ -22,24 +24,25 @@
   margin-left: 90% !important;
   font-size: 14px;
   font-weight: 600;
-  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  font-family: var(--font-body);
+  background: var(--color-primary-500);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base);
   padding: 12px 20px;
+  box-shadow: var(--shadow-sm);
 }
 
 .add-button:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(135deg, #00b4d8, #0077b6);
-  background-color: #00b4d8;
+  box-shadow: var(--shadow-md);
+  background: var(--color-primary-600);
 }
 
 .add-button:active {
   transform: scale(0.98);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-sm);
 }
 
 @keyframes fadeIn {
@@ -79,16 +82,84 @@
 }
 
 .modal-content {
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   width: 100% !important;
   max-width: 1200px;
   height: auto;
   min-height: 550px;
+  background-color: var(--color-surface);
 }
 
 .close-button {
   margin-left: 97%;
-  color: #333 !important;
+  color: var(--color-text-muted) !important;
   cursor: pointer;
   background: none !important;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.close-button:hover {
+  color: var(--color-danger) !important;
+  transform: rotate(90deg);
+}
+
+@media (max-width: 1024px) {
+  .inventory-management h1 {
+    font-size: 22px;
+  }
+
+  .add-button {
+    margin-left: 80% !important;
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+
+  .modal-content {
+    min-height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .inventory-management {
+    padding: 0.75rem;
+  }
+
+  .inventory-management h1 {
+    font-size: 19px;
+    letter-spacing: 1px;
+  }
+
+  .add-button {
+    margin-left: 0 !important;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .modal-content {
+    min-height: 380px;
+  }
+
+  .close-button {
+    margin-left: 92%;
+  }
+}
+
+@media (max-width: 480px) {
+  .inventory-management h1 {
+    font-size: 16px;
+  }
+
+  .add-button {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+
+  .modal-content {
+    min-height: 320px;
+  }
+
+  .close-button {
+    margin-left: 88%;
+  }
 }
