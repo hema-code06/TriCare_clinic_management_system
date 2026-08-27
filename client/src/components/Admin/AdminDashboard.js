@@ -173,10 +173,6 @@ const AdminDashboard = () => {
           <li onClick={() => navigate("/maintenance-management")}>
             Maintenance
           </li>
-          <li onClick={() => navigate("/patients-management")}>Patients</li>
-          <li onClick={() => navigate("/statistics-management")}>Statistics</li>
-          <li onClick={() => navigate("/profile-management")}>Profile</li>
-          <li onClick={() => navigate("/settings-management")}>Settings</li>
           <li onClick={handleLogout}>Logout</li>
         </ul>
       </aside>
