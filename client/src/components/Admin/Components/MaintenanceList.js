@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import "../styles/MaintenanceList.css";
 
@@ -6,7 +6,7 @@ const MaintenanceList = ({ refresh, onEditClick }) => {
   const [maintenanceList, setMaintenanceList] = useState([]);
   const token = localStorage.getItem("token");
 
-  const fetchMaintenanceData = async () => {
+  const fetchMaintenanceData = useCallback(async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/admin/maintenance`,
@@ -17,7 +17,7 @@ const MaintenanceList = ({ refresh, onEditClick }) => {
       console.error("Error fetching maintenance data:", error);
       alert("Failed to fetch maintenance schedules.");
     }
-  };
+  }, [token]);
 
   useEffect(() => {
     fetchMaintenanceData();

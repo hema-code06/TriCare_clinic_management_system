@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { MdClose } from "react-icons/md";
 import DoctorTable from "../Components/DoctorTable";
 import DoctorForm from "../Components/DoctorForm";
@@ -13,7 +13,7 @@ const DoctorManagement = () => {
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
 
-  const fetchDoctors = async () => {
+  const fetchDoctors = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch(
@@ -27,7 +27,7 @@ const DoctorManagement = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
 
   useEffect(() => {
     fetchDoctors();
