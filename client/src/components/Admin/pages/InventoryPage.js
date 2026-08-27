@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { MdClose } from "react-icons/md";
 import InventoryForm from "../Components/InventoryForm";
 import InventoryTable from "../Components/InventoryTable";
 import axios from "axios";
 import "../styles/mainpage.css";
-import { useState, useEffect, useCallback } from "react";
+
 
 const InventoryPage = () => {
   const [inventory, setInventory] = useState([]);
@@ -12,10 +12,6 @@ const InventoryPage = () => {
   const [isAdding, setIsAdding] = useState(false);
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
-
-  useEffect(() => {
-    fetchInventory();
-  }, []);
 
   const fetchInventory = useCallback(async () => {
     setLoading(true);

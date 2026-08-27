@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { MdClose } from "react-icons/md";
 import RolesForm from "../Components/RolesForm";
 import RolesTable from "../Components/RolesTable";
@@ -13,10 +13,6 @@ const RolesManagement = () => {
   const [showRoleDetail, setShowRoleDetail] = useState(false);
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
-
-  useEffect(() => {
-    fetchRoles();
-  }, []);
 
   const fetchRoles = useCallback(async () => {
     setLoading(true);
