@@ -4,6 +4,7 @@ import InventoryForm from "../Components/InventoryForm";
 import InventoryTable from "../Components/InventoryTable";
 import axios from "axios";
 import "../styles/mainpage.css";
+import { useState, useEffect, useCallback } from "react";
 
 const InventoryPage = () => {
   const [inventory, setInventory] = useState([]);
@@ -16,7 +17,7 @@ const InventoryPage = () => {
     fetchInventory();
   }, []);
 
-  const fetchInventory = async () => {
+  const fetchInventory = useCallback(async () => {
     setLoading(true);
     try {
       const response = await axios.get(
@@ -29,7 +30,11 @@ const InventoryPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    fetchInventory();
+  }, [fetchInventory]);
 
   const addItem = async (newItem) => {
     try {

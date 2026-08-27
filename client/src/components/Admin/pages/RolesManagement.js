@@ -4,6 +4,7 @@ import RolesForm from "../Components/RolesForm";
 import RolesTable from "../Components/RolesTable";
 import RolesDetail from "../Components/RolesDetail";
 import "../styles/mainpage.css";
+import { useState, useEffect, useCallback } from "react";
 
 const RolesManagement = () => {
   const [roles, setRoles] = useState([]);
@@ -17,7 +18,7 @@ const RolesManagement = () => {
     fetchRoles();
   }, []);
 
-  const fetchRoles = async () => {
+  const fetchRoles = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/roles`,
@@ -31,7 +32,11 @@ const RolesManagement = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    fetchRoles();
+  }, [fetchRoles]);
 
   const handleAddRole = async (role) => {
     try {

@@ -32,7 +32,7 @@ const PatientList = () => {
     };
 
     fetchPatients();
-  }, []);
+  }, [token]);
 
   const fetchPatientDetails = async (id) => {
     try {

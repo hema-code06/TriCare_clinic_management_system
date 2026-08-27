@@ -31,7 +31,7 @@ const FixAppointment = () => {
       }
     };
     fetchAppointments();
-  }, []);
+  }, [token]);
 
   const handleAction = async (id, action, updatedInfo = null) => {
     try {
