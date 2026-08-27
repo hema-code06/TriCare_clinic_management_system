@@ -1,51 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --color-primary-50:  #fff3ec;
-  --color-primary-100: #ffe2d1;
-  --color-primary-200: #ffc2a3;
-  --color-primary-300: #ff9d6e;
-  --color-primary-400: #fb7a42;
-  --color-primary-500: #ee5b1f;
-  --color-primary-600: #c94614;
-  --color-primary-700: #a13711;
-  --color-primary-800: #7f2d12;
-  --color-primary-900: #672712;
+  --color-primary-50:  #f8f3fa;
+  --color-primary-100: #ede0f0;
+  --color-primary-200: #dcc3e1;
+  --color-primary-300: #c5b3d3;
+  --color-primary-400: #ab8fc0;
+  --color-primary-500: #9070aa;
+  --color-primary-600: #74568c;
+  --color-primary-700: #5c4370;
+  --color-primary-800: #48355a;
+  --color-primary-900: #3a2a49;
 
-  --color-accent-100: #f1e6fb;
-  --color-accent-300: #d3aef2;
-  --color-accent-500: #9a4fd6;
-  --color-accent-600: #8038bc;
-  --color-accent-700: #662d97;
+  --color-accent-100: #ffe2e2;
+  --color-accent-300: #f5cbcb;
+  --color-accent-500: #e39a9a;
+  --color-accent-600: #cf7a7a;
+  --color-accent-700: #b35f5f;
 
-  --color-success:      #ee5b1f;
-  --color-success-bg:   #ffe9dd;
-  --color-warning:      #9a4fd6;
-  --color-warning-bg:   #f1e6fb;
-  --color-danger:       #c92b5c;
-  --color-danger-bg:    #fbe3ec;
-  --color-info:         #8038bc;
-  --color-info-bg:      #f1e6fb;
+  --color-success:      #9070aa;
+  --color-success-bg:   #ede0f0;
+  --color-warning:      #cf7a7a;
+  --color-warning-bg:   #ffe2e2;
+  --color-danger:       #b35f5f;
+  --color-danger-bg:    #f5cbcb;
+  --color-info:         #74568c;
+  --color-info-bg:      #ede0f0;
 
-  --color-bg:            #fdfaf7;
-  --color-bg-alt:        #f7f0ea;
+  --color-bg:            #fbefef;
+  --color-bg-alt:        #ffe2e2;
   --color-surface:       #ffffff;
-  --color-surface-alt:   #fdf6f1;
-  --color-border:        #ece0d6;
-  --color-border-strong: #ddc9b8;
+  --color-surface-alt:   #fdf6f6;
+  --color-border:        #ecdde3;
+  --color-border-strong: #dcc3e1;
 
-  --color-text:          #2a211c;
-  --color-text-muted:    #6b5d54;
-  --color-text-faint:    #a5978c;
+  --color-text:          #322632;
+  --color-text-muted:    #756875;
+  --color-text-faint:    #a89aa8;
   --color-text-on-primary: #ffffff;
 
   --font-heading: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
   --font-body: 'Inter', 'Segoe UI', sans-serif;
 
-  --shadow-sm: 0 1px 2px rgba(42, 33, 28, 0.06), 0 1px 1px rgba(42, 33, 28, 0.04);
-  --shadow-md: 0 4px 12px rgba(42, 33, 28, 0.09), 0 2px 4px rgba(42, 33, 28, 0.05);
-  --shadow-lg: 0 10px 30px rgba(42, 33, 28, 0.14), 0 4px 10px rgba(42, 33, 28, 0.07);
-  --shadow-focus: 0 0 0 3px rgba(238, 91, 31, 0.25);
+  --shadow-sm: 0 1px 2px rgba(50, 38, 50, 0.06), 0 1px 1px rgba(50, 38, 50, 0.04);
+  --shadow-md: 0 4px 12px rgba(50, 38, 50, 0.09), 0 2px 4px rgba(50, 38, 50, 0.05);
+  --shadow-lg: 0 10px 30px rgba(50, 38, 50, 0.14), 0 4px 10px rgba(50, 38, 50, 0.07);
+  --shadow-focus: 0 0 0 3px rgba(144, 112, 170, 0.25);
 
   --radius-sm: 6px;
   --radius-md: 10px;
