@@ -10,6 +10,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
   const [maintenanceFrequency, setMaintenanceFrequency] = useState("monthly");
   const [status, setStatus] = useState("scheduled");
   const [isEditMode, setIsEditMode] = useState(false);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (editData) {
@@ -36,7 +37,8 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
             maintenanceType,
             maintenanceFrequency,
             status,
-          }
+          },
+          { headers: { Authorization: `Bearer ${token}` } }
         );
         alert("Maintenance updated successfully");
       } else {
@@ -47,7 +49,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
           maintenanceType,
           maintenanceFrequency,
           status,
-        });
+        }, { headers: { Authorization: `Bearer ${token}` } });
         alert("Maintenance scheduled successfully");
       }
 

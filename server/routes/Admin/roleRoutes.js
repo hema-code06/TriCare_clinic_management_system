@@ -1,9 +1,10 @@
 import express from "express";
 import Roles from "../../models/Admin/Roles.js";
+import { authenticate } from "../../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", authenticate, async (req, res) => {
   try {
     const newRole = new Roles(req.body);
     await newRole.save();
@@ -13,7 +14,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/", authenticate, async (req, res) => {
   try {
     const newRoles = await Roles.find();
     res.status(200).json(newRoles);
@@ -22,7 +23,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", authenticate, async (req, res) => {
   try {
     const updatedRoles = await Roles.findByIdAndUpdate(
       req.params.id,
@@ -35,7 +36,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authenticate, async (req, res) => {
   try {
     await Roles.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: "Roles deleted" });

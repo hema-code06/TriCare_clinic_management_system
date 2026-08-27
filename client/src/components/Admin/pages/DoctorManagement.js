@@ -11,6 +11,7 @@ const DoctorManagement = () => {
   const [isAdding, setIsAdding] = useState(false);
   const [showDoctorDetail, setShowDoctorDetail] = useState(false);
   const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     fetchDoctors();
@@ -21,6 +22,7 @@ const DoctorManagement = () => {
     try {
       const res = await fetch(
         `${process.env.REACT_APP_API_URL}/api/admin/doctors`,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       const data = await res.json();
       setDoctors(data);
@@ -37,14 +39,14 @@ const DoctorManagement = () => {
         `${process.env.REACT_APP_API_URL}/api/admin/doctors`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
           body: JSON.stringify(doctor),
         },
       );
-      if (res.ok) {
-        fetchDoctors();
-        closeAddModal();
-      }
+      if (res.ok) { fetchDoctors(); closeAddModal(); }
     } catch (error) {
       console.error("Failed to add doctor:", error);
     }
@@ -56,14 +58,14 @@ const DoctorManagement = () => {
         `${process.env.REACT_APP_API_URL}/api/admin/doctors/${doctor._id}`,
         {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
           body: JSON.stringify(doctor),
         },
       );
-      if (res.ok) {
-        fetchDoctors();
-        closeAddModal();
-      }
+      if (res.ok) { fetchDoctors(); closeAddModal(); }
     } catch (error) {
       console.error("Failed to update doctor:", error);
     }
@@ -75,12 +77,10 @@ const DoctorManagement = () => {
         `${process.env.REACT_APP_API_URL}/api/admin/doctors/${id}`,
         {
           method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
         },
       );
-      if (res.ok) {
-        fetchDoctors();
-        closeDetailModal();
-      }
+      if (res.ok) { fetchDoctors(); closeDetailModal(); }
     } catch (error) {
       console.error("Failed to delete doctor:", error);
     }

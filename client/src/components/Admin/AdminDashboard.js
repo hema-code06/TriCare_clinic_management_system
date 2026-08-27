@@ -47,7 +47,12 @@ const AdminDashboard = () => {
     const fetchStats = async () => {
       try {
         const res = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/admin/stats`
+          `${process.env.REACT_APP_API_URL}/api/admin/stats`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         const data = await res.json();
         setStats(data);
@@ -59,7 +64,12 @@ const AdminDashboard = () => {
     const fetchWeeklyAppointments = async () => {
       try {
         const res = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/admin/stats/weekly-appointments`
+          `${process.env.REACT_APP_API_URL}/api/admin/stats/weekly-appointments`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         const data = await res.json();
         setDashboardData(data);

@@ -12,12 +12,18 @@ const FixAppointment = () => {
   const [isRescheduleMode, setIsRescheduleMode] = useState(false);
   const [selectedAppointmentId, setSelectedAppointmentId] = useState(null);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/doctor/appointmentconfirmation`
+          `${process.env.REACT_APP_API_URL}/api/doctor/appointmentconfirmation`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         setAppointments(response.data);
       } catch (error) {
@@ -32,7 +38,12 @@ const FixAppointment = () => {
       const payload = { action, ...updatedInfo };
       const response = await axios.put(
         `${process.env.REACT_APP_API_URL}/api/doctor/appointmentconfirmation/${id}`,
-        payload
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       alert(response.data.message || "Action performed successfully!");
       setAppointments((prev) =>
@@ -85,7 +96,12 @@ const FixAppointment = () => {
     try {
       await handleAction(selectedAppointmentId, "Rescheduled", updatedData);
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/doctor/appointmentconfirmation`
+        `${process.env.REACT_APP_API_URL}/api/doctor/appointmentconfirmation`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       setAppointments(response.data);
       handleCloseModal();
@@ -118,10 +134,10 @@ const FixAppointment = () => {
                         appointment.status === "Confirmed"
                           ? "green"
                           : appointment.status === "Rescheduled"
-                          ? "blue"
-                          : appointment.status === "Canceled"
-                          ? "red"
-                          : "coral",
+                            ? "blue"
+                            : appointment.status === "Canceled"
+                              ? "red"
+                              : "coral",
                     }}
                   >
                     {appointment.status || "Pending"}
@@ -145,9 +161,8 @@ const FixAppointment = () => {
       {isModalOpen && selectedAppointment && (
         <div className="modal-overlay">
           <div
-            className={`modal-content ${
-              isRescheduleMode ? "modal-expanded" : ""
-            }`}
+            className={`modal-content ${isRescheduleMode ? "modal-expanded" : ""
+              }`}
           >
             <h4>Appointment Details</h4>
             <button onClick={handleCloseModal} className="close-modal">

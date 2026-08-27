@@ -9,12 +9,18 @@ const PatientList = () => {
   const [, setSelectedPatientId] = useState(null);
   const [patientDetails, setPatientDetails] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchPatients = async () => {
       try {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL}/api/doctor/patients`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         setPatients(response.data);
         setLoading(false);
@@ -32,6 +38,11 @@ const PatientList = () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/doctor/patient/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       setPatientDetails(response.data);
       setIsModalOpen(true);
@@ -122,9 +133,8 @@ const PatientList = () => {
                 <div className="detail-item">
                   <label>Location :</label>
                   <span>
-                    {`${patientDetails.location.city || ""}, ${
-                      patientDetails.location.state || ""
-                    }, ${patientDetails.location.country || ""}`}
+                    {`${patientDetails.location.city || ""}, ${patientDetails.location.state || ""
+                      }, ${patientDetails.location.country || ""}`}
                   </span>
                 </div>
                 <div className="detail-item">

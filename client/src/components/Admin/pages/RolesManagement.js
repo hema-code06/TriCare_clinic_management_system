@@ -11,6 +11,7 @@ const RolesManagement = () => {
   const [isAdding, setIsAdding] = useState(false);
   const [showRoleDetail, setShowRoleDetail] = useState(false);
   const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     fetchRoles();
@@ -19,7 +20,10 @@ const RolesManagement = () => {
   const fetchRoles = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/roles`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/roles`,
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        });
       const data = await res.json();
       setRoles(data);
     } catch (error) {
@@ -33,7 +37,9 @@ const RolesManagement = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/roles`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json", Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(role),
       });
       if (res.ok) {
@@ -51,7 +57,9 @@ const RolesManagement = () => {
         `${process.env.REACT_APP_API_URL}/api/admin/roles/${role._id}`,
         {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json", Authorization: `Bearer ${token}`
+          },
           body: JSON.stringify(role),
         }
       );
@@ -68,6 +76,7 @@ const RolesManagement = () => {
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/roles/${id}`, {
         method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
         fetchRoles();

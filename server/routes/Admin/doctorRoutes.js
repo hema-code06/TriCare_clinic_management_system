@@ -1,9 +1,10 @@
 import express from "express";
 import Doctor from "../../models/Admin/Doctor.js";
+import { authenticate } from "../../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", authenticate, async (req, res) => {
   try {
     const doctors = await Doctor.find();
     res.json(doctors);
@@ -12,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", authenticate, async (req, res) => {
   try {
     const doctor = new Doctor(req.body);
     await doctor.save();
@@ -22,7 +23,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", authenticate, async (req, res) => {
   try {
     const updatedDoctor = await Doctor.findByIdAndUpdate(
       req.params.id,
@@ -35,7 +36,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authenticate, async (req, res) => {
   try {
     await Doctor.findByIdAndDelete(req.params.id);
     res.json({ message: "Doctor deleted successfully" });

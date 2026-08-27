@@ -1,9 +1,10 @@
 import express from "express";
 import Patient from "../../models/Patient/Register.js";
+import { authenticate } from "../../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/patients", async (req, res) => {
+router.get("/patients", authenticate, async (req, res) => {
   try {
     const patients = await Patient.find();
 
@@ -25,7 +26,7 @@ router.get("/patients", async (req, res) => {
   }
 });
 
-router.get("/patient/:id", async (req, res) => {
+router.get("/patient/:id", authenticate, async (req, res) => {
   const { id } = req.params;
 
   try {

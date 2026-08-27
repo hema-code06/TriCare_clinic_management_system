@@ -1,9 +1,10 @@
 import express from "express";
 import Maintenance from "../../models/Admin/maintenance.js";
+import { authenticate } from "../../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", authenticate, async (req, res) => {
   try {
     const {
       assetName,
@@ -40,7 +41,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/", authenticate, async (req, res) => {
   try {
     const maintenanceRecords = await Maintenance.find();
     res.status(200).json(maintenanceRecords);
@@ -49,7 +50,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", authenticate, async (req, res) => {
   try {
     const { id } = req.params;
     const {
@@ -94,7 +95,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authenticate, async (req, res) => {
   try {
     const { id } = req.params;
     const deletedRecord = await Maintenance.findByIdAndDelete(id);

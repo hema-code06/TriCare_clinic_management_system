@@ -4,13 +4,14 @@ import "../styles/AppointmentDetails.css";
 
 const AppointmentDetails = () => {
   const [appointments, setAppointments] = useState([]);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchConfirmedAppointments = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/admin/appointments/confirmed`
-        );
+          `${process.env.REACT_APP_API_URL}/api/admin/appointments/confirmed`,
+          { headers: { Authorization: `Bearer ${token}` } });
         setAppointments(response.data);
       } catch (error) {
         console.error("Error fetching confirmed appointments:", error.message);

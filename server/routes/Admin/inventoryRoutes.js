@@ -1,9 +1,10 @@
 import express from "express";
 import Inventory from "../../models/Admin/Inventory.js";
+import { authenticate } from "../../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", authenticate, async (req, res) => {
   try {
     const newInventoryItem = new Inventory(req.body);
     await newInventoryItem.save();
@@ -13,7 +14,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/", authenticate, async (req, res) => {
   try {
     const inventoryItems = await Inventory.find();
     res.status(200).json(inventoryItems);
@@ -22,7 +23,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", authenticate, async (req, res) => {
   try {
     const updatedItem = await Inventory.findByIdAndUpdate(
       req.params.id,
@@ -35,7 +36,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authenticate, async (req, res) => {
   try {
     await Inventory.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: "Item deleted" });

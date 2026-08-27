@@ -10,6 +10,7 @@ const InventoryPage = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     fetchInventory();
@@ -20,6 +21,7 @@ const InventoryPage = () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/admin/inventory`,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       setInventory(response.data);
     } catch (error) {
@@ -31,13 +33,11 @@ const InventoryPage = () => {
 
   const addItem = async (newItem) => {
     try {
-      setInventory(
-        (
-          await axios.get(
-            `${process.env.REACT_APP_API_URL}/api/admin/inventory`,
-          )
-        ).data,
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/admin/inventory`, newItem,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
+
       fetchInventory();
       closeModal();
     } catch (error) {
@@ -50,6 +50,7 @@ const InventoryPage = () => {
       await axios.put(
         `${process.env.REACT_APP_API_URL}/api/admin/inventory/${updatedItem._id}`,
         updatedItem,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       fetchInventory();
       closeModal();
@@ -62,6 +63,7 @@ const InventoryPage = () => {
     try {
       await axios.delete(
         `${process.env.REACT_APP_API_URL}/api/admin/inventory/${id}`,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       fetchInventory();
     } catch (error) {

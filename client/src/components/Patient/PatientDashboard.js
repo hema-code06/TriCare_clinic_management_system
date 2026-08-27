@@ -39,7 +39,7 @@ const PatientDashboard = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("patientId");
-
+    localStorage.removeItem("patientToken");
     navigate("/");
   };
 

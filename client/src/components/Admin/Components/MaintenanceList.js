@@ -4,11 +4,13 @@ import "../styles/MaintenanceList.css";
 
 const MaintenanceList = ({ refresh, onEditClick }) => {
   const [maintenanceList, setMaintenanceList] = useState([]);
+  const token = localStorage.getItem("token");
 
   const fetchMaintenanceData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/admin/maintenance`
+        `${process.env.REACT_APP_API_URL}/api/admin/maintenance`,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       setMaintenanceList(response.data);
     } catch (error) {
@@ -23,7 +25,9 @@ const MaintenanceList = ({ refresh, onEditClick }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/api/admin/maintenance/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/admin/maintenance/${id}`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       alert("Maintenance record deleted successfully");
       fetchMaintenanceData();
     } catch (error) {

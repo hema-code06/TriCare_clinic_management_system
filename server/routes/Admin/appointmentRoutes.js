@@ -1,10 +1,11 @@
 import express from "express";
 import FixAppointment from "../../models/Doctor/FixAppointment.js";
 import PatientAppointment from "../../models/Admin/PatientAppointment.js";
+import { authenticate } from "../../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/confirmed", async (req, res) => {
+router.get("/confirmed", authenticate, async (req, res) => {
   try {
     const confirmedAppointments = await FixAppointment.find({
       status: "Confirmed",
@@ -27,7 +28,7 @@ router.get("/confirmed", async (req, res) => {
   }
 });
 
-router.put("/confirm/:id", async (req, res) => {
+router.put("/confirm/:id", authenticate, async (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
 
