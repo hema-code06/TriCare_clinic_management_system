@@ -16,6 +16,19 @@ Each role authenticates separately and only has access to the parts of the syste
 
 ---
 
+## Demo Credentials
+
+Admin and Doctor accounts are seeded automatically on first server start, so the platform can be explored end-to-end without registering a new account:
+
+| Role   | Username | Password   |
+|--------|----------|------------|
+| Admin  | `admin`  | `password` |
+| Doctor | `doctor` | `password` |
+
+These are seed credentials for demo purposes only — not representative of production auth practices. See [Architecture & Security](#architecture--security) for how authentication and authorization are actually designed in this system.
+
+---
+
 ## Core Features
 
 ### Admin Dashboard
@@ -60,6 +73,15 @@ Each role authenticates separately and only has access to the parts of the syste
 
 ---
 
+## Architecture & Security
+ 
+- **Dual JWT authentication** — Admin/Doctor and Patient roles each carry their own signed JWT, verified independently by role-specific middleware on every protected route.
+- **Resource-level authorization** — patients can only ever read or modify their own profile; the server checks the authenticated identity against the requested resource on every request, not just whether a token is present.
+- **Password security** — all credentials are hashed with bcrypt before storage; plaintext passwords are never persisted.
+- **Route-level protection on both ends** — protected pages are gated on the client, and the same access rules are independently enforced on the API, so the UI is never the only line of defense.
+  
+---
+
 ## Project Structure
 
 ```
@@ -89,7 +111,7 @@ git clone https://github.com/hema-code06/TriCare_clinic_management_system.git
 cd TriCare_clinic_management_system
 
 cd server && npm install
-cd client && npm install
+cd ../client && npm install
 ```
 
 Configure `server/.env`:
@@ -118,6 +140,7 @@ The app runs at `http://localhost:3000`.
 - Doctor availability calendar with real-time slot booking
 - Patient medical history and prescription records
 - Billing and payments integration
+- Role-based analytics dashboard for Admin (trends over time, not just live counts)
 
 ---
 
