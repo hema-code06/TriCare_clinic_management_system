@@ -3,19 +3,20 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: var(--color-bg);
 }
 
 .patient-login-form {
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
   width: 100%;
   max-width: 500px;
   text-align: center;
   animation: slideIn 0.5s ease-in-out;
+  background-color: var(--color-surface);
 }
 
-/* Form animation */
 @keyframes slideIn {
   from {
     transform: translateY(-50px);
@@ -30,12 +31,13 @@
 .patient-login-form h2 {
   text-transform: uppercase;
   margin-bottom: 2.5rem;
-  color: #333;
+  color: var(--color-text);
+  font-family: var(--font-heading);
   font-size: 1.5rem;
 }
 
 .error {
-  color: #ff5252;
+  color: var(--color-danger);
   font-size: 0.9rem;
   margin-bottom: 1rem;
 }
@@ -45,41 +47,57 @@
   outline: none;
   padding: 0.8rem;
   margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   font-size: 1rem;
-  transition: border-color 0.3s ease-in-out;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.patient-login input:focus {
+  border-color: var(--color-primary-400);
+  box-shadow: var(--shadow-focus);
 }
 
 .patient-login-button {
-  width: 25%;
-  height: 40px;
+  width: 40%;
+  height: 42px;
   color: #fff;
   font-weight: 600;
-  background: teal !important;
+  font-family: var(--font-body);
+  background: var(--color-primary-500) !important;
   text-transform: uppercase;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   font-size: 15px !important;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base);
 }
 
 .patient-login-button:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-md);
+  background: var(--color-primary-600) !important;
 }
 
-p {
+.patient-login-form p {
   margin-top: 3rem;
   font-size: 0.9rem;
+  color: var(--color-text-muted);
 }
 
-a {
-  color: teal;
+.patient-login-form a {
+  color: var(--color-primary-600);
   text-decoration: none;
-  transition: color 0.3s ease-in-out;
+  font-weight: 600;
+  transition: color var(--transition-base);
 }
+
+.patient-login-form a:hover {
+  color: var(--color-primary-700);
+}
+
 @media (max-width: 768px) {
   .patient-login-form {
     padding: 1.5rem;
@@ -95,10 +113,11 @@ a {
   }
 
   .patient-login-button {
+    width: 55%;
     font-size: 0.9rem;
   }
 
-  p {
+  .patient-login-form p {
     font-size: 0.8rem;
   }
 }
@@ -114,11 +133,13 @@ a {
   }
 
   .patient-login-button {
+    width: 100%;
     font-size: 0.8rem;
     padding: 0.7rem;
+    height: auto;
   }
 
-  p {
+  .patient-login-form p {
     font-size: 0.7rem;
   }
 }

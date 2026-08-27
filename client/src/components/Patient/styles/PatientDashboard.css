@@ -4,6 +4,10 @@
   left: 0;
   right: 0;
   z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
 }
 
 .logo {
@@ -13,27 +17,30 @@
 }
 
 .navbar-links a {
-  color: #333;
+  color: var(--color-text);
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
   margin: 0 20px;
+  transition: color var(--transition-base);
 }
 
 .navbar-links a:hover {
-  color: teal;
+  color: var(--color-primary-600);
 }
 
 .patient-logout-button {
-  color: #333;
+  color: var(--color-text);
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
   margin: 0 20px;
+  cursor: pointer;
+  transition: color var(--transition-base);
 }
 
 .patient-logout-button:hover {
-  color: teal;
+  color: var(--color-primary-600);
 }
 
 .hero-section {
@@ -44,13 +51,13 @@
   background-repeat: no-repeat;
   width: 100%;
   min-height: 100vh;
-  animation: fadeIn 2s ease-in-out;
+  animation: fadeIn 1.2s ease-in-out;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: #333;
+  color: var(--color-text);
   overflow: hidden;
-  filter: brightness(1.1);
+  filter: brightness(1.05);
 }
 
 .hero-content {
@@ -63,34 +70,37 @@
   text-align: start;
   line-height: 2;
   margin-bottom: 10%;
-  animation: slideInLeft 1s ease-out;
+  animation: slideInLeft 0.8s ease-out;
   width: 505px !important;
+  font-family: var(--font-heading);
 }
 
 .quote-text {
   text-align: start;
-  color: #fe4343;
+  color: var(--color-accent-600);
   font-size: 1.3rem !important;
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 .hero-buttons .button {
   display: inline-block;
   padding: 15px 30px;
-  border-radius: 50px;
+  border-radius: var(--radius-full);
   font-size: 1.2rem;
-  background: linear-gradient(45deg, #3498db, #2980b9);
+  background: linear-gradient(45deg, var(--color-primary-500), var(--color-primary-600));
   color: #fff;
   text-decoration: none;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: all 0.4s ease-in-out, transform 0.2s ease-in-out;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
 }
 
 .hero-buttons .button:hover {
-  background: linear-gradient(45deg, #2980b9, #1c6ea4);
+  background: linear-gradient(45deg, var(--color-primary-600), var(--color-primary-700));
   transform: translateY(-5px) scale(1.05);
+  box-shadow: var(--shadow-lg);
 }
 
 @keyframes fadeIn {
@@ -114,6 +124,7 @@
 .doctor-card-section {
   padding: 30px;
   min-height: 100vh;
+  background-color: var(--color-bg);
 }
 
 .doctor-cards {
@@ -122,23 +133,27 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 70px;
+  gap: 40px;
   padding: 30px;
 }
 
 .doctor-card {
   width: 22%;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding-bottom: 16px;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
   cursor: pointer;
 }
 
 .doctor-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-300);
 }
 
 .doctor-card img {
@@ -146,11 +161,17 @@
   height: 150px;
   object-fit: cover;
   border-radius: 50%;
-  transition: transform 0.3s ease;
+  margin-top: 20px;
+  border: 4px solid var(--color-primary-100);
+  transition: transform var(--transition-base);
+}
+
+.doctor-card:hover img {
+  transform: scale(1.05);
 }
 
 .doctor-card p {
-  color: #333;
+  color: var(--color-text-muted);
   font-size: 16px;
   margin: 15px 0;
 }
@@ -158,12 +179,14 @@
 .doctor-card h3 {
   font-size: 20px;
   margin: 15px 0;
-  color: #033f7b;
+  font-family: var(--font-heading);
+  color: var(--color-primary-700);
 }
 
 .services-section {
   min-height: 100vh;
   padding: 30px !important;
+  background-color: var(--color-bg-alt);
 }
 
 .services {
@@ -174,34 +197,36 @@
 }
 
 .service {
-  background: linear-gradient(130deg, #8ee8ff, #fcfbfb);
+  background: linear-gradient(130deg, var(--color-primary-100), var(--color-surface));
   padding: 20px;
-  border-radius: 15px;
+  border-radius: var(--radius-lg);
   width: 25%;
   text-align: center;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s, box-shadow 0.4s;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
   cursor: pointer;
 }
 
 .service:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
 }
 
 .service h3 {
-  color: #2c3e50;
+  color: var(--color-primary-700);
+  font-family: var(--font-heading);
   font-size: 1.3rem;
-  transition: color 0.3s;
+  transition: color var(--transition-base);
 }
 
 .service p {
-  color: #7f8c8d;
+  color: var(--color-text-muted);
 }
 
 .features-section {
   padding: 30px;
   min-height: 100vh;
+  background-color: var(--color-bg);
 }
 
 .features {
@@ -216,32 +241,33 @@
   height: auto;
   max-height: 150px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   margin-bottom: 10px;
 }
 
 .feature {
-  background: linear-gradient(to bottom, #ecf0f1, #bdc3c7) !important;
+  background: linear-gradient(to bottom, var(--color-surface), var(--color-primary-50)) !important;
   padding: 20px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   width: 25%;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s, box-shadow 0.4s;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .feature:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: var(--shadow-lg);
 }
 
 .feature h3 {
-  color: #1c6ea4;
+  color: var(--color-primary-700);
+  font-family: var(--font-heading);
   font-size: 1.2rem;
-  transition: color 0.3s;
+  transition: color var(--transition-base);
 }
 
 .feature:hover h3 {
-  color: #3498db;
+  color: var(--color-primary-600);
 }
 
 .contact-us-section {
@@ -261,34 +287,36 @@
   margin-left: 50%;
   padding: 20px;
   margin-top: 5%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-lg);
 }
 
 .right-content p {
-  color: #333;
+  color: var(--color-text);
   font-size: 18px !important;
 }
 
 .right-content i {
   font-size: 20px;
-  color: #1c6ea4;
+  color: var(--color-primary-600);
   margin-right: 10px;
 }
 
 .right-content a {
-  color: #2c3e50;
+  color: var(--color-text);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color var(--transition-base);
 }
 
 .right-content a:hover {
-  color: #0056b3;
+  color: var(--color-primary-600);
 }
 
 .footer {
   display: flex;
   flex-direction: row;
   color: #fff;
-  background-color: #333;
+  background-color: var(--color-primary-800);
   padding: 20px;
   font-size: 16px;
   justify-content: center;
@@ -309,25 +337,46 @@
   font-weight: 600;
 }
 
+@media (max-width: 1200px) {
+  .hero-content {
+    padding: 60px;
+  }
+
+  .contact-container {
+    margin-left: 40%;
+  }
+}
+
 @media (max-width: 1024px) {
   .doctor-card,
   .service,
   .feature {
     width: 45%;
   }
+
   .logo {
     margin-left: 10%;
   }
+
+  .hero-content {
+    padding: 50px;
+  }
+
+  .hero-content h1 {
+    width: 420px !important;
+  }
+
   .contact-us-section {
-    font-size: 20px !important;
-    position: relative;
-    display: flex;
-    flex-direction: column;
     min-height: 50vh;
-    background-image: url(https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854031.jpg?semt=ais_hybrid);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  }
+
+  .contact-container {
+    margin-left: 20%;
+  }
+
+  .doctor-cards {
+    gap: 24px;
+    padding: 20px;
   }
 }
 
@@ -337,20 +386,59 @@
   .feature {
     width: 100%;
   }
+
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .logo {
+    margin-left: 0;
+    width: 60px;
+    height: 60px;
+  }
+
+  .navbar-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .navbar-links a,
   .patient-logout-button {
     font-size: 0.9rem;
+    margin: 6px 10px;
   }
+
+  .hero-content {
+    padding: 30px;
+  }
+
+  .hero-content h1 {
+    width: 100% !important;
+    font-size: 1.1rem;
+  }
+
+  .doctor-cards,
+  .services,
+  .features {
+    gap: 16px;
+    padding: 16px;
+  }
+
   .contact-us-section {
-    font-size: 20px !important;
-    position: relative;
-    display: flex;
-    flex-direction: column;
     min-height: 50vh;
-    background-image: url(https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854031.jpg?semt=ais_hybrid);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  }
+
+  .contact-container {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 16px;
+  }
+
+  .footer {
+    padding: 16px;
+    font-size: 14px;
   }
 }
 
@@ -359,26 +447,43 @@
     font-size: 1rem;
     width: auto !important;
   }
+
   .quote-text {
     font-size: 1rem !important;
   }
+
   .hero-buttons .button {
     font-size: 1rem;
     padding: 10px 20px;
   }
+
   .contact-container {
     flex-direction: column;
-    margin-left: 0;
+    margin-left: 4%;
+    margin-right: 4%;
+    padding: 12px;
   }
+
   .contact-us-section {
-    font-size: 20px !important;
-    position: relative;
-    display: flex;
-    flex-direction: column;
     min-height: 50vh;
-    background-image: url(https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854031.jpg?semt=ais_hybrid);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  }
+
+  .doctor-card img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .doctor-card h3 {
+    font-size: 18px;
+  }
+
+  .service h3,
+  .feature h3 {
+    font-size: 1.05rem;
+  }
+
+  .footer-text {
+    font-size: 14px;
+    text-align: center;
   }
 }

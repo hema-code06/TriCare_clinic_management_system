@@ -23,6 +23,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  animation: fadeIn 0.5s ease both;
 }
 
 .doctor-logo {
@@ -32,25 +33,45 @@
 }
 
 .doctor-navbar-links a {
-  color: #333;
+  color: var(--color-text);
   text-decoration: none;
   font-size: 1rem !important;
   font-weight: 600 !important;
   margin: 0 20px;
+  transition: color var(--transition-base), font-size var(--transition-base);
 }
-.doctor-navbar-links a:hover{
-    color: teal;
-    font-size: 1.1rem;
+
+.doctor-navbar-links a:hover {
+  color: var(--color-primary-600);
+  font-size: 1.06rem;
 }
+
 .logout-btn {
-  color: #333;
+  color: var(--color-text);
   font-size: 1rem !important;
   font-weight: 600 !important;
   margin: 0 20px;
+  cursor: pointer;
+  transition: color var(--transition-base), font-size var(--transition-base);
 }
-.logout-btn:hover{
-    color: teal;
-    font-size: 1.1rem;
+
+.logout-btn:hover {
+  color: var(--color-primary-600);
+  font-size: 1.06rem;
+}
+
+@media (max-width: 1024px) {
+  .doctor-logo {
+    width: 90px;
+    height: 90px;
+    margin-left: 4%;
+  }
+
+  .doctor-navbar-links a,
+  .logout-btn {
+    margin: 0 14px;
+    font-size: 0.95rem !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -66,10 +87,16 @@
     margin: 0;
   }
 
+  .doctor-navbar-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .doctor-navbar-links a {
     flex-direction: column;
     align-items: center;
-    margin: 10px 0;
+    margin: 10px 8px;
   }
 }
 
@@ -83,10 +110,22 @@
     padding: 10px;
   }
 
-  .doctor-navbar-links a {
-    margin: 5px 0;
+  .doctor-navbar-links a,
+  .logout-btn {
+    margin: 5px 6px;
+    font-size: 0.85rem !important;
   }
 }
 
+@media (max-width: 360px) {
+  .doctor-logo {
+    width: 50px;
+    height: 50px;
+  }
 
-
+  .doctor-navbar-links a,
+  .logout-btn {
+    font-size: 0.75rem !important;
+    margin: 4px;
+  }
+}
