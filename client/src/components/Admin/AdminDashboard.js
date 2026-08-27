@@ -165,14 +165,18 @@ const AdminDashboard = () => {
         </div>
         <ul className="sidebar-menu">
           <li onClick={() => navigate("/doctor-management")}>Doctors</li>
+          <li onClick={() => navigate("/roles-management")}>User</li>
+          <li onClick={() => navigate("/inventory-management")}>Inventory</li>
           <li onClick={() => navigate("/appointment-management")}>
             Appointments
           </li>
-          <li onClick={() => navigate("/inventory-management")}>Inventory</li>
           <li onClick={() => navigate("/maintenance-management")}>
             Maintenance
           </li>
-          <li onClick={() => navigate("/roles-management")}>User</li>
+          <li onClick={() => navigate("/patients-management")}>Patients</li>
+          <li onClick={() => navigate("/statistics-management")}>Statistics</li>
+          <li onClick={() => navigate("/profile-management")}>Profile</li>
+          <li onClick={() => navigate("/settings-management")}>Settings</li>
           <li onClick={handleLogout}>Logout</li>
         </ul>
       </aside>
