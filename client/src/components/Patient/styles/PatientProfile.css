@@ -1,10 +1,13 @@
 .patientprofile-container {
   min-height: 100vh;
+  background-color: var(--color-bg);
+  padding: 20px;
 }
 
 .patientprofile-container h1 {
   font-size: 2rem;
-  color: coral;
+  color: var(--color-accent-600);
+  font-family: var(--font-heading);
   margin-bottom: 20px;
   position: relative;
   text-align: center;
@@ -16,23 +19,32 @@
   right: 10px;
   background: none !important;
   cursor: pointer;
+  transition: transform var(--transition-base);
+}
+
+.patient-edit-button:hover {
+  transform: scale(1.1);
 }
 
 .patient-edit-button i {
   background: none !important;
-  color: coral !important;
+  color: var(--color-accent-600) !important;
   font-size: 1.5rem;
 }
 
 .patient-profile {
-  margin-top: 8%;
+  margin-top: 5%;
   width: 100% !important;
   max-width: 1100px !important;
-  border-radius: 15px;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  padding: 40px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
-  margin-left: 10%;
+  gap: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .patient-field {
@@ -40,48 +52,56 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 16px;
 }
 
 .patient-field i {
-  color: rgb(45, 48, 103) !important;
+  color: var(--color-primary-500) !important;
   font-size: 1.5rem;
-  color: rgba(22, 38, 77, 0.361);
 }
 
 .patient-field p {
   font-size: 1rem;
-  color: #555;
+  color: var(--color-text-muted);
   margin: 0;
 }
+
 .modal-overlay {
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(50, 38, 50, 0.5) !important;
   backdrop-filter: blur(5px) !important;
 }
 
 .edit-profile-modal {
-  background-color: #fff;
+  background-color: var(--color-surface);
   width: 100%;
   max-width: 1180px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   height: 90%;
-  overflow: hidden !important;
+  overflow-y: auto !important;
   max-height: 90vh;
+  box-shadow: var(--shadow-lg);
 }
 
 .modal-header h2 {
   text-align: center;
   margin: 0;
-  color: teal;
+  font-family: var(--font-heading);
+  color: var(--color-primary-700);
 }
 
 .close-button {
   margin-left: 75%;
   font-size: 30px !important;
-  color: #333 !important;
+  color: var(--color-text-muted) !important;
   cursor: pointer;
   background: none;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.close-button:hover {
+  color: var(--color-danger) !important;
+  transform: rotate(90deg);
 }
 
 .edit-profile-patientform {
@@ -91,28 +111,150 @@
   padding: 10px;
   margin-top: 30px;
 }
+
 .edit-profile-patientform label {
-  color: #333;
+  color: var(--color-text-muted);
+  font-weight: 600;
 }
+
 .edit-profile-patientform input,
 .edit-profile-patientform select {
   padding: 8px;
   font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   width: 55%;
   margin-left: 3%;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.edit-profile-patientform input:focus,
+.edit-profile-patientform select:focus {
+  outline: none;
+  border-color: var(--color-primary-400);
+  box-shadow: var(--shadow-focus);
 }
 
 .save-changes-patientbutton {
-  margin-top: 100px;
+  margin-top: 60px;
   width: 40%;
   padding: 10px 15px;
-  background-color: teal;
+  background-color: var(--color-primary-500);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   margin-left: 60%;
+  transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.save-changes-patientbutton:hover {
+  background-color: var(--color-primary-600);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 1024px) {
+  .patient-profile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    padding: 28px;
+  }
+
+  .edit-profile-patientform {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .edit-profile-patientform input,
+  .edit-profile-patientform select {
+    width: 75%;
+  }
+
+  .save-changes-patientbutton {
+    margin-left: 40%;
+    width: 55%;
+  }
+}
+
+@media (max-width: 768px) {
+  .patientprofile-container {
+    padding: 12px;
+  }
+
+  .patient-profile {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 12%;
+  }
+
+  .patientprofile-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .edit-profile-modal {
+    padding: 14px;
+  }
+
+  .edit-profile-patientform {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .edit-profile-patientform input,
+  .edit-profile-patientform select {
+    width: 90%;
+    margin-left: 0;
+  }
+
+  .save-changes-patientbutton {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .close-button {
+    margin-left: 88%;
+    font-size: 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .patientprofile-container h1 {
+    font-size: 1.3rem;
+  }
+
+  .patient-profile {
+    padding: 14px;
+    gap: 16px;
+  }
+
+  .patient-field p {
+    font-size: 0.9rem;
+  }
+
+  .patient-field i {
+    font-size: 1.2rem;
+  }
+
+  .edit-profile-patientform input,
+  .edit-profile-patientform select {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .save-changes-patientbutton {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .close-button {
+    margin-left: 82%;
+    font-size: 20px !important;
+  }
 }

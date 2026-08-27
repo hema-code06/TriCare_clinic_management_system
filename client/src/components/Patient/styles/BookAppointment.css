@@ -13,7 +13,7 @@
 .grid-appointment label {
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease-in-out;
+  transition: all var(--transition-base);
 }
 
 .grid-appointment input,
@@ -23,74 +23,109 @@
   font-size: 13px;
   padding: 10px;
   width: 90%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
   resize: none;
 }
 
-label {
-  font-weight: 600;
-  color: grey;
-  font-size: 14px;
-  transition: color 0.3s ease;
+.grid-appointment input:focus,
+.grid-appointment select:focus,
+.grid-appointment textarea:focus {
+  border-color: var(--color-primary-400);
+  box-shadow: var(--shadow-focus);
 }
 
-label:hover {
-  color: rgb(90, 89, 89);
+.grid-appointment label {
+  font-weight: 600;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  transition: color var(--transition-base);
+}
+
+.grid-appointment label:hover {
+  color: var(--color-text);
 }
 
 .appointment-button {
   padding: 10px 15px;
   color: #fff;
-  font-weight: bold;
-  background: linear-gradient(135deg, #008080, #3dfef4) !important;
+  font-weight: 700;
+  font-family: var(--font-body);
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-400)) !important;
   text-transform: uppercase;
   margin-left: 95%;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: 14px;
-  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+  box-shadow: var(--shadow-sm);
+  transition: background var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .appointment-button:hover {
   font-size: 14px;
-  background: linear-gradient(135deg, #3dfef4, #008080) !important;
+  background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-600)) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 @media (max-width: 1024px) {
+  .appointment-container {
+    padding: 35px;
+  }
+
   .grid-appointment {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+
   .appointment-button {
     margin-top: 5%;
-    margin-left: 85%;
+    margin-left: 0;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .grid-appointment {
     grid-template-columns: 1fr !important;
+    gap: 20px;
   }
+
   .appointment-container {
-    padding: 30px;
+    padding: 24px;
   }
+
+  .grid-appointment input,
+  .grid-appointment select,
+  .grid-appointment textarea {
+    width: 100%;
+  }
+
   .appointment-button {
     margin-top: 5%;
-    margin-left: 75%;
+    margin-left: 0;
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .appointment-container {
-    padding: 20px;
+    padding: 16px;
   }
+
+  .grid-appointment {
+    gap: 14px;
+  }
+
   .appointment-button {
     margin-top: 5%;
-    margin-left: 50%;
-    padding: 8px 12px;
-    font-size: 12px;
+    margin-left: 0;
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 13px;
   }
 }
