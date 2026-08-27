@@ -19,7 +19,7 @@ const AppointmentDetails = () => {
     };
 
     fetchConfirmedAppointments();
-  }, []);
+  }, [token]);
 
   return (
     <div className="admin-appointments">

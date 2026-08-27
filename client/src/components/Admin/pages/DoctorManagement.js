@@ -13,10 +13,6 @@ const DoctorManagement = () => {
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    fetchDoctors();
-  }, []);
-
   const fetchDoctors = async () => {
     setLoading(true);
     try {
@@ -32,6 +28,10 @@ const DoctorManagement = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchDoctors();
+  }, [fetchDoctors]);
 
   const handleAddDoctor = async (doctor) => {
     try {

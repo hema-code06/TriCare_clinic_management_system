@@ -21,7 +21,7 @@ const MaintenanceList = ({ refresh, onEditClick }) => {
 
   useEffect(() => {
     fetchMaintenanceData();
-  }, [refresh]);
+  }, [fetchMaintenanceData, refresh]);
 
   const handleDelete = async (id) => {
     try {

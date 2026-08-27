@@ -80,7 +80,7 @@ const AdminDashboard = () => {
 
     fetchStats();
     fetchWeeklyAppointments();
-  }, []);
+  }, [token]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
