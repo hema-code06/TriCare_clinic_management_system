@@ -1,19 +1,21 @@
 .maintenance-management {
   min-height: 100vh;
-  animation: fadeIn 1.2s ease-in-out;
+  animation: fadeIn 0.6s ease-in-out;
   padding: 1rem;
   overflow: hidden;
+  background-color: var(--color-bg);
 }
 
 .maintenance-management h1 {
   text-transform: uppercase;
   text-align: center;
-  color: #0077b6;
+  color: var(--color-primary-600);
+  font-family: var(--font-heading);
   font-size: 25px;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 2px;
   position: relative;
-  animation: slideInFromTop 1s ease-out;
+  animation: slideInFromTop 0.6s ease-out;
 }
 
 .add-button {
@@ -22,22 +24,25 @@
   margin-left: 80% !important;
   font-size: 13px;
   font-weight: 600;
-  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  font-family: var(--font-body);
+  background: var(--color-primary-500);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base);
   padding: 12px 20px;
+  box-shadow: var(--shadow-sm);
 }
 
 .add-button:hover {
-  transform: scale(1);
-  background: linear-gradient(135deg, #00b4d8, #0077b6);
-  background-color: #00b4d8;
+  transform: scale(1.04);
+  background: var(--color-primary-600);
+  box-shadow: var(--shadow-md);
 }
 
 .add-button:active {
   transform: scale(0.98);
+  box-shadow: var(--shadow-sm);
 }
 
 @keyframes fadeIn {
@@ -62,31 +67,88 @@
   }
 }
 
-@keyframes bounceIn {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 .modal-content {
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   width: 100% !important;
   max-width: 800px !important;
   height: 50% !important;
   min-height: 300px !important;
+  background-color: var(--color-surface);
 }
 
 .close-button {
   margin-left: 97%;
-  color: #333 !important;
+  color: var(--color-text-muted) !important;
   cursor: pointer;
   background: none !important;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.close-button:hover {
+  color: var(--color-danger) !important;
+  transform: rotate(90deg);
+}
+
+@media (max-width: 1024px) {
+  .maintenance-management h1 {
+    font-size: 22px;
+  }
+
+  .add-button {
+    margin-left: 70% !important;
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+
+  .modal-content {
+    height: auto !important;
+    min-height: 380px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .maintenance-management {
+    padding: 0.75rem;
+  }
+
+  .maintenance-management h1 {
+    font-size: 19px;
+    letter-spacing: 1px;
+  }
+
+  .add-button {
+    margin-left: 0 !important;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+
+  .modal-content {
+    min-height: 320px !important;
+  }
+
+  .close-button {
+    margin-left: 92%;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .maintenance-management h1 {
+    font-size: 16px;
+  }
+
+  .add-button {
+    font-size: 11px;
+    padding: 10px 14px;
+  }
+
+  .modal-content {
+    min-height: 280px !important;
+  }
+
+  .close-button {
+    margin-left: 88%;
+    font-size: 16px;
+  }
 }

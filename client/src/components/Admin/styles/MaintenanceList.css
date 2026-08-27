@@ -1,42 +1,102 @@
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 5%;
-    font-size: 14px;
-    text-align: center;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  thead {
-    background: linear-gradient(135deg, #0077b6, #01c7ef);
-    color: white;
-  }
-  
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5%;
+  font-size: 14px;
+  text-align: center;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+thead {
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-400));
+  color: white;
+}
+
+thead th {
+  padding: 12px 25px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  letter-spacing: 0.02em;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast);
+}
+
+tbody td {
+  padding: 30px 15px;
+  color: var(--color-text);
+}
+
+tbody tr:hover {
+  background-color: var(--color-primary-50);
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  color: var(--color-primary-600);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+button:hover {
+  font-size: 16px;
+  color: var(--color-primary-700);
+  transform: scale(1.08);
+}
+
+@media (max-width: 1024px) {
   thead th {
-    padding: 12px 25px;
-    font-weight: bold;
+    padding: 10px 15px;
   }
-  
-  tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  
+
   tbody td {
-    padding: 30px 15px;
+    padding: 20px 12px;
   }
-  
-  tbody tr:hover {
-    background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 12px;
+    -webkit-overflow-scrolling: touch;
   }
-  
+
+  thead th {
+    padding: 8px 10px;
+  }
+
+  tbody td {
+    padding: 14px 8px;
+  }
+
   button {
-    background: none;
-    border: none;
-    font-size: 15px;
-    cursor: pointer;
+    font-size: 14px;
   }
-  button:hover {
-    font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  table {
+    font-size: 11px;
   }
-  
+
+  thead th {
+    padding: 6px 8px;
+  }
+
+  tbody td {
+    padding: 10px 5px;
+  }
+
+  button {
+    font-size: 13px;
+  }
+}
