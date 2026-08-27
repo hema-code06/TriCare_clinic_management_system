@@ -104,7 +104,6 @@ router.get("/profile/:id", authenticatePatient, async (req, res) => {
       address: patient.address,
       age: patient.age,
       gender: patient.gender,
-      contactNumber: patient.contactNumber,
       location: patient.location,
       bloodType: patient.bloodType,
       occupation: patient.occupation,
