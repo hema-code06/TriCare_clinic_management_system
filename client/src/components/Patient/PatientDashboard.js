@@ -115,7 +115,7 @@ const PatientDashboard = () => {
           </div>
           <div className="doctor-card">
             <img
-              src="https://t4.ftcdn.net/jpg/06/43/62/53/360_F_643625328_VPkhbt47OV328Nzqexsg2zjVu7tTgdXx.jpg"
+              src="https://r2.erweima.ai/imgcompressed/compressed_f362969915734c54b4d5599a5fdc46e4.webp"
               alt="Doctor 5"
             />
             <h3>Dr. Kenny</h3>
@@ -207,6 +207,10 @@ const PatientDashboard = () => {
 
       <section className="contact-us-section full-page">
         <h1 style={{ textAlign: "center" }}>Contact Us</h1>
+        <p className="contact-subtitle">
+          We're here to help — reach out to our team anytime and we'll get
+          back to you as soon as possible.
+        </p>
         <div className="contact-container">
           <div className="right-content">
             <p>

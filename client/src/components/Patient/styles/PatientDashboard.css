@@ -291,46 +291,20 @@
   min-height: 100vh;
   overflow: hidden;
   padding: 60px 6%;
-  background-color: var(--color-bg-alt);
   background-image:
-    radial-gradient(circle at 12% 18%, rgba(197, 179, 211, 0.55), transparent 42%),
-    radial-gradient(circle at 88% 12%, rgba(245, 203, 203, 0.55), transparent 40%),
-    radial-gradient(circle at 82% 88%, rgba(255, 226, 226, 0.6), transparent 45%),
-    radial-gradient(circle at 8% 85%, rgba(197, 179, 211, 0.4), transparent 40%),
-    linear-gradient(160deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
-}
-
-.contact-us-section::before,
-.contact-us-section::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(2px);
-  opacity: 0.5;
-  z-index: 0;
-}
-
-.contact-us-section::before {
-  width: 260px;
-  height: 260px;
-  top: 8%;
-  right: 10%;
-  background: radial-gradient(circle, var(--color-primary-200), transparent 70%);
-}
-
-.contact-us-section::after {
-  width: 320px;
-  height: 320px;
-  bottom: 6%;
-  left: 6%;
-  background: radial-gradient(circle, var(--color-accent-300), transparent 70%);
+    linear-gradient(160deg, rgba(50, 38, 50, 0.5), rgba(144, 112, 170, 0.35)),
+    url("https://images.unsplash.com/photo-1608979827489-2b855e79debe?fm=jpg&q=80&w=1800&auto=format&fit=crop");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .contact-us-section h1 {
   position: relative;
   z-index: 1;
   font-family: var(--font-heading);
-  color: var(--color-primary-700);
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
   font-size: 2.4rem !important;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -344,7 +318,19 @@
   height: 3px;
   margin: 14px auto 0;
   border-radius: var(--radius-full);
-  background: linear-gradient(90deg, var(--color-primary-500), var(--color-accent-500));
+  background: linear-gradient(90deg, var(--color-primary-300), var(--color-accent-300));
+}
+
+.contact-subtitle {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.05rem !important;
+  max-width: 520px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
 }
 
 .contact-container {
@@ -584,14 +570,9 @@
     font-size: 1.7rem !important;
   }
 
-  .contact-us-section::before {
-    width: 140px;
-    height: 140px;
-  }
-
-  .contact-us-section::after {
-    width: 170px;
-    height: 170px;
+  .contact-subtitle {
+    font-size: 0.9rem !important;
+    margin-bottom: 24px;
   }
 
   .doctor-card img {
