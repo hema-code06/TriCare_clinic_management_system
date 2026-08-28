@@ -287,31 +287,123 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   min-height: 100vh;
-  background-image: url(https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854031.jpg?semt=ais_hybrid);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
+  padding: 60px 6%;
+  background-color: var(--color-bg-alt);
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(197, 179, 211, 0.55), transparent 42%),
+    radial-gradient(circle at 88% 12%, rgba(245, 203, 203, 0.55), transparent 40%),
+    radial-gradient(circle at 82% 88%, rgba(255, 226, 226, 0.6), transparent 45%),
+    radial-gradient(circle at 8% 85%, rgba(197, 179, 211, 0.4), transparent 40%),
+    linear-gradient(160deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+}
+
+.contact-us-section::before,
+.contact-us-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.contact-us-section::before {
+  width: 260px;
+  height: 260px;
+  top: 8%;
+  right: 10%;
+  background: radial-gradient(circle, var(--color-primary-200), transparent 70%);
+}
+
+.contact-us-section::after {
+  width: 320px;
+  height: 320px;
+  bottom: 6%;
+  left: 6%;
+  background: radial-gradient(circle, var(--color-accent-300), transparent 70%);
+}
+
+.contact-us-section h1 {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  color: var(--color-primary-700);
+  font-size: 2.4rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.contact-us-section h1::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  margin: 14px auto 0;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--color-primary-500), var(--color-accent-500));
 }
 
 .contact-container {
+  position: relative;
+  z-index: 1;
   display: flex;
-  margin-left: 50%;
-  padding: 20px;
-  margin-top: 5%;
-  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 44px 48px;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-top: 4px solid var(--color-primary-500);
+  animation: fadeIn 0.6s ease both;
+}
+
+.right-content {
+  width: 100%;
+}
+
+.right-content h2 {
+  font-family: var(--font-heading);
+  color: var(--color-primary-700);
+  font-size: 1.6rem !important;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .right-content p {
   color: var(--color-text);
   font-size: 18px !important;
+  display: flex;
+  align-items: center;
+  margin: 18px 0;
 }
 
 .right-content i {
-  font-size: 20px;
+  font-size: 18px;
   color: var(--color-primary-600);
-  margin-right: 10px;
+  margin-right: 14px;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--color-primary-100);
+  transition: background-color var(--transition-base), color var(--transition-base), transform var(--transition-base);
+}
+
+.right-content p:hover i {
+  background-color: var(--color-primary-500);
+  color: #fff;
+  transform: scale(1.08);
 }
 
 .right-content a {
@@ -349,13 +441,18 @@
   font-weight: 600;
 }
 
+.footer-text span {
+  color: var(--color-primary-200) !important;
+  font-weight: 700;
+}
+
 @media (max-width: 1200px) {
   .hero-content {
     padding: 60px;
   }
 
   .contact-container {
-    margin-left: 40%;
+    max-width: 560px;
   }
 }
 
@@ -380,11 +477,13 @@
   }
 
   .contact-us-section {
-    min-height: 50vh;
+    min-height: 60vh;
+    padding: 40px 5%;
   }
 
   .contact-container {
-    margin-left: 20%;
+    max-width: 480px;
+    padding: 36px;
   }
 
   .doctor-cards {
@@ -441,13 +540,13 @@
   }
 
   .contact-us-section {
-    min-height: 50vh;
+    min-height: 55vh;
+    padding: 30px 4%;
   }
 
   .contact-container {
-    margin-left: 5%;
-    margin-right: 5%;
-    padding: 16px;
+    max-width: 100%;
+    padding: 26px;
   }
 
   .footer {
@@ -473,13 +572,26 @@
 
   .contact-container {
     flex-direction: column;
-    margin-left: 4%;
-    margin-right: 4%;
-    padding: 12px;
+    padding: 20px;
   }
 
   .contact-us-section {
-    min-height: 50vh;
+    min-height: 55vh;
+    padding: 24px 4%;
+  }
+
+  .contact-us-section h1 {
+    font-size: 1.7rem !important;
+  }
+
+  .contact-us-section::before {
+    width: 140px;
+    height: 140px;
+  }
+
+  .contact-us-section::after {
+    width: 170px;
+    height: 170px;
   }
 
   .doctor-card img {
