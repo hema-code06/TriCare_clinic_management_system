@@ -30,17 +30,26 @@
 }
 
 .patient-logout-button {
-  color: var(--color-text);
+  color: var(--color-primary-700);
   text-decoration: none;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-body);
   margin: 0 20px;
   cursor: pointer;
-  transition: color var(--transition-base);
+  background: none;
+  border: 1.5px solid var(--color-primary-400);
+  border-radius: var(--radius-md);
+  padding: 8px 20px;
+  transition: all var(--transition-base);
 }
 
 .patient-logout-button:hover {
-  color: var(--color-primary-600);
+  background: var(--color-primary-500);
+  color: #fff !important;
+  border-color: var(--color-primary-500);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .hero-section {
