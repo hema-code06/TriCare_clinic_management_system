@@ -115,7 +115,7 @@ const PatientDashboard = () => {
           </div>
           <div className="doctor-card">
             <img
-              src="https://r2.erweima.ai/imgcompressed/compressed_f362969915734c54b4d5599a5fdc46e4.webp"
+              src="https://cdn.pixabay.com/photo/2024/08/13/11/42/ai-generated-8965801_1280.png"
               alt="Doctor 5"
             />
             <h3>Dr. Kenny</h3>
