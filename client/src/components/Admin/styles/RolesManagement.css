@@ -38,6 +38,7 @@
   transform: scale(1.05);
   box-shadow: var(--shadow-md);
   background: var(--color-primary-600);
+  color: #fff !important;
 }
 
 .record-button:active {

@@ -69,6 +69,7 @@
 .appointment-button:hover {
   font-size: 14px;
   background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-600)) !important;
+  color: #fff !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }

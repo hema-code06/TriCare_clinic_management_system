@@ -69,14 +69,14 @@
   opacity: 0.8;
 }
 
-label {
+.fill-main label {
   font-weight: 600;
   color: var(--color-text-muted);
   font-size: 14px;
   transition: color var(--transition-base);
 }
 
-label:hover {
+.fill-main label:hover {
   color: var(--color-text);
 }
 
@@ -99,6 +99,7 @@ label:hover {
 .en-button:hover {
   font-size: 14px;
   background: var(--color-primary-600) !important;
+  color: #fff !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -164,6 +165,7 @@ label:hover {
 }
 
 @media (max-width: 480px) {
+
   .fill-grid input,
   .fill-grid select,
   .maintenance-grid input,

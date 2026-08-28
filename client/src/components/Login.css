@@ -43,7 +43,7 @@
   color: var(--color-text);
 }
 
-label {
+.form-login-side label {
   font-size: 15px;
   color: var(--color-text-muted);
   font-weight: 600;
@@ -89,6 +89,7 @@ button.button-login {
 
 button.button-login:hover {
   background-color: var(--color-primary-700) !important;
+  color: #fff !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -104,6 +105,7 @@ button.button-login:hover {
     opacity: 0;
     transform: translateX(60px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);

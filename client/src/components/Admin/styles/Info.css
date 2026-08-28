@@ -78,6 +78,7 @@
 .Info-edit:hover {
   font-size: 15px;
   background: var(--color-primary-600);
+  color: #fff !important;
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
@@ -90,6 +91,7 @@
 .Info-delete:hover {
   font-size: 15px;
   background-color: var(--color-accent-700);
+  color: #fff !important;
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
@@ -99,6 +101,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -110,6 +113,7 @@
     opacity: 0;
     transform: translateX(-30px);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);

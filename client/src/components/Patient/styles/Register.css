@@ -22,6 +22,7 @@
     transform: translateY(-50px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -79,6 +80,7 @@ form input:focus {
   transform: scale(1.05);
   box-shadow: var(--shadow-md);
   background: var(--color-primary-600) !important;
+  color: #fff !important;
 }
 
 .register-form p {

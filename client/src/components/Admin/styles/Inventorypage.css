@@ -38,6 +38,7 @@
   transform: scale(1.05);
   box-shadow: var(--shadow-md);
   background: var(--color-primary-600);
+  color: #fff !important;
 }
 
 .add-button:active {
@@ -50,6 +51,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -61,6 +63,7 @@
     transform: translateY(-30px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -72,10 +75,12 @@
     transform: scale(0.8);
     opacity: 0;
   }
+
   50% {
     transform: scale(1.1);
     opacity: 1;
   }
+
   100% {
     transform: scale(1);
   }

@@ -36,7 +36,7 @@ tbody tr:hover {
   background-color: var(--color-primary-50);
 }
 
-button {
+tbody button {
   background: none;
   border: none;
   font-size: 15px;
@@ -45,7 +45,7 @@ button {
   transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
-button:hover {
+tbody button:hover {
   font-size: 16px;
   color: var(--color-primary-700);
   transform: scale(1.08);
