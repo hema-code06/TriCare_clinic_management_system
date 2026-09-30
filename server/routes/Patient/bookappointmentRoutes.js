@@ -1,10 +1,11 @@
 import express from "express";
-const router = express.Router();
 import FixAppointment from "../../models/Doctor/FixAppointment.js";
+import { authenticatePatient } from "../../middleware/patientAuthMiddleware.js";
 
-router.post("/bookappointments", async (req, res) => {
+const router = express.Router();
+
+router.post("/bookappointments", authenticatePatient, async (req, res) => {
   const {
-    patientId,
     fullName,
     gender,
     contactNumber,
@@ -21,7 +22,7 @@ router.post("/bookappointments", async (req, res) => {
   } = req.body;
   try {
     const newAppointment = new FixAppointment({
-      patientId,
+      patientId: req.patient.patientId,
       fullName,
       gender,
       contactNumber,
@@ -48,14 +49,11 @@ router.post("/bookappointments", async (req, res) => {
   }
 });
 
-router.get("/bookappointments", async (req, res) => {
-  const patientId = req.query.patientId;
-  if (!patientId) {
-    return res.status(400).json({ message: "Patient ID is required" });
-  }
-
+router.get("/bookappointments", authenticatePatient, async (req, res) => {
   try {
-    const appointments = await FixAppointment.find({ patientId: patientId });
+    const appointments = await FixAppointment.find({
+      patientId: req.patient.patientId,
+    });
     res.status(200).json(appointments);
   } catch (error) {
     res

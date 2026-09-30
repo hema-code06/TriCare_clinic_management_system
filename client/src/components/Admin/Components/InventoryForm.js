@@ -18,7 +18,11 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
 
   useEffect(() => {
     if (selectedItem) {
-      setItem(selectedItem);
+      setItem({
+        ...selectedItem,
+        expiryDate: selectedItem.expiryDate?.slice(0, 10) || "",
+        purchaseDate: selectedItem.purchaseDate?.slice(0, 10) || "",
+      });
     }
   }, [selectedItem]);
 

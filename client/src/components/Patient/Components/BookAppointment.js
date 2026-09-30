@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/BookAppointment.css";
 
-const BookAppointment = () => {
+const BookAppointment = ({ fetchAppointments }) => {
   const [formData, setFormData] = useState({
     patientId: "",
     fullName: "",
@@ -39,9 +39,11 @@ const BookAppointment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem("patientToken");
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/patient/bookappointments`,
-        formData
+        formData,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       alert(response.data.message || "Appointment booked successfully!");
       setFormData({
@@ -51,6 +53,8 @@ const BookAppointment = () => {
         contactNumber: "",
         appointmentType: "",
         consultationMode: "",
+        preferredDoctor: "",
+        urgencyLevel: "",
         preferredDate: "",
         preferredTimeSlot: "",
         reasonForAppointment: "",
@@ -58,6 +62,7 @@ const BookAppointment = () => {
         department: "",
         preferredCommunicationMethod: "",
       });
+      fetchAppointments?.();
     } catch (error) {
       alert(error.response?.data?.message || "Error booking appointment.");
     }

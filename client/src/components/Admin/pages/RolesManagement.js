@@ -20,6 +20,7 @@ const RolesManagement = () => {
         {
           headers: { Authorization: `Bearer ${token}` }
         });
+      if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
       const data = await res.json();
       setRoles(data);
     } catch (error) {

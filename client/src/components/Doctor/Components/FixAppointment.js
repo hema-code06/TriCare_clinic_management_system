@@ -49,13 +49,15 @@ const FixAppointment = () => {
       setAppointments((prev) =>
         prev.map((appointment) =>
           appointment._id === id
-            ? { ...appointment, status: action }
+            ? { ...appointment, ...updatedInfo, status: action }
             : appointment
         )
       );
+      return true;
     } catch (error) {
       console.error("Error performing action:", error.message);
       alert("Failed to perform action.");
+      return false;
     }
   };
 
@@ -93,22 +95,12 @@ const FixAppointment = () => {
       alert("Please enter a valid date and time");
       return;
     }
-    try {
-      await handleAction(selectedAppointmentId, "Rescheduled", updatedData);
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/doctor/appointmentconfirmation`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setAppointments(response.data);
-      handleCloseModal();
-    } catch (error) {
-      console.error("Error during rescheduling:", error.message);
-      alert("Failed to reschedule appointment.");
-    }
+    const success = await handleAction(
+      selectedAppointmentId,
+      "Rescheduled",
+      updatedData
+    );
+    if (success) handleCloseModal();
   };
 
   return (

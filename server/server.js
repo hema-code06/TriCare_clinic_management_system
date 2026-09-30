@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import authRoutes from "./routes/authRoutes.js";
 import { initializeUsers } from "./controllers/authController.js";
 import config from "./config/dotenv.js";
+import { authenticate, requireRole } from "./middleware/authMiddleware.js";
 import doctorRoutes from "./routes/Admin/doctorRoutes.js";
 import appointmentRoutes from "./routes/Admin/appointmentRoutes.js";
 import inventoryRoutes from "./routes/Admin/inventoryRoutes.js";
@@ -26,7 +27,7 @@ app.get("/health", (req, res) => {
   res.status(200).send("Server Working Good!!");
 });
 
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: config.CLIENT_URL.split(",") }));
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
@@ -38,18 +39,23 @@ const startServer = async () => {
 
     await initializeUsers();
 
-    app.use("/api/auth", authRoutes);
-    app.use("/api/admin/doctors", doctorRoutes);
-    app.use("/api/admin/appointments", appointmentRoutes);
-    app.use("/api/admin/inventory", inventoryRoutes);
-    app.use("/api/admin/maintenance", maintenanceRoutes);
-    app.use("/api/admin/roles", roleRoutes);
-    app.use("/api/admin/stats", statsRoutes);
-    app.use("/api/patient", bookappointmentRoutes);
-    app.use("/api/doctor", fixappointmentRoutes);
+    const adminOnly = [authenticate, requireRole("admin")];
+    const doctorOnly = [authenticate, requireRole("doctor")];
 
+    app.use("/api/auth", authRoutes);
+
+    app.use("/api/admin/doctors", adminOnly, doctorRoutes);
+    app.use("/api/admin/appointments", adminOnly, appointmentRoutes);
+    app.use("/api/admin/inventory", adminOnly, inventoryRoutes);
+    app.use("/api/admin/maintenance", adminOnly, maintenanceRoutes);
+    app.use("/api/admin/roles", adminOnly, roleRoutes);
+    app.use("/api/admin/stats", adminOnly, statsRoutes);
+
+    app.use("/api/doctor", doctorOnly, fixappointmentRoutes);
+    app.use("/api/doctor", doctorOnly, PatientDocumentRoutes);
+
+    app.use("/api/patient", bookappointmentRoutes);
     app.use("/api/patient", registerRoutes);
-    app.use("/api/doctor", PatientDocumentRoutes);
 
     app.listen(config.PORT, () => {
       console.log(`Server running on port ${config.PORT}`);

@@ -124,22 +124,26 @@ router.put("/profile/:id", authenticatePatient, async (req, res) => {
   }
 
   const {
-    fullname, email, phone, address, age, gender, contactNumber,
+    fullname, email, phone, address, age, gender,
     location, bloodType, occupation, generalDoctorName,
     doctorSpeciality, insuranceInformation,
   } = req.body;
 
+  const updates = {
+    fullname, email, phone, address, age, gender,
+    location, bloodType, occupation, generalDoctorName,
+    doctorSpeciality, insuranceInformation,
+  };
+  Object.keys(updates).forEach((key) => {
+    if (updates[key] === undefined) delete updates[key];
+  });
+
   try {
     const updatedPatient = await Patient.findOneAndUpdate(
       { patientId: id },
-      {
-        fullname, email, phone, address, age, gender, contactNumber,
-        location: location || {},
-        bloodType, occupation, generalDoctorName, doctorSpeciality,
-        insuranceInformation: insuranceInformation || {},
-      },
+      updates,
       { new: true }
-    );
+    ).select("-password");
     if (!updatedPatient) {
       return res.status(404).json({ message: "Patient not found" });
     }

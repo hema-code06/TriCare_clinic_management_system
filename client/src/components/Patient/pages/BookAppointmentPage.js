@@ -8,12 +8,17 @@ const BookAppointmentPage = () => {
 
   const fetchAppointments = useCallback(async () => {
     if (!patientId) return;
-    const response = await axios.get(
-      `${process.env.REACT_APP_API_URL}/api/patient/bookappointments?patientId=${patientId}`,
-    );
-    setAppointments(response.data);
+    try {
+      const token = localStorage.getItem("patientToken");
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/patient/bookappointments`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      setAppointments(response.data);
+    } catch (error) {
+      console.error("Error fetching appointments:", error);
+    }
   }, [patientId]);
-
   useEffect(() => {
     fetchAppointments();
   }, [fetchAppointments]);

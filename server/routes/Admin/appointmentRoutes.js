@@ -9,13 +9,6 @@ router.get("/confirmed", authenticate, async (req, res) => {
     const confirmedAppointments = await FixAppointment.find({
       status: "Confirmed",
     });
-
-    if (confirmedAppointments.length === 0) {
-      return res
-        .status(404)
-        .json({ message: "No confirmed appointments found." });
-    }
-
     res.status(200).json(confirmedAppointments);
   } catch (error) {
     res

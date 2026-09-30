@@ -6,9 +6,12 @@ const ProtectedRoute = ({ children, role }) => {
   if (!token) return <Navigate to="/login" />;
 
   try {
-    const userRole = JSON.parse(atob(token.split(".")[1])).role;
+    const payload = JSON.parse(atob(token.split(".")[1]));
 
-    if (userRole !== role) return <Navigate to="/login" />;
+    if (payload.role !== role || payload.exp * 1000 < Date.now()) {
+      localStorage.removeItem("token");
+      return <Navigate to="/login" />;
+    }
   } catch (error) {
     return <Navigate to="/login" />;
   }

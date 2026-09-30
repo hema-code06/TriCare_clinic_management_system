@@ -3,7 +3,7 @@ import FixAppointment from "../../models/Doctor/FixAppointment.js";
 import { authenticate } from "../../middleware/authMiddleware.js";
 
 const router = express.Router();
-
+const ALLOWED_ACTIONS = ["Confirmed", "Rescheduled", "Canceled"];
 router.get("/appointmentconfirmation", authenticate, async (req, res) => {
   try {
     const appointments = await FixAppointment.find();
@@ -19,6 +19,14 @@ router.put("/appointmentconfirmation/:id", authenticate, async (req, res) => {
   const { id } = req.params;
   const { action, preferredDate, preferredTimeSlot } = req.body;
 
+  if (!ALLOWED_ACTIONS.includes(action)) {
+    return res.status(400).json({ message: "Invalid action." });
+  }
+  if (action === "Rescheduled" && (!preferredDate || !preferredTimeSlot)) {
+    return res
+      .status(400)
+      .json({ message: "New date and time are required to reschedule." });
+  }
   try {
     const updatedFields = { status: action };
 

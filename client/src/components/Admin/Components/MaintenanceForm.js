@@ -15,7 +15,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
   useEffect(() => {
     if (editData) {
       setAssetName(editData.assetName);
-      setScheduledDate(editData.scheduledDate);
+      setScheduledDate(editData.scheduledDate?.slice(0, 10) || "");
       setTechnician(editData.technician);
       setMaintenanceType(editData.maintenanceType);
       setMaintenanceFrequency(editData.maintenanceFrequency);

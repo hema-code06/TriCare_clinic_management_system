@@ -20,6 +20,7 @@ const DoctorManagement = () => {
         `${process.env.REACT_APP_API_URL}/api/admin/doctors`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
+      if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
       const data = await res.json();
       setDoctors(data);
     } catch (error) {
