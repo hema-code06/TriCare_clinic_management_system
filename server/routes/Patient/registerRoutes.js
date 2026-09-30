@@ -1,4 +1,5 @@
 import express from "express";
+import { randomInt } from "crypto";
 import Patient from "../../models/Patient/Register.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -7,83 +8,100 @@ import { authenticatePatient } from "../../middleware/patientAuthMiddleware.js";
 
 const router = express.Router();
 
-const generatePatientId = () => {
-  const prefix = "PAT";
-  const uniqueId = String(Date.now()).padStart(7, "0");
-  return `${prefix}${uniqueId}`;
-};
+const MIN_PASSWORD_LENGTH = 8;
+
+const generatePatientId = () =>
+  `PAT${String(randomInt(0, 100000000)).padStart(8, "0")}`;
+
+const signPatientToken = (patientId) =>
+  jwt.sign({ patientId, role: "patient" }, config.JWT_SECRET, {
+    expiresIn: "1h",
+  });
 
 router.post("/patientregister", async (req, res) => {
   const { fullname, email, password } = req.body;
 
+  if (
+    typeof fullname !== "string" ||
+    typeof email !== "string" ||
+    typeof password !== "string" ||
+    !fullname.trim() ||
+    !email.trim()
+  ) {
+    return res
+      .status(400)
+      .json({ message: "Full name, email and password are required" });
+  }
+  if (password.length < MIN_PASSWORD_LENGTH) {
+    return res.status(400).json({
+      message: `Password must be at least ${MIN_PASSWORD_LENGTH} characters`,
+    });
+  }
+
+  const normalizedEmail = email.trim().toLowerCase();
+
   try {
-    const existingPatient = await Patient.findOne({ email });
+    const existingPatient = await Patient.findOne({ email: normalizedEmail });
     if (existingPatient) {
       return res.status(400).json({ message: "Patient already exists" });
     }
 
-    const patientId = generatePatientId();
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     const newPatient = new Patient({
-      patientId,
-      fullname,
-      email,
-      password: hashedPassword,
+      patientId: generatePatientId(),
+      fullname: fullname.trim(),
+      email: normalizedEmail,
+      password: await bcrypt.hash(password, 10),
     });
-
     await newPatient.save();
-
-    const token = jwt.sign(
-      { patientId: newPatient.patientId, role: "patient" },
-      config.JWT_SECRET,
-      { expiresIn: "1h" }
-    );
 
     res.status(201).json({
       message: "Registration successful",
-      token,
+      token: signPatientToken(newPatient.patientId),
       patientId: newPatient.patientId,
       fullname: newPatient.fullname,
       email: newPatient.email,
     });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    if (error.code === 11000) {
+      return res.status(400).json({ message: "Patient already exists" });
+    }
+    console.error("Patient registration error:", error);
+    res.status(500).json({ message: "Server error" });
   }
 });
 
 router.post("/login", async (req, res) => {
   const { patientId, password } = req.body;
 
+  if (typeof patientId !== "string" || typeof password !== "string") {
+    return res
+      .status(400)
+      .json({ message: "Patient ID and password are required" });
+  }
+
   try {
     const patient = await Patient.findOne({ patientId });
-    if (!patient) {
-      return res.status(404).json({ message: "Patient not found" });
-    }
-
-    const isPasswordValid = await bcrypt.compare(password, patient.password);
+    const isPasswordValid =
+      patient && (await bcrypt.compare(password, patient.password));
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "Invalid password" });
+      return res
+        .status(401)
+        .json({ message: "Invalid Patient ID or password" });
     }
-
-    const token = jwt.sign(
-      { patientId: patient.patientId, role: "patient" },
-      config.JWT_SECRET,
-      { expiresIn: "1h" }
-    );
 
     res.status(200).json({
       success: true,
       message: "Login successful",
-      token,
+      token: signPatientToken(patient.patientId),
       patientId: patient.patientId,
       fullname: patient.fullname,
     });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    console.error("Patient login error:", error);
+    res.status(500).json({ message: "Server error" });
   }
 });
+
 router.get("/profile/:id", authenticatePatient, async (req, res) => {
   const { id } = req.params;
 
@@ -112,7 +130,8 @@ router.get("/profile/:id", authenticatePatient, async (req, res) => {
       insuranceInformation: patient.insuranceInformation,
     });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    console.error("Profile fetch error:", error);
+    res.status(500).json({ message: "Server error" });
   }
 });
 
@@ -134,22 +153,39 @@ router.put("/profile/:id", authenticatePatient, async (req, res) => {
     location, bloodType, occupation, generalDoctorName,
     doctorSpeciality, insuranceInformation,
   };
+  if (typeof updates.email === "string") {
+    updates.email = updates.email.trim().toLowerCase();
+  }
+  const enumFields = ["gender", "bloodType"];
   Object.keys(updates).forEach((key) => {
-    if (updates[key] === undefined) delete updates[key];
+    if (
+      updates[key] === undefined ||
+      (enumFields.includes(key) && updates[key] === "")
+    ) {
+      delete updates[key];
+    }
   });
 
   try {
     const updatedPatient = await Patient.findOneAndUpdate(
       { patientId: id },
       updates,
-      { new: true }
+      { new: true, runValidators: true }
     ).select("-password");
     if (!updatedPatient) {
       return res.status(404).json({ message: "Patient not found" });
     }
     res.status(200).json(updatedPatient);
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    if (error.code === 11000) {
+      return res.status(400).json({ message: "Email is already in use" });
+    }
+    if (error.name === "ValidationError") {
+      return res.status(400).json({ message: "Some profile fields are invalid" });
+    }
+    console.error("Profile update error:", error);
+    res.status(500).json({ message: "Server error" });
   }
 });
+
 export default router;

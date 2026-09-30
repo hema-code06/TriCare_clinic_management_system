@@ -62,9 +62,10 @@ const Register = () => {
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Password (min. 8 characters)"
             value={formData.password}
             onChange={handleChange}
+            minLength={8}
           />
           <button type="submit" className="register-buttons">
             Register

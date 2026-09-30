@@ -25,12 +25,15 @@ router.get("/", authenticate, async (req, res) => {
 
 router.put("/:id", authenticate, async (req, res) => {
   try {
-    const updatedRoles = await Roles.findByIdAndUpdate(
+    const updatedRole = await Roles.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }
+      { new: true, runValidators: true }
     );
-    res.status(200).json(updatedRoles);
+    if (!updatedRole) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(updatedRole);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -38,7 +41,10 @@ router.put("/:id", authenticate, async (req, res) => {
 
 router.delete("/:id", authenticate, async (req, res) => {
   try {
-    await Roles.findByIdAndDelete(req.params.id);
+    const deletedRole = await Roles.findByIdAndDelete(req.params.id);
+    if (!deletedRole) {
+      return res.status(404).json({ message: "User not found" });
+    }
     res.status(200).json({ message: "Roles deleted" });
   } catch (error) {
     res.status(400).json({ message: error.message });

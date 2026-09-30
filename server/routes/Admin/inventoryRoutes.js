@@ -28,8 +28,11 @@ router.put("/:id", authenticate, async (req, res) => {
     const updatedItem = await Inventory.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }
+      { new: true, runValidators: true }
     );
+    if (!updatedItem) {
+      return res.status(404).json({ message: "Item not found" });
+    }
     res.status(200).json(updatedItem);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -38,7 +41,10 @@ router.put("/:id", authenticate, async (req, res) => {
 
 router.delete("/:id", authenticate, async (req, res) => {
   try {
-    await Inventory.findByIdAndDelete(req.params.id);
+    const deletedItem = await Inventory.findByIdAndDelete(req.params.id);
+    if (!deletedItem) {
+      return res.status(404).json({ message: "Item not found" });
+    }
     res.status(200).json({ message: "Item deleted" });
   } catch (error) {
     res.status(400).json({ message: error.message });

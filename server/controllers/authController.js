@@ -27,14 +27,27 @@ export const initializeUsers = async () => {
 export const login = async (req, res) => {
   const { username, password } = req.body;
 
-  const user = await User.findOne({ username });
-
-  if (!user || !(await bcrypt.compare(password, user.password))) {
-    return res.status(401).json({ message: "Invalid credentials" });
+  if (typeof username !== "string" || typeof password !== "string") {
+    return res
+      .status(400)
+      .json({ message: "Username and password are required" });
   }
 
-  const token = jwt.sign({ id: user._id, role: user.role }, config.JWT_SECRET, {
-    expiresIn: "1h",
-  });
-  res.json({ token, role: user.role });
+  try {
+    const user = await User.findOne({ username });
+
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      config.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+    res.json({ token, role: user.role });
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
 };

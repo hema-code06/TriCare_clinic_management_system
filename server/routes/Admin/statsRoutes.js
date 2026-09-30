@@ -30,8 +30,8 @@ router.get("/weekly-appointments", async (req, res) => {
     try {
         const startOfWeek = new Date();
         startOfWeek.setHours(0, 0, 0, 0);
-        startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay() + 1);
-
+        const daysSinceMonday = (startOfWeek.getDay() + 6) % 7;
+        startOfWeek.setDate(startOfWeek.getDate() - daysSinceMonday);
         const endOfWeek = new Date(startOfWeek);
         endOfWeek.setDate(startOfWeek.getDate() + 5);
 

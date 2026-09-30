@@ -44,8 +44,10 @@ const RolesManagement = () => {
         body: JSON.stringify(role),
       });
       if (res.ok) {
-        fetchRoles();
         closeAddModal();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        alert(data.message || "Could not save the user.");
       }
     } catch (error) {
       console.error("Failed to add role:", error);
@@ -65,8 +67,10 @@ const RolesManagement = () => {
         }
       );
       if (res.ok) {
-        fetchRoles();
         closeAddModal();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        alert(data.message || "Could not save the user.");
       }
     } catch (error) {
       console.error("Failed to update role:", error);
@@ -74,14 +78,16 @@ const RolesManagement = () => {
   };
 
   const handleDeleteRole = async (id) => {
+    if (!window.confirm("Delete this user? This cannot be undone.")) return;
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/roles/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
-        fetchRoles();
         closeDetailModal();
+      } else {
+        alert("Could not delete the user.");
       }
     } catch (error) {
       console.error("Failed to delete role:", error);

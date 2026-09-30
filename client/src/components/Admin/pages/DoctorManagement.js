@@ -47,7 +47,12 @@ const DoctorManagement = () => {
           body: JSON.stringify(doctor),
         },
       );
-      if (res.ok) { fetchDoctors(); closeAddModal(); }
+      if (res.ok) {
+        closeAddModal();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        alert(data.error || "Could not save the doctor.");
+      }
     } catch (error) {
       console.error("Failed to add doctor:", error);
     }
@@ -66,13 +71,19 @@ const DoctorManagement = () => {
           body: JSON.stringify(doctor),
         },
       );
-      if (res.ok) { fetchDoctors(); closeAddModal(); }
+      if (res.ok) {
+        closeAddModal();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        alert(data.error || "Could not save the doctor.");
+      }
     } catch (error) {
       console.error("Failed to update doctor:", error);
     }
   };
 
   const handleDeleteDoctor = async (id) => {
+    if (!window.confirm("Delete this doctor? This cannot be undone.")) return;
     try {
       const res = await fetch(
         `${process.env.REACT_APP_API_URL}/api/admin/doctors/${id}`,
@@ -81,7 +92,11 @@ const DoctorManagement = () => {
           headers: { Authorization: `Bearer ${token}` },
         },
       );
-      if (res.ok) { fetchDoctors(); closeDetailModal(); }
+      if (res.ok) {
+        closeDetailModal();
+      } else {
+        alert("Could not delete the doctor.");
+      }
     } catch (error) {
       console.error("Failed to delete doctor:", error);
     }

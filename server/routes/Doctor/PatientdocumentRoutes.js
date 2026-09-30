@@ -7,11 +7,6 @@ const router = express.Router();
 router.get("/patients", authenticate, async (req, res) => {
   try {
     const patients = await Patient.find();
-
-    if (!patients || patients.length === 0) {
-      return res.status(404).json({ message: "No patients found" });
-    }
-
     res.status(200).json(
       patients.map((patient) => ({
         patientId: patient.patientId,

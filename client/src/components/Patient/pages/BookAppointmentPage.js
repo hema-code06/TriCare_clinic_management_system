@@ -19,6 +19,7 @@ const BookAppointmentPage = () => {
       console.error("Error fetching appointments:", error);
     }
   }, [patientId]);
+
   useEffect(() => {
     fetchAppointments();
   }, [fetchAppointments]);

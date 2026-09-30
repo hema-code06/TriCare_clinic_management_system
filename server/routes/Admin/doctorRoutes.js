@@ -28,8 +28,11 @@ router.put("/:id", authenticate, async (req, res) => {
     const updatedDoctor = await Doctor.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }
+      { new: true, runValidators: true }
     );
+    if (!updatedDoctor) {
+      return res.status(404).json({ error: "Doctor not found" });
+    }
     res.json(updatedDoctor);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -38,7 +41,10 @@ router.put("/:id", authenticate, async (req, res) => {
 
 router.delete("/:id", authenticate, async (req, res) => {
   try {
-    await Doctor.findByIdAndDelete(req.params.id);
+    const deletedDoctor = await Doctor.findByIdAndDelete(req.params.id);
+    if (!deletedDoctor) {
+      return res.status(404).json({ error: "Doctor not found" });
+    }
     res.json({ message: "Doctor deleted successfully" });
   } catch (err) {
     res.status(500).json({ error: err.message });

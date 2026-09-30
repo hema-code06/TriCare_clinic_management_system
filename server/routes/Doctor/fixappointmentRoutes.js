@@ -4,6 +4,7 @@ import { authenticate } from "../../middleware/authMiddleware.js";
 
 const router = express.Router();
 const ALLOWED_ACTIONS = ["Confirmed", "Rescheduled", "Canceled"];
+
 router.get("/appointmentconfirmation", authenticate, async (req, res) => {
   try {
     const appointments = await FixAppointment.find();
@@ -16,6 +17,7 @@ router.get("/appointmentconfirmation", authenticate, async (req, res) => {
 });
 
 router.put("/appointmentconfirmation/:id", authenticate, async (req, res) => {
+
   const { id } = req.params;
   const { action, preferredDate, preferredTimeSlot } = req.body;
 

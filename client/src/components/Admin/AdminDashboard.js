@@ -54,7 +54,7 @@ const AdminDashboard = () => {
             },
           }
         );
-                if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
+        if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
         const data = await res.json();
         setStats(data);
       } catch (error) {
