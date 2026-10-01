@@ -21,7 +21,10 @@ const RolesForm = ({ onSubmit, initialData }) => {
 
   useEffect(() => {
     if (initialData) {
-      setFormData({ ...initialData });
+      setFormData({
+        ...initialData,
+        joiningDate: initialData.joiningDate?.slice(0, 10) || "",
+      });
     }
   }, [initialData]);
 
@@ -50,21 +53,6 @@ const RolesForm = ({ onSubmit, initialData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
-    setFormData({
-      profilePicture: "",
-      fullName: "",
-      email: "",
-      phone: "",
-      role: "",
-      accessLevel: "",
-      employeeId: "",
-      designation: "",
-      specialization: "",
-      workShift: "",
-      availability: "",
-      accountStatus: "Active",
-      joiningDate: "",
-    });
   };
 
   return (

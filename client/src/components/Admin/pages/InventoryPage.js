@@ -5,7 +5,6 @@ import InventoryTable from "../Components/InventoryTable";
 import axios from "axios";
 import "../styles/mainpage.css";
 
-
 const InventoryPage = () => {
   const [inventory, setInventory] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -35,14 +34,15 @@ const InventoryPage = () => {
   const addItem = async (newItem) => {
     try {
       await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/admin/inventory`, newItem,
+        `${process.env.REACT_APP_API_URL}/api/admin/inventory`,
+        newItem,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
       fetchInventory();
       closeModal();
     } catch (error) {
       console.error("Error adding item:", error);
+      alert(error.response?.data?.message || "Could not add the item.");
     }
   };
 
@@ -57,10 +57,12 @@ const InventoryPage = () => {
       closeModal();
     } catch (error) {
       console.error("Error updating item:", error);
+      alert(error.response?.data?.message || "Could not update the item.");
     }
   };
 
   const deleteItem = async (id) => {
+    if (!window.confirm("Delete this item? This cannot be undone.")) return;
     try {
       await axios.delete(
         `${process.env.REACT_APP_API_URL}/api/admin/inventory/${id}`,
@@ -69,6 +71,7 @@ const InventoryPage = () => {
       fetchInventory();
     } catch (error) {
       console.error("Error deleting item:", error);
+      alert("Could not delete the item.");
     }
   };
 

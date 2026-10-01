@@ -50,21 +50,6 @@ const DoctorForm = ({ onSubmit, initialData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
-    setFormData({
-      profilePicture: "",
-      doctorId: "",
-      fullName: "",
-      gender: "",
-      contactNumber: "",
-      department: "",
-      specialization: "",
-      qualification: "",
-      yearsOfExperience: "",
-      email: "",
-      availability: "",
-      consultationMethod: "",
-      doctorsFee: "",
-    });
   };
 
   return (

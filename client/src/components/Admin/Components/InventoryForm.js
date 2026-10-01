@@ -41,19 +41,6 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
     } else {
       onAddItem(item);
     }
-    setItem({
-      itemName: "",
-      itemCode: "",
-      category: "",
-      supplierName: "",
-      quantity: 0,
-      unitPrice: 0,
-      expiryDate: "",
-      supplierContact: "",
-      stockStatus: "",
-      purchaseDate: "",
-      reorderLevel: 10,
-    });
   };
 
   return (

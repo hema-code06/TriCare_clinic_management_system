@@ -9,6 +9,7 @@ import { authenticatePatient } from "../../middleware/patientAuthMiddleware.js";
 const router = express.Router();
 
 const MIN_PASSWORD_LENGTH = 8;
+const GENDERS = ["Male", "Female", "Other", "Prefer not to say"];
 
 const generatePatientId = () =>
   `PAT${String(randomInt(0, 100000000)).padStart(8, "0")}`;
@@ -155,6 +156,12 @@ router.put("/profile/:id", authenticatePatient, async (req, res) => {
   };
   if (typeof updates.email === "string") {
     updates.email = updates.email.trim().toLowerCase();
+  }
+  if (typeof updates.gender === "string") {
+    const canonicalGender = GENDERS.find(
+      (g) => g.toLowerCase() === updates.gender.trim().toLowerCase()
+    );
+    if (canonicalGender) updates.gender = canonicalGender;
   }
   const enumFields = ["gender", "bloodType"];
   Object.keys(updates).forEach((key) => {

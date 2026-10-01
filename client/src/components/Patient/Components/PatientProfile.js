@@ -113,7 +113,7 @@ const PatientProfile = () => {
       }
     } catch (error) {
       console.error("Update error:", error.response?.data || error.message);
-      setError(error.response?.data?.message || "Error updating profile");
+      alert(error.response?.data?.message || "Error updating profile");
     }
   };
 
@@ -232,9 +232,10 @@ const PatientProfile = () => {
               onChange={handleEditChange}
             >
               <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+              <option value="Prefer not to say">Prefer not to say</option>
             </select>
           </label>
           <label>

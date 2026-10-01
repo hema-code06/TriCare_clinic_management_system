@@ -61,8 +61,11 @@ const startServer = async () => {
       res.status(404).json({ message: "Route not found" });
     });
     app.use((err, req, res, next) => {
-      console.error("Unhandled error:", err);
-      res.status(500).json({ message: "Server error" });
+      const status = err.status >= 400 && err.status < 500 ? err.status : 500;
+      if (status === 500) console.error("Unhandled error:", err);
+      res.status(status).json({
+        message: status === 500 ? "Server error" : err.message,
+      });
     });
 
     app.listen(config.PORT, () => {
