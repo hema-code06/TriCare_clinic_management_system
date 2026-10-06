@@ -61,6 +61,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
             type="file"
             name="profilePicture"
             accept="image/*"
+            required={!initialData}
             onChange={handleProfilePictureChange}
           />
         </label>

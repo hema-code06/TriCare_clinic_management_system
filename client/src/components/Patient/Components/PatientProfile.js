@@ -74,7 +74,6 @@ const PatientProfile = () => {
 
   const handleUpdate = async () => {
     try {
-      console.log("Update data being sent:", editFormData);
       const updatedData = {
         ...editFormData,
         bloodType: editFormData.blood,
@@ -97,8 +96,6 @@ const PatientProfile = () => {
         updatedData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
-      console.log("Response from server:", response.data);
 
       if (response.status === 200) {
         const updatedProfileResponse = await axios.get(
@@ -299,6 +296,7 @@ const PatientProfile = () => {
               value={editFormData.blood}
               onChange={handleEditChange}
             >
+              <option value="">Select Blood Type</option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
               <option value="B+">B+</option>
@@ -327,7 +325,7 @@ const PatientProfile = () => {
               value={editFormData.doctorSpecialty}
               onChange={handleEditChange}
             />
-          </label>{" "}
+          </label>
           <label>
             Policy Number :
             <input

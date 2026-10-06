@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../styles/Register.css";
 
 const Register = () => {
@@ -72,7 +72,7 @@ const Register = () => {
           </button>
         </form>
         <p>
-          Already have an account? <a href="/patient/login">Login here</a>
+          Already have an account? <Link to="/patient/login">Login here</Link>
         </p>
       </div>
     </div>
