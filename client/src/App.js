@@ -3,7 +3,6 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import PatientLogin from "./components/Patient/pages/Login";
 import PatientRegister from "./components/Patient/pages/Register";
-import Register from "./components/Patient/pages/Register";
 import AdminDashboard from "./components/Admin/AdminDashboard";
 import DoctorDashboard from "./components/Doctor/DoctorDashboard";
 import PatientDashboard from "./components/Patient/PatientDashboard";
@@ -27,7 +26,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/patient/login" element={<PatientLogin />} />
         <Route path="/patient/register" element={<PatientRegister />} />
-        <Route path="/register" element={<Register />} />
 
         <Route
           path="/admin"

@@ -47,7 +47,7 @@ const Home = () => {
           </button>
 
           <button
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/patient/register")}
             className="register-button"
           >
             Register
