@@ -82,7 +82,7 @@ router.put("/:id", authenticate, async (req, res) => {
         maintenanceFrequency,
         status,
       },
-      { new: true }
+      { new: true, runValidators: true }
     );
 
     if (!updatedRecord) {

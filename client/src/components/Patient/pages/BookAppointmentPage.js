@@ -53,7 +53,7 @@ const BookAppointmentPage = () => {
             <tr>
               <th>Doctor Name</th>
               <th>Appointment Type</th>
-              <th>Reason for appointment</th>
+              <th>Reason for Appointment</th>
               <th>Date</th>
               <th>Time</th>
               <th>Status</th>

@@ -21,10 +21,10 @@ const app = express();
 app.use(compression());
 
 app.get("/", (req, res) => {
-  res.send("Tricare Clinic Server is running successfully..");
+  res.send("Tricare Clinic API is running.");
 });
 app.get("/health", (req, res) => {
-  res.status(200).send("Server Working Good!!");
+  res.status(200).send("OK");
 });
 
 app.use(cors({ origin: config.CLIENT_URL.split(",") }));
@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 const startServer = async () => {
   try {
     await mongoose.connect(config.MONGO_URI);
-    console.log("MongoDB connected successfully!!");
+    console.log("MongoDB connected successfully.");
 
     await initializeUsers();
 
