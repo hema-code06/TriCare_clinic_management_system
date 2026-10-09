@@ -10,7 +10,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "REST API for the TriCare clinic management system",
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "compression": "^1.8.1",

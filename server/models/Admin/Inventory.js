@@ -22,8 +22,8 @@ const inventorySchema = new mongoose.Schema({
     ],
   },
   supplierName: { type: String, required: true },
-  quantity: { type: Number, required: true },
-  unitPrice: { type: Number, required: true },
+  quantity: { type: Number, required: true, min: 0 },
+  unitPrice: { type: Number, required: true, min: 0 },
   expiryDate: { type: Date, required: true },
   supplierContact: { type: String, required: true },
   stockStatus: {
@@ -32,7 +32,7 @@ const inventorySchema = new mongoose.Schema({
     enum: ["In Stock", "Out of Stock", "Low Stock"],
   },
   purchaseDate: { type: Date, default: Date.now },
-  reorderLevel: { type: Number, required: true, default: 10 },
+  reorderLevel: { type: Number, required: true, default: 10, min: 0 },
 });
 
 const Inventory = mongoose.model("Inventory", inventorySchema);

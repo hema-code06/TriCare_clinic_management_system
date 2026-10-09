@@ -16,21 +16,25 @@ import bookappointmentRoutes from "./routes/Patient/bookappointmentRoutes.js";
 import fixappointmentRoutes from "./routes/Doctor/fixappointmentRoutes.js";
 import registerRoutes from "./routes/Patient/registerRoutes.js";
 import PatientDocumentRoutes from "./routes/Doctor/PatientdocumentRoutes.js";
+import dns from "node:dns";
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 const app = express();
 app.use(compression());
 
 app.get("/", (req, res) => {
-  res.send("Tricare Clinic API is running.");
+  res.send("TriCare Clinic API is running.");
 });
 app.get("/health", (req, res) => {
   res.status(200).send("OK");
 });
 
-app.use(cors({ origin: config.CLIENT_URL.split(",") }));
+const allowedOrigins = config.CLIENT_URL.split(",").map((url) =>
+  url.trim().replace(/\/$/, "")
+);
+app.use(cors({ origin: allowedOrigins }));
 
 app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 const startServer = async () => {
   try {

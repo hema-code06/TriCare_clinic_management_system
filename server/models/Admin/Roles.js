@@ -8,7 +8,12 @@ const rolesSchema = new mongoose.Schema(
     phone: { type: String },
     role: { type: String, required: true },
     accessLevel: { type: String, required: true },
-    employeeId: { type: String, unique: true },
+    employeeId: {
+      type: String,
+      unique: true,
+      sparse: true,
+      set: (value) => (value === "" ? undefined : value),
+    },
     designation: { type: String },
     specialization: { type: String },
     workShift: { type: String },

@@ -43,9 +43,13 @@ router.post("/bookappointments", authenticatePatient, async (req, res) => {
       appointment: newAppointment,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Error booking appointment.", error: error.message });
+    if (error.name === "ValidationError") {
+      return res
+        .status(400)
+        .json({ message: "Please fill in all required fields." });
+    }
+    console.error("Booking error:", error);
+    res.status(500).json({ message: "Error booking appointment." });
   }
 });
 
