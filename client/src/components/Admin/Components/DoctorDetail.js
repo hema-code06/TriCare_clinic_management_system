@@ -10,7 +10,7 @@ const DoctorDetail = ({ doctor, onEdit, onDelete }) => {
       <h2 className="Info-name">{doctor.fullName}</h2>
       <div className="Info-profile">
         <img
-          src={doctor.profilePicture || "default-profile.png"}
+          src={doctor.profilePicture || "/default-profile.svg"}
           alt={`${doctor.fullName} profile`}
           className="Info-picture"
         />

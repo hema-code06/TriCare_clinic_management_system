@@ -247,9 +247,10 @@ const FixAppointment = () => {
 
             <div className="modal-actions">
               <button
-                onClick={() =>
-                  handleAction(selectedAppointment._id, "Confirmed")
-                }
+                onClick={async () => {
+                  if (await handleAction(selectedAppointment._id, "Confirmed"))
+                    handleCloseModal();
+                }}
                 className="confirm-button"
               >
                 Confirm
@@ -264,9 +265,10 @@ const FixAppointment = () => {
                 Reschedule
               </button>
               <button
-                onClick={() =>
-                  handleAction(selectedAppointment._id, "Canceled")
-                }
+                onClick={async () => {
+                  if (await handleAction(selectedAppointment._id, "Canceled"))
+                    handleCloseModal();
+                }}
                 className="cancel-button"
               >
                 Cancel

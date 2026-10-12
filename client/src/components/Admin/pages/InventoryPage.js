@@ -42,7 +42,7 @@ const InventoryPage = () => {
       closeModal();
     } catch (error) {
       console.error("Error adding item:", error);
-      alert(error.response?.data?.message || "Could not add the item.");
+      alert(error.response?.data?.message || error.response?.data?.error || "Could not add the item.");
     }
   };
 
@@ -57,7 +57,7 @@ const InventoryPage = () => {
       closeModal();
     } catch (error) {
       console.error("Error updating item:", error);
-      alert(error.response?.data?.message || "Could not update the item.");
+      alert(error.response?.data?.message || error.response?.data?.error || "Could not update the item.");
     }
   };
 

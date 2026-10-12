@@ -24,6 +24,7 @@ const MaintenanceList = ({ refresh, onEditClick }) => {
   }, [fetchMaintenanceData, refresh]);
 
   const handleDelete = async (id) => {
+    if (!window.confirm("Delete this record? This cannot be undone.")) return;
     try {
       await axios.delete(`${process.env.REACT_APP_API_URL}/api/admin/maintenance/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }

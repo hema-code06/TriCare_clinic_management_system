@@ -47,7 +47,7 @@ const RolesManagement = () => {
         closeAddModal();
       } else {
         const data = await res.json().catch(() => ({}));
-        alert(data.message || "Could not save the user.");
+        alert(data.message || data.error || "Could not save the user.");
       }
     } catch (error) {
       console.error("Failed to add role:", error);
@@ -70,7 +70,7 @@ const RolesManagement = () => {
         closeAddModal();
       } else {
         const data = await res.json().catch(() => ({}));
-        alert(data.message || "Could not save the user.");
+        alert(data.message || data.error || "Could not save the user.");
       }
     } catch (error) {
       console.error("Failed to update role:", error);

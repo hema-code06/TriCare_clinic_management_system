@@ -63,7 +63,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
       setIsEditMode(false);
     } catch (error) {
       console.error("Error submitting maintenance:", error);
-      alert(error.response?.data?.error || "Error scheduling maintenance");
+      alert(error.response?.data?.message || error.response?.data?.error || "Error scheduling maintenance");
     }
   };
 

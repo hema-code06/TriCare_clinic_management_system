@@ -10,7 +10,7 @@ const RolesDetail = ({ role, onEdit, onDelete }) => {
       <h2 className="Info-name">{role.fullName}</h2>
       <div className="Info-profile">
         <img
-          src={role.profilePicture || "default-profile.png"}
+          src={role.profilePicture || "/default-profile.svg"}
           alt={`${role.fullName} profile`}
           className="Info-picture"
         />
@@ -49,7 +49,7 @@ const RolesDetail = ({ role, onEdit, onDelete }) => {
             <b>Account Status :</b> {role.accountStatus}
           </p>
           <p>
-            <b>Joining Date :</b> {role.joiningDate}
+            <b>Joining Date :</b> {role.joiningDate ? role.joiningDate.slice(0, 10) : "N/A"}
           </p>
         </div>
       </div>

@@ -11,7 +11,7 @@ const RolesTable = ({ roles, onCardClick }) => {
         >
           <h3>{role.fullName}</h3>
           <img
-            src={role.profilePicture || "default-profile.png"}
+            src={role.profilePicture || "/default-profile.svg"}
             alt={`${role.fullName} profile`}
           />
           <p>{role.role}</p>

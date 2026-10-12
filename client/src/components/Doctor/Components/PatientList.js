@@ -6,7 +6,6 @@ const PatientList = () => {
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [, setSelectedPatientId] = useState(null);
   const [patientDetails, setPatientDetails] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const token = localStorage.getItem("token");
@@ -53,13 +52,11 @@ const PatientList = () => {
   };
 
   const openModal = (id) => {
-    setSelectedPatientId(id);
     fetchPatientDetails(id);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedPatientId(null);
     setPatientDetails(null);
   };
 
@@ -133,8 +130,9 @@ const PatientList = () => {
                 <div className="detail-item">
                   <label>Location :</label>
                   <span>
-                    {`${patientDetails.location.city || ""}, ${patientDetails.location.state || ""
-                      }, ${patientDetails.location.country || ""}`}
+                    {[patientDetails.location?.city, patientDetails.location?.state, patientDetails.location?.country]
+                      .filter(Boolean)
+                      .join(", ") || "N/A"}
                   </span>
                 </div>
                 <div className="detail-item">

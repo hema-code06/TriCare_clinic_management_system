@@ -105,22 +105,6 @@ const PatientDashboard = () => {
             <h3>Dr. Emily White</h3>
             <p>Dermatologist</p>
           </div>
-          <div className="doctor-card">
-            <img
-              src="https://t3.ftcdn.net/jpg/06/64/62/08/360_F_664620894_KN7WA859syQPK6rwNWBSky1iLwYhb3Gt.jpg"
-              alt="Doctor 4"
-            />
-            <h3>Dr. John </h3>
-            <p>Dermatologist</p>
-          </div>
-          <div className="doctor-card">
-            <img
-              src="https://cdn.pixabay.com/photo/2024/08/13/11/42/ai-generated-8965801_1280.png"
-              alt="Doctor 5"
-            />
-            <h3>Dr. Kenny</h3>
-            <p>Dermatologist</p>
-          </div>
         </div>
       </section>
 
@@ -247,7 +231,7 @@ const PatientDashboard = () => {
 
       <footer className="footer">
         <div className="footer-content">
-          <p className="footer-text">© 2023 <span style={{ color: 'teal' }}> TriCare </span>. All rights reserved.</p>
+          <p className="footer-text">© {new Date().getFullYear()} <span style={{ color: "teal" }}>TriCare</span>. All rights reserved.</p>
         </div>
       </footer>
     </div>

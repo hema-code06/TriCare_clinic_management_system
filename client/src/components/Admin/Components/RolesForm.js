@@ -38,6 +38,11 @@ const RolesForm = ({ onSubmit, initialData }) => {
 
   const handleProfilePictureChange = (e) => {
     const file = e.target.files[0];
+    if (file && file.size > 1024 * 1024) {
+      alert("Please choose an image under 1 MB.");
+      e.target.value = "";
+      return;
+    }
     const reader = new FileReader();
     reader.onloadend = () => {
       setFormData((prevItem) => ({

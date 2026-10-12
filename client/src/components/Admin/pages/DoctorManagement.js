@@ -51,7 +51,7 @@ const DoctorManagement = () => {
         closeAddModal();
       } else {
         const data = await res.json().catch(() => ({}));
-        alert(data.error || "Could not save the doctor.");
+        alert(data.message || data.error || "Could not save the doctor.");
       }
     } catch (error) {
       console.error("Failed to add doctor:", error);
@@ -75,7 +75,7 @@ const DoctorManagement = () => {
         closeAddModal();
       } else {
         const data = await res.json().catch(() => ({}));
-        alert(data.error || "Could not save the doctor.");
+        alert(data.message || data.error || "Could not save the doctor.");
       }
     } catch (error) {
       console.error("Failed to update doctor:", error);

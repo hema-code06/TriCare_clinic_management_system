@@ -32,7 +32,7 @@ const BookAppointmentPage = () => {
       <BookAppointment fetchAppointments={fetchAppointments} />
 
       <h2 style={{ textAlign: "center", color: "teal" }}>
-        Upcoming Appointments
+        Your Appointments
       </h2>
       {appointments.length === 0 ? (
         <p>No appointments booked yet.</p>

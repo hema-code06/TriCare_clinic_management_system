@@ -11,7 +11,7 @@ const DoctorTable = ({ doctors, onCardClick }) => {
         >
           <h3>{doctor.fullName}</h3>
           <img
-            src={doctor.profilePicture || "default-profile.png"}
+            src={doctor.profilePicture || "/default-profile.svg"}
             alt={`${doctor.fullName} doctor`}
           />
           <p>{doctor.qualification}</p>

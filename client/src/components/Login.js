@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -25,7 +25,7 @@ const Login = () => {
         credentials,
         {
           headers: {
-            "Content-Type": "application/json", 
+            "Content-Type": "application/json",
           },
         }
       );
@@ -59,6 +59,7 @@ const Login = () => {
                 onChange={(e) =>
                   setCredentials({ ...credentials, username: e.target.value })
                 }
+                required
               />
             </div>
             <div>
@@ -69,6 +70,7 @@ const Login = () => {
                 onChange={(e) =>
                   setCredentials({ ...credentials, password: e.target.value })
                 }
+                required
               />
             </div>
             <button type="submit" className="button-login">

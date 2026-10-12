@@ -46,15 +46,15 @@ const PatientProfile = () => {
           gender: data.gender || "",
           phone: data.phone || "",
           email: data.email || "",
-          city: data.location.city || "",
-          state: data.location.state || "",
-          country: data.location.country || "",
+          city: data.location?.city || "",
+          state: data.location?.state || "",
+          country: data.location?.country || "",
           occupation: data.occupation || "",
           blood: data.bloodType || "",
           generalDoctor: data.generalDoctorName || "",
           doctorSpecialty: data.doctorSpeciality || "",
-          insuranceProvider: data.insuranceInformation.provider || "",
-          policyNumber: data.insuranceInformation.policyNumber || "",
+          insuranceProvider: data.insuranceInformation?.provider || "",
+          policyNumber: data.insuranceInformation?.policyNumber || "",
         });
         setLoading(false);
       } catch (error) {
@@ -155,8 +155,9 @@ const PatientProfile = () => {
         <div className="patient-field full-width">
           <i className="fas fa-map-marker-alt"></i>
           <p>
-            {`${profile.location.city || ""}, ${profile.location.state || ""
-              }, ${profile.location.country || ""}`}
+            {[profile.location?.city, profile.location?.state, profile.location?.country]
+              .filter(Boolean)
+              .join(", ")}
           </p>
         </div>
         <div className="patient-field">
@@ -178,8 +179,8 @@ const PatientProfile = () => {
         <div className="patient-field full-width">
           <i className="fas fa-shield-alt"></i>
           <p>
-            {profile.insuranceInformation.provider &&
-              profile.insuranceInformation.policyNumber
+            {profile.insuranceInformation?.provider &&
+              profile.insuranceInformation?.policyNumber
               ? `${profile.insuranceInformation.provider} (Policy #${profile.insuranceInformation.policyNumber})`
               : ""}
           </p>
