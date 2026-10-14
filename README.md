@@ -8,7 +8,7 @@ TriCare is a full-stack, role-based clinic management platform built on the MERN
 
 A clinic runs on three distinct workflows: administration, clinical care, and patient self-service. TriCare models that directly instead of forcing everyone through one generic interface.
 
-- **Admins** manage doctors, staff, inventory, and equipment maintenance, and get a live operational overview of the clinic.
+- **Admins** manage doctors, staff, inventory, and equipment maintenance, and get an operational overview of the clinic.
 - **Doctors** manage their incoming appointment requests and access patient records.
 - **Patients** register, book appointments, and manage their own health profile.
 
@@ -34,8 +34,8 @@ These are seed credentials for demo purposes only — not representative of prod
 ### Admin Dashboard
 - Full CRUD management for doctors, clinic staff, and inventory
 - Equipment maintenance scheduling and status tracking
-- Clinic-wide appointment visibility
-- A live operations dashboard — real-time counts and charts sourced directly from the database, not static placeholders
+- View all confirmed appointments.
+- An overview dashboard with record counts and a chart of appointments per weekday, loaded from the database.
 
 ### Doctor Dashboard
 - Review, confirm, reschedule, or cancel patient appointment requests
@@ -75,7 +75,7 @@ These are seed credentials for demo purposes only — not representative of prod
 
 ## Architecture & Security
  
-- **Dual JWT authentication** — Admin/Doctor and Patient roles each carry their own signed JWT, verified independently by role-specific middleware on every protected route.
+- **Role-based JWT authentication** — Admin/Doctor and Patient roles each carry their own signed JWT, verified independently by role-specific middleware on every protected route.
 - **Resource-level authorization** — patients can only ever read or modify their own profile; the server checks the authenticated identity against the requested resource on every request, not just whether a token is present.
 - **Password security** — all credentials are hashed with bcrypt before storage; plaintext passwords are never persisted.
 - **Route-level protection on both ends** — protected pages are gated on the client, and the same access rules are independently enforced on the API, so the UI is never the only line of defense.
@@ -116,9 +116,10 @@ cd ../client && npm install
 
 Configure `server/.env`:
 ```
-PORT=3001
+PORT=5000
 MONGO_URI=<your MongoDB connection string>
 JWT_SECRET=<your secret>
+CLIENT_URL=http://localhost:3000
 ```
 
 Run both services:
