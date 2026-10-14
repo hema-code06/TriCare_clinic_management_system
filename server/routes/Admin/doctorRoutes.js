@@ -19,6 +19,9 @@ router.post("/", authenticate, async (req, res) => {
     await doctor.save();
     res.status(201).json(doctor);
   } catch (err) {
+    if (err.code === 11000) {
+      return res.status(400).json({ error: "A doctor with this email or Doctor ID already exists" });
+    }
     res.status(400).json({ error: err.message });
   }
 });
@@ -35,6 +38,9 @@ router.put("/:id", authenticate, async (req, res) => {
     }
     res.json(updatedDoctor);
   } catch (err) {
+    if (err.code === 11000) {
+      return res.status(400).json({ error: "A doctor with this email or Doctor ID already exists" });
+    }
     res.status(400).json({ error: err.message });
   }
 });

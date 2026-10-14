@@ -10,6 +10,9 @@ router.post("/", authenticate, async (req, res) => {
     await newRole.save();
     res.status(201).json(newRole);
   } catch (error) {
+    if (error.code === 11000) {
+      return res.status(400).json({ message: "A user with this email or Employee ID already exists" });
+    }
     res.status(400).json({ message: error.message });
   }
 });
@@ -35,6 +38,9 @@ router.put("/:id", authenticate, async (req, res) => {
     }
     res.status(200).json(updatedRole);
   } catch (error) {
+    if (error.code === 11000) {
+      return res.status(400).json({ message: "A user with this email or Employee ID already exists" });
+    }
     res.status(400).json({ message: error.message });
   }
 });

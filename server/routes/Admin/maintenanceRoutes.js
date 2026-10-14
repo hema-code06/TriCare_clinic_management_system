@@ -37,7 +37,8 @@ router.post("/", authenticate, async (req, res) => {
     const savedRecord = await newRecord.save();
     res.status(201).json(savedRecord);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    const status = ["ValidationError", "CastError"].includes(error.name) ? 400 : 500;
+    res.status(status).json({ error: error.message });
   }
 });
 
@@ -91,7 +92,8 @@ router.put("/:id", authenticate, async (req, res) => {
 
     res.status(200).json(updatedRecord);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    const status = ["ValidationError", "CastError"].includes(error.name) ? 400 : 500;
+    res.status(status).json({ error: error.message });
   }
 });
 

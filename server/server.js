@@ -17,7 +17,7 @@ import fixappointmentRoutes from "./routes/Doctor/fixappointmentRoutes.js";
 import registerRoutes from "./routes/Patient/registerRoutes.js";
 import PatientDocumentRoutes from "./routes/Doctor/PatientdocumentRoutes.js";
 import dns from "node:dns";
-dns.setServers(["8.8.8.8", "1.1.1.1"]);
+if (process.env.DNS_SERVERS) dns.setServers(process.env.DNS_SERVERS.split(","));
 
 const app = express();
 app.use(compression());
